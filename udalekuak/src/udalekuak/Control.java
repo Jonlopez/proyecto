@@ -9,6 +9,7 @@ package udalekuak;
  *
  * @author javi&Jon
  * linea Jon
+ * linea de javi
  */
 public class Control {
 
