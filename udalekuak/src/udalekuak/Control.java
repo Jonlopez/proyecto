@@ -7,9 +7,7 @@ package udalekuak;
 
 /**
  *
- * @author javi&Jon
- * linea Jon
- * linea de javi
+ * @author javi&Jon 
  */
 public class Control {
 
