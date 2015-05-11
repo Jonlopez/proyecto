@@ -23,7 +23,7 @@ public class Control {
     public static SeleccionLoca seleccLoca;
     public static Direccion direccion;
 
-    public static void controlDir(String[] args) {
+    public static void controlDir() {
     
     direccion = new Direccion();
     form = new vista.direcciones.Formulario();
