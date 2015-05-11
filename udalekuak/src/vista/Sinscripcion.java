@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vista;
 
 /**
  *
- * @author Jon
+ * @author javi&Jon 
  */
 public class Sinscripcion extends javax.swing.JDialog {
 
@@ -42,7 +38,7 @@ public class Sinscripcion extends javax.swing.JDialog {
         tfNombreT = new javax.swing.JTextField();
         tfApelpT = new javax.swing.JTextField();
         tfApelST = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        bDireccion = new javax.swing.JButton();
         chbTelf1 = new java.awt.Checkbox();
         chbTelf2 = new java.awt.Checkbox();
         chbTelf3 = new java.awt.Checkbox();
@@ -66,36 +62,37 @@ public class Sinscripcion extends javax.swing.JDialog {
         chbDiscapacidad = new javax.swing.JCheckBox();
         jLabel14 = new javax.swing.JLabel();
         cbCentro = new javax.swing.JComboBox();
-        jdcFechaN = new com.toedter.calendar.JDateChooser();
+        ftfFechaNac = new javax.swing.JFormattedTextField();
         blimpiar = new javax.swing.JButton();
         bParticipante = new javax.swing.JButton();
         bFinalizar = new javax.swing.JButton();
+        bCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 1000));
 
-        jLabel1.setFont(new java.awt.Font("Traditional Arabic", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Traditional Arabic", 1, 16)); // NOI18N
         jLabel1.setText("Solicitud de Inscripción");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel2.setFont(new java.awt.Font("Traditional Arabic", 2, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Traditional Arabic", 2, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Datos del padre/madre o tutor");
 
-        jLabel3.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         jLabel3.setText("DNI");
 
-        jLabel4.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         jLabel4.setText("nombre");
 
-        jLabel5.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         jLabel5.setText("primer apellido");
 
-        jLabel6.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         jLabel6.setText("segundo apellido");
 
-        jButton1.setText("Direccón");
+        bDireccion.setText("Direccón");
+        bDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bDireccionActionPerformed(evt);
+            }
+        });
 
         chbTelf1.setLabel("Telefono 1");
 
@@ -123,7 +120,7 @@ public class Sinscripcion extends javax.swing.JDialog {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
-                            .addComponent(jButton1))
+                            .addComponent(bDireccion))
                         .addGap(34, 34, 34)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -168,7 +165,7 @@ public class Sinscripcion extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(bDireccion))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -183,43 +180,35 @@ public class Sinscripcion extends javax.swing.JDialog {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel7.setFont(new java.awt.Font("Traditional Arabic", 2, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Traditional Arabic", 2, 15)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Datos del menor");
 
-        jLabel8.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         jLabel8.setText("DNI");
 
-        jLabel9.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         jLabel9.setText("nombre");
 
-        jLabel10.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         jLabel10.setText("primer apellido");
 
-        jLabel11.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         jLabel11.setText("Segundo apellido");
 
-        jLabel12.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         jLabel12.setText("sexo");
 
         bgsexo.add(rbHombre);
-        rbHombre.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         rbHombre.setText("Hombre");
 
         bgsexo.add(rbMujer);
-        rbMujer.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         rbMujer.setText("Mujer");
 
-        jLabel13.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         jLabel13.setText("Fecha de nacimiento");
 
-        chbDiscapacidad.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         chbDiscapacidad.setText("Discapacidad");
 
-        jLabel14.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         jLabel14.setText("Centro de ensañanza");
 
         cbCentro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        ftfFechaNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -254,8 +243,8 @@ public class Sinscripcion extends javax.swing.JDialog {
                             .addComponent(tfNombreM)
                             .addComponent(tfApelpM)
                             .addComponent(tfApelsM)
-                            .addComponent(jdcFechaN, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbCentro, 0, 406, Short.MAX_VALUE))))
+                            .addComponent(cbCentro, 0, 406, Short.MAX_VALUE)
+                            .addComponent(ftfFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -285,9 +274,9 @@ public class Sinscripcion extends javax.swing.JDialog {
                     .addComponent(rbHombre)
                     .addComponent(rbMujer))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jdcFechaN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ftfFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chbDiscapacidad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -300,56 +289,124 @@ public class Sinscripcion extends javax.swing.JDialog {
         blimpiar.setText("Limpiar");
 
         bParticipante.setText("Añadir participante");
+        bParticipante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bParticipanteActionPerformed(evt);
+            }
+        });
 
         bFinalizar.setText("Finalizar");
+        bFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bFinalizarActionPerformed(evt);
+            }
+        });
+
+        bCancelar.setText("Cancelar");
+        bCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(blimpiar)
-                .addGap(79, 79, 79))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bParticipante)
-                .addGap(18, 18, 18)
-                .addComponent(bFinalizar)
-                .addGap(77, 77, 77))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(blimpiar)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(bCancelar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bParticipante)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(bFinalizar))
+                                .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(blimpiar)))
-                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(2, 2, 2)
+                .addComponent(blimpiar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bFinalizar)
                     .addComponent(bParticipante)
-                    .addComponent(bFinalizar))
-                .addContainerGap(45, Short.MAX_VALUE))
+                    .addComponent(bCancelar))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
+        ControlVistas.cerrarDialogo(this);
+    }//GEN-LAST:event_bCancelarActionPerformed
+
+    private void bDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDireccionActionPerformed
+        
+    }//GEN-LAST:event_bDireccionActionPerformed
+/**
+ * Se añade un nuevo participante a la solictud
+ * @param evt 
+ */
+    private void bParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bParticipanteActionPerformed
+        udalekuak.Control.guardarInscripcion();
+        if(confirmacion()){
+            limpiarMenor();
+        }
+        else {
+            limpiarMenor();
+            limpiarTutor();
+        }
+        contadorInscripciones();
+    }//GEN-LAST:event_bParticipanteActionPerformed
+
+    private void bFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinalizarActionPerformed
+        udalekuak.Control.finalizarSolicitud(this);
+    }//GEN-LAST:event_bFinalizarActionPerformed
+/**
+ * Se pide confirmación para conservar los datos del tutor
+ * o borrarlos
+ * @return 
+ */
+    private boolean confirmacion(){
+        return true;
+    }
+/**
+ * Se limpian los campos del panel de menor
+ */  
+    private void limpiarMenor(){
+        
+    }
+/**
+ * Se limpian los campos del panel de tutor
+ */    
+    private void limpiarTutor(){
+        
+    }
+/**
+ * Se cuentan los participantes insertados 
+ * para deshabilitar el boton de añadir otro
+ */    
+    private void contadorInscripciones(){
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -393,6 +450,8 @@ public class Sinscripcion extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bCancelar;
+    private javax.swing.JButton bDireccion;
     private javax.swing.JButton bFinalizar;
     private javax.swing.JButton bParticipante;
     private javax.swing.ButtonGroup bgsexo;
@@ -403,7 +462,7 @@ public class Sinscripcion extends javax.swing.JDialog {
     private java.awt.Checkbox chbTelf2;
     private java.awt.Checkbox chbTelf3;
     private java.awt.Checkbox chbTelf4;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JFormattedTextField ftfFechaNac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -421,7 +480,6 @@ public class Sinscripcion extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private com.toedter.calendar.JDateChooser jdcFechaN;
     private javax.swing.JRadioButton rbHombre;
     private javax.swing.JRadioButton rbMujer;
     private javax.swing.JTextArea taDireccion;

@@ -17,6 +17,8 @@ public class Lposterior extends javax.swing.JDialog {
     public Lposterior(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Listado posterior al sorteo");
     }
 
     /**
@@ -36,11 +38,27 @@ public class Lposterior extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel1.setText("Listado posterior al sorteo");
 
         tPosterior.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -64,6 +82,11 @@ public class Lposterior extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tPosterior);
 
         bAceptar.setText("Aceptar");
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptarActionPerformed(evt);
+            }
+        });
 
         bPdf.setText("Generar PDF");
 
@@ -71,37 +94,45 @@ public class Lposterior extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(bPdf)
+                .addGap(18, 18, 18)
+                .addComponent(bAceptar)
+                .addGap(68, 68, 68))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
-                        .addComponent(jLabel1))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bPdf)
-                                .addGap(44, 44, 44)
-                                .addComponent(bAceptar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(69, Short.MAX_VALUE))
+                        .addGap(289, 289, 289)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap(61, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(63, 63, 63)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAceptar)
-                    .addComponent(bPdf))
-                .addContainerGap(74, Short.MAX_VALUE))
+                    .addComponent(bPdf)
+                    .addComponent(bAceptar))
+                .addGap(54, 54, 54))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+/**
+ * Cierra el cuadro de dialogo del listado
+ * @param evt 
+ */
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        ControlVistas.cerrarDialogo(this);
+    }//GEN-LAST:event_bAceptarActionPerformed
 
     /**
      * @param args the command line arguments

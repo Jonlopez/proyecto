@@ -17,6 +17,8 @@ public class Lprevio extends javax.swing.JDialog {
     public Lprevio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Listado previo al sorteo");
     }
 
     /**
@@ -53,6 +55,22 @@ public class Lprevio extends javax.swing.JDialog {
                 {null, null},
                 {null, null},
                 {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
                 {null, null}
             },
             new String [] {
@@ -75,10 +93,15 @@ public class Lprevio extends javax.swing.JDialog {
             tprevio.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel1.setText("Listado previo al sorteo");
 
         bAceptar.setText("Aceptar");
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptarActionPerformed(evt);
+            }
+        });
 
         bPdf.setText("Generar PDF");
 
@@ -87,28 +110,28 @@ public class Lprevio extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(549, 549, 549)
                         .addComponent(bPdf)
-                        .addGap(40, 40, 40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bAceptar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(287, 287, 287)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(71, 71, 71)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(79, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(298, 298, 298)
+                        .addComponent(jLabel1)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(67, 67, 67)
                 .addComponent(jLabel1)
-                .addGap(59, 59, 59)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAceptar)
                     .addComponent(bPdf))
@@ -117,6 +140,13 @@ public class Lprevio extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+/**
+ * Cierra el cuadro de dialogo del listado
+ * @param evt 
+ */
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        ControlVistas.cerrarDialogo(this);
+    }//GEN-LAST:event_bAceptarActionPerformed
 
     /**
      * @param args the command line arguments

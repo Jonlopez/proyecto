@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vista;
 
 /**
  *
- * @author Jon
+ * @author javi&Jon
  */
 public class Admin extends javax.swing.JDialog {
 
@@ -17,6 +13,8 @@ public class Admin extends javax.swing.JDialog {
     public Admin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Realizar sorteo");
     }
 
     /**
@@ -31,7 +29,7 @@ public class Admin extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         tfUser = new javax.swing.JTextField();
-        jpfpass = new javax.swing.JPasswordField();
+        tfpass = new javax.swing.JPasswordField();
         bAceptar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -43,10 +41,20 @@ public class Admin extends javax.swing.JDialog {
         jLabel2.setText("Contraseña");
 
         bAceptar.setText("Aceptar");
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptarActionPerformed(evt);
+            }
+        });
 
         bCancelar.setText("Cancelar");
+        bCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCancelarActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jLabel3.setText("Inicia sesion de Administrador");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -54,7 +62,7 @@ public class Admin extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(bAceptar)
@@ -66,38 +74,53 @@ public class Admin extends javax.swing.JDialog {
                             .addComponent(jLabel2))
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jpfpass)
+                            .addComponent(tfpass)
                             .addComponent(tfUser, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(64, 64, 64))
             .addGroup(layout.createSequentialGroup()
-                .addGap(141, 141, 141)
+                .addGap(186, 186, 186)
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(tfUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jpfpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tfpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)))
-                .addGap(41, 41, 41)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCancelar)
                     .addComponent(bAceptar))
-                .addContainerGap())
+                .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+/**
+ * Se validan el usuario y contraseña del administrador
+ * y se logea el usuario
+ * @param evt 
+ */
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        udalekuak.Control.logIn(tfUser.getText(),tfpass.getName(),this);
+    }//GEN-LAST:event_bAceptarActionPerformed
+/**
+ * Se cancela el LogIn
+ * @param evt 
+ */
+    private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
+        ControlVistas.cerrarDialogo(this);
+    }//GEN-LAST:event_bCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,7 +170,7 @@ public class Admin extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jpfpass;
     private javax.swing.JTextField tfUser;
+    private javax.swing.JPasswordField tfpass;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vista;
 
 /**
@@ -44,8 +40,18 @@ public class Sorteo extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         bBorrar.setText("Borrar Sorteo");
+        bBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBorrarActionPerformed(evt);
+            }
+        });
 
         bEjecutar.setText("Ejecutar Sorteo");
+        bEjecutar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEjecutarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("DATOS DEL SORTEO");
 
@@ -56,6 +62,11 @@ public class Sorteo extends javax.swing.JDialog {
         jLabel4.setText("Fecha sorteo");
 
         bSalir.setText("Salir");
+        bSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalirActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("*Atencion: Si se borra el sorteo no se borran las solicitudes.");
 
@@ -71,7 +82,6 @@ public class Sorteo extends javax.swing.JDialog {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bEjecutar)
                                 .addGap(18, 18, 18)
                                 .addComponent(bBorrar)
@@ -130,6 +140,18 @@ public class Sorteo extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEjecutarActionPerformed
+        udalekuak.Control.ejecutarSorteo();
+    }//GEN-LAST:event_bEjecutarActionPerformed
+
+    private void bBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBorrarActionPerformed
+        udalekuak.Control.borrarSorteo();
+    }//GEN-LAST:event_bBorrarActionPerformed
+
+    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+        ControlVistas.cerrarDialogo(this);
+    }//GEN-LAST:event_bSalirActionPerformed
 
     /**
      * @param args the command line arguments

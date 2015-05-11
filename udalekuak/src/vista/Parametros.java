@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vista;
 
 /**
  *
- * @author javi
+ * @author javi&Jon 
  */
 public class Parametros extends javax.swing.JDialog {
 
@@ -50,8 +46,18 @@ public class Parametros extends javax.swing.JDialog {
         jLabel4.setText("CONFIGURACION DE PARAMETROS");
 
         bSalir.setText("Salir");
+        bSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalirActionPerformed(evt);
+            }
+        });
 
         bGuardar.setText("Guardar");
+        bGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGuardarActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("* Atencion: Estos datos son los que se utilizan para configurar el sorteo");
 
@@ -71,14 +77,13 @@ public class Parametros extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfFechaSorteo)
                             .addComponent(tfFechaFin)
-                            .addComponent(tfFechaInicio))
-                        .addContainerGap())
+                            .addComponent(tfFechaInicio)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(bGuardar)
                         .addGap(18, 18, 18)
-                        .addComponent(bSalir)
-                        .addContainerGap())))
+                        .addComponent(bSalir)))
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -117,6 +122,14 @@ public class Parametros extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+        ControlVistas.cerrarDialogo(this);
+    }//GEN-LAST:event_bSalirActionPerformed
+
+    private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
+        udalekuak.Control.guardarparametros(null, null, null, this);
+    }//GEN-LAST:event_bGuardarActionPerformed
 
     /**
      * @param args the command line arguments

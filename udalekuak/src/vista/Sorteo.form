@@ -29,7 +29,6 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="bEjecutar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="bBorrar" min="-2" max="-2" attributes="0"/>
@@ -109,11 +108,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Borrar Sorteo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBorrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bEjecutar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ejecutar Sorteo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bEjecutarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -145,6 +150,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bSalirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>

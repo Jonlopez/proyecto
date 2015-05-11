@@ -17,6 +17,8 @@ public class Dsolicitud extends javax.swing.JDialog {
     public Dsolicitud(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Detalles de Solicitud");
     }
 
     /**
@@ -171,6 +173,11 @@ public class Dsolicitud extends javax.swing.JDialog {
         jLabel10.setText("SORTEO");
 
         bAceptar.setText("Aceptar");
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -213,6 +220,13 @@ public class Dsolicitud extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+/**
+ * Cierra el dialogo
+ * @param evt 
+ */
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        ControlVistas.cerrarDialogo(this);
+    }//GEN-LAST:event_bAceptarActionPerformed
 
     /**
      * @param args the command line arguments

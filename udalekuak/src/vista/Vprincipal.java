@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vista;
 
 /**
  *
- * @author Jon
+ * @author javi&Jon
  */
 public class Vprincipal extends javax.swing.JFrame {
 
@@ -17,8 +13,15 @@ public class Vprincipal extends javax.swing.JFrame {
     public Vprincipal() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+        deshabilitarMenus();
     }
-
+/**
+ * deshabilita los menus de Usuario administrador
+ */
+    private void deshabilitarMenus(){
+        mConfiguracion.setEnabled(false);
+        mSorteo.setEnabled(false);        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,59 +31,111 @@ public class Vprincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bLogin = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        mConfiguracion = new javax.swing.JMenuItem();
+        mSorteo = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMinscripcion = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        mInscripcion = new javax.swing.JMenuItem();
+        mConsultaIns = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        mListPrevio = new javax.swing.JMenuItem();
+        mListPost = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("LogIn / LogOut");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bLogin.setText("LogIn ");
+        bLogin.setFocusable(false);
+        bLogin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bLogin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLoginActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("LogOut");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Administración");
 
-        jMenuItem1.setText("Configuración");
-        jMenu1.add(jMenuItem1);
+        mConfiguracion.setText("Configuración");
+        mConfiguracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mConfiguracionActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mConfiguracion);
 
-        jMenuItem2.setText("Sorteo");
-        jMenu1.add(jMenuItem2);
+        mSorteo.setText("Sorteo");
+        mSorteo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mSorteoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mSorteo);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Inscripción");
 
-        jMinscripcion.setText("Realizar Inscripción");
-        jMinscripcion.addActionListener(new java.awt.event.ActionListener() {
+        mInscripcion.setText("Realizar Inscripción");
+        mInscripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMinscripcionActionPerformed(evt);
+                mInscripcionActionPerformed(evt);
             }
         });
-        jMenu2.add(jMinscripcion);
+        jMenu2.add(mInscripcion);
 
-        jMenuItem4.setText("Consultar Inscripción");
-        jMenu2.add(jMenuItem4);
+        mConsultaIns.setText("Consultar Inscripción");
+        mConsultaIns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mConsultaInsActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mConsultaIns);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Listados");
 
-        jMenuItem5.setText("Listado Previo");
-        jMenu3.add(jMenuItem5);
+        mListPrevio.setText("Listado Previo");
+        mListPrevio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mListPrevioActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mListPrevio);
 
-        jMenuItem6.setText("Listado Posterior");
-        jMenu3.add(jMenuItem6);
+        mListPost.setText("Listado Posterior");
+        mListPost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mListPostActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mListPost);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Salir");
+
+        jMenuItem3.setText("Salir del programa");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -89,22 +144,58 @@ public class Vprincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 1141, Short.MAX_VALUE)
+                .addGap(0, 1111, Short.MAX_VALUE)
+                .addComponent(bLogin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bLogin)
+                    .addComponent(jButton1))
                 .addGap(0, 755, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMinscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMinscripcionActionPerformed
-        ControlVistas.ventanaInscripcion(this, true);
-    }//GEN-LAST:event_jMinscripcionActionPerformed
+    private void mInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mInscripcionActionPerformed
+        ControlVistas.muestraInscripcion(this, true);
+    }//GEN-LAST:event_mInscripcionActionPerformed
+
+    private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
+        ControlVistas.muestraLogin(this, true);
+    }//GEN-LAST:event_bLoginActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ControlVistas.logOut();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void mConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mConfiguracionActionPerformed
+        ControlVistas.muestraConfig(this, true);
+    }//GEN-LAST:event_mConfiguracionActionPerformed
+
+    private void mSorteoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mSorteoActionPerformed
+        ControlVistas.muestraSorteo(this, true);
+    }//GEN-LAST:event_mSorteoActionPerformed
+
+    private void mConsultaInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mConsultaInsActionPerformed
+        ControlVistas.muestraConsultaSol(this, true);
+    }//GEN-LAST:event_mConsultaInsActionPerformed
+
+    private void mListPrevioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mListPrevioActionPerformed
+        ControlVistas.muestraListadoPrevio(this, true);
+    }//GEN-LAST:event_mListPrevioActionPerformed
+
+    private void mListPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mListPostActionPerformed
+        ControlVistas.muestraListadoPosterior(this, true);
+    }//GEN-LAST:event_mListPostActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        ControlVistas.salir();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,16 +233,19 @@ public class Vprincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bLogin;
     private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMinscripcion;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem mConfiguracion;
+    private javax.swing.JMenuItem mConsultaIns;
+    private javax.swing.JMenuItem mInscripcion;
+    private javax.swing.JMenuItem mListPost;
+    private javax.swing.JMenuItem mListPrevio;
+    private javax.swing.JMenuItem mSorteo;
     // End of variables declaration//GEN-END:variables
 }

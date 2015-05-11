@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vista;
 
 /**
  *
- * @author javi
+ * @author javi&Jon
  */
 public class Csolicitud extends javax.swing.JDialog {
 
@@ -17,6 +13,8 @@ public class Csolicitud extends javax.swing.JDialog {
     public Csolicitud(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Consulta de solicitud");
     }
 
     /**
@@ -34,18 +32,31 @@ public class Csolicitud extends javax.swing.JDialog {
         tfDni = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        ftfFechaNac = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("CONSULTA SOLICIUD");
 
         bCancelar.setText("Cancelar");
+        bCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCancelarActionPerformed(evt);
+            }
+        });
 
         bConsultar.setText("Consultar");
+        bConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsultarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("D.N.I. del padre, madre o tutor");
 
         jLabel3.setText("Fecha de nacimiento del participante");
+
+        ftfFechaNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,7 +78,8 @@ public class Csolicitud extends javax.swing.JDialog {
                         .addGap(0, 131, Short.MAX_VALUE)
                         .addComponent(bConsultar)
                         .addGap(18, 18, 18)
-                        .addComponent(bCancelar)))
+                        .addComponent(bCancelar))
+                    .addComponent(ftfFechaNac))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -75,12 +87,14 @@ public class Csolicitud extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(ftfFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCancelar)
@@ -90,6 +104,21 @@ public class Csolicitud extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+/**
+ * Consulta los participantes de una solicitud
+ * y posterior al sorteo muestra la cita sorteada
+ * @param evt 
+ */
+    private void bConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarActionPerformed
+        udalekuak.Control.obtenerSolicitud(null, null);
+    }//GEN-LAST:event_bConsultarActionPerformed
+/**
+ * Cierra el dialogo 
+ * @param evt 
+ */
+    private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
+        ControlVistas.cerrarDialogo(this);
+    }//GEN-LAST:event_bCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,6 +165,7 @@ public class Csolicitud extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancelar;
     private javax.swing.JButton bConsultar;
+    private javax.swing.JFormattedTextField ftfFechaNac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
