@@ -36,8 +36,17 @@ public class Control {
     form = new vistadirecciones.Formulario();
     cargaProvincias();
     form.setVisible(true);
-        
+    
     }//END MAIN
+    
+    public static Direccion devuelveDireccion()
+    {
+        direccion = new Direccion();
+        form = new vistadirecciones.Formulario();
+        cargaProvincias();
+        form.setVisible(true);
+        return direccion;
+    }
         
     public static void cargaProvincias()
     {

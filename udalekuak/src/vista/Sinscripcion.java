@@ -359,7 +359,7 @@ public class Sinscripcion extends javax.swing.JDialog {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDireccionActionPerformed
-
+        controldirecciones.Control.devuelveDireccion();
     }//GEN-LAST:event_bDireccionActionPerformed
 /**
  * Se añade un nuevo participante a la solictud
