@@ -1,5 +1,5 @@
 
-package uml;
+package umldirecciones;
 
 /**
  *

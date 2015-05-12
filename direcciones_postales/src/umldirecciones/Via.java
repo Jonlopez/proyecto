@@ -1,6 +1,6 @@
-package uml;
+package umldirecciones;
 
-import bd.ViaBD;
+import bddirecciones.ViaBD;
 
 /**
  *

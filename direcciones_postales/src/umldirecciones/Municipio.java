@@ -1,7 +1,7 @@
 
-package uml;
+package umldirecciones;
 
-import bd.MunicipioBD;
+import bddirecciones.MunicipioBD;
 
 /**
  *

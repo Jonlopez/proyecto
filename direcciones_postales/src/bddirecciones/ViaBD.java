@@ -1,37 +1,44 @@
-package bd;
+package bddirecciones;
 
 
 import controldirecciones.Control;
 import java.util.ArrayList;
-import uml.Poblacion;
+import umldirecciones.Poblacion;
+import umldirecciones.Via;
 
 
-public abstract class PoblacionBD extends GenericoBD{
+public abstract class ViaBD extends GenericoBD{
     
-    public static ArrayList<Poblacion> getLocalidades(String localidad, int cmun, int cpro)
+    public static ArrayList<Via> getVias(String via, int cmun, int cpro)
     {        
-        ArrayList<Poblacion> listado = new ArrayList();
-        String query = "SELECT DISTINCT nentsi50 "
-                     + "FROM ine_poblaciones "
-                     + "WHERE cpro = ? AND cmun = ? AND upper(nnucle50) LIKE '%"+localidad.toUpperCase()+"%' "
-                     + "ORDER BY nentsi50";
+        ArrayList<Via> listado = new ArrayList();
+        String query = "SELECT cvia, tvia, pos, nvia "
+                     + "FROM ine_vias "
+                     + "WHERE cpro = ? AND cmun = ? AND upper(nvia) LIKE '%"+via.toUpperCase()+"%' "
+                     + "ORDER BY nvia";
         try
         {
            conectarBD();
            pstmt = con.prepareStatement(query);
            pstmt.setInt(1, cpro);
            pstmt.setInt(2, cmun);
-           //pstmt.setString(3, localidad);
+           //pstmt.setString(3, via);
            rs = pstmt.executeQuery();
            if (rs!=null)
            {
-               Poblacion p;
-               String nentsi50;
+               Via v;
+               int    cvia;
+               String tvia;
+               int    pos;
+               String nvia;
                while(rs.next())
                {                   
-                   nentsi50 = rs.getString("nentsi50").trim();
-                   p = new Poblacion(Control.direccion.getMunicipio(), nentsi50);
-                   listado.add(p);
+                   cvia = rs.getInt("cvia");
+                   tvia = rs.getString("tvia").trim();
+                   pos  = rs.getInt("pos");
+                   nvia = rs.getString("nvia").trim();
+                   v = new Via(Control.direccion.getMunicipio(), cvia, tvia, pos, nvia);
+                   listado.add(v);
                }//END WHILE
                
            }else{System.out.println("la tabla provincias esta bacía o no da resultados");}

@@ -1,10 +1,10 @@
 
-package vista;
+package vistadirecciones;
 
 import controldirecciones.Control;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import uml.Provincia;
+import umldirecciones.Provincia;
 
 /**
  *

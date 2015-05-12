@@ -1,9 +1,9 @@
 
-package bd;
+package bddirecciones;
 
 import controldirecciones.Control;
 import java.util.ArrayList;
-import uml.Municipio;
+import umldirecciones.Municipio;
 
 /**
  *

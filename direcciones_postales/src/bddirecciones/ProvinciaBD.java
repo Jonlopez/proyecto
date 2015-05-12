@@ -1,8 +1,8 @@
 
-package bd;
+package bddirecciones;
 
 import java.util.ArrayList;
-import uml.Provincia;
+import umldirecciones.Provincia;
 
 
 public abstract class ProvinciaBD extends GenericoBD{

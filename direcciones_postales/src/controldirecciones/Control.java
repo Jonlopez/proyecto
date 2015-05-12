@@ -1,10 +1,17 @@
 
 package controldirecciones;
 
+import vistadirecciones.SeleccionLoca;
+import vistadirecciones.Formulario;
+import vistadirecciones.SeleccionMuni;
+import umldirecciones.Direccion;
+import umldirecciones.Tramo;
+import umldirecciones.Via;
+import umldirecciones.Municipio;
+import umldirecciones.Poblacion;
+import umldirecciones.Provincia;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import uml.*;
-import vista.*;
 
 /**
  *
@@ -26,7 +33,7 @@ public class Control {
     public static void main(String[] args) {
     
     direccion = new Direccion();
-    form = new vista.Formulario();
+    form = new vistadirecciones.Formulario();
     cargaProvincias();
     form.setVisible(true);
         

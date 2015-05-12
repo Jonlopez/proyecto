@@ -1,7 +1,7 @@
 
-package uml;
+package umldirecciones;
 
-import bd.TramoBD;
+import bddirecciones.TramoBD;
 
 /**
  *
