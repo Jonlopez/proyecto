@@ -1,7 +1,7 @@
 
 package uml;
 
-import uml.direcciones.Provincia;
+import umldirecciones.Provincia;
 
 /**
  *

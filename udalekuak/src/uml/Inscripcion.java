@@ -1,7 +1,7 @@
 
 package uml;
 
-import uml.direcciones.Direccion;
+import umldirecciones.Direccion;
 
 /**
  *
