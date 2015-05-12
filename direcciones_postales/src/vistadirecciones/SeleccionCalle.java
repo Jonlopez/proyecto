@@ -17,7 +17,7 @@ public class SeleccionCalle extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    public SeleccionCalle(java.awt.Frame parent, boolean modal) {
+    public SeleccionCalle(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -135,7 +135,7 @@ public class SeleccionCalle extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                SeleccionCalle dialog = new SeleccionCalle(new javax.swing.JFrame(), true);
+                SeleccionCalle dialog = new SeleccionCalle(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

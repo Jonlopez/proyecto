@@ -7,6 +7,8 @@ package vista;
  */
 public class Sinscripcion extends javax.swing.JDialog {
 
+    umldirecciones.Direccion direccion;
+    
     /**
      * Creates new form Sinscripcion
      */
@@ -359,7 +361,10 @@ public class Sinscripcion extends javax.swing.JDialog {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDireccionActionPerformed
-        controldirecciones.Control.devuelveDireccion();
+        direccion = controldirecciones.Control.devuelveDireccion(this, true);
+         //Esta linea es para comprobar el objeto direccion que devuelve
+        javax.swing.JOptionPane.showMessageDialog(null, direccion.toString());
+       
     }//GEN-LAST:event_bDireccionActionPerformed
 /**
  * Se añade un nuevo participante a la solictud
