@@ -1,42 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package vista.direcciones;
+package vista;
 
-import direcciones.Control;
+import controldirecciones.Control;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import uml.direcciones.Poblacion;
+import uml.Municipio;
+import uml.Via;
 
 /**
  *
  * @author javi
  */
-public class SeleccionLoca extends javax.swing.JDialog {
+public class SeleccionCalle extends javax.swing.JDialog {
 
     /**
      * Creates new form Seleccion
      * @param parent
      * @param modal
      */
-    public SeleccionLoca(java.awt.Frame parent, boolean modal) {
+    public SeleccionCalle(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
     
-       
-    public void cargaLocalidades(ArrayList<Poblacion> lista)
+    public void cargaCalles(ArrayList<Via> lista)
     {
         DefaultListModel model = new DefaultListModel();
         for(int i=0; i<lista.size(); i++)
         {
-            model.addElement(lista.get(i).getNentsi50());
+            model.addElement(lista.get(i).getTvia() + " " + lista.get(i).getNvia());
         }
         this.lLista.setModel(model);
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,40 +44,43 @@ public class SeleccionLoca extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         lLista = new javax.swing.JList();
-        bSeleccLoca = new javax.swing.JButton();
+        bSeleccCalle = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jScrollPane1.setViewportView(lLista);
 
-        bSeleccLoca.setText("Seleccionar");
-        bSeleccLoca.addActionListener(new java.awt.event.ActionListener() {
+        bSeleccCalle.setText("Seleccionar");
+        bSeleccCalle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSeleccLocaActionPerformed(evt);
+                bSeleccCalleActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(237, 23, 95));
-        jLabel1.setText("Selecciona tu localidad");
+        jLabel1.setText("Selecciona tu calle");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bSeleccLoca)
-                .addGap(151, 151, 151))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(bSeleccCalle)
+                                .addGap(151, 151, 151))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(126, 126, 126))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,17 +90,17 @@ public class SeleccionLoca extends javax.swing.JDialog {
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(bSeleccLoca)
+                .addComponent(bSeleccCalle)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bSeleccLocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSeleccLocaActionPerformed
-        Control.setLocalidadElejida(this.lLista.getSelectedIndex());
-        Control.form.continuaCalles();
-    }//GEN-LAST:event_bSeleccLocaActionPerformed
+    private void bSeleccCalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSeleccCalleActionPerformed
+        Control.setViaElejida(this.lLista.getSelectedIndex());
+        Control.form.continuaPortal();
+    }//GEN-LAST:event_bSeleccCalleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,18 +119,14 @@ public class SeleccionLoca extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SeleccionLoca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionCalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SeleccionLoca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionCalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SeleccionLoca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionCalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SeleccionLoca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionCalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -140,7 +135,7 @@ public class SeleccionLoca extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                SeleccionLoca dialog = new SeleccionLoca(new javax.swing.JFrame(), true);
+                SeleccionCalle dialog = new SeleccionCalle(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -153,7 +148,7 @@ public class SeleccionLoca extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bSeleccLoca;
+    private javax.swing.JButton bSeleccCalle;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList lLista;

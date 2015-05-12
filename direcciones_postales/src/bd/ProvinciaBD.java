@@ -1,8 +1,8 @@
 
-package bddirecciones;
+package bd;
 
 import java.util.ArrayList;
-import uml.direcciones.Provincia;
+import uml.Provincia;
 
 
 public abstract class ProvinciaBD extends GenericoBD{
@@ -10,7 +10,7 @@ public abstract class ProvinciaBD extends GenericoBD{
     public static ArrayList<Provincia> getProvincias()
     {
         ArrayList<Provincia> listado = new ArrayList();
-        String query = "SELECT cprov, nprov FROM ine_provincias";
+        String query = "SELECT cpro, npro FROM ine_provincias";
         try
         {
            conectarBD();
@@ -23,8 +23,8 @@ public abstract class ProvinciaBD extends GenericoBD{
                String nprov;
                while(rs.next())
                {
-                   cprov = rs.getInt("cprov");
-                   nprov = rs.getString("nprov");
+                   cprov = rs.getInt("cpro");
+                   nprov = rs.getString("npro");
                    p = new Provincia(cprov, nprov);
                    listado.add(p);
                }//END WHILE

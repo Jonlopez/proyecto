@@ -1,10 +1,10 @@
-package bddirecciones;
+package bd;
 
 
-import direcciones.Control;
+import controldirecciones.Control;
 import java.util.ArrayList;
-import uml.direcciones.Poblacion;
-import uml.direcciones.Via;
+import uml.Poblacion;
+import uml.Via;
 
 
 public abstract class ViaBD extends GenericoBD{

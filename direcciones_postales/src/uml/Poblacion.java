@@ -1,7 +1,7 @@
 
-package uml.direcciones;
+package uml;
 
-import bddirecciones.PoblacionBD;
+import bd.PoblacionBD;
 
 /**
  *

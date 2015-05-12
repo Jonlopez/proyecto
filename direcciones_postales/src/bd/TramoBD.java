@@ -1,21 +1,21 @@
-package bddirecciones;
+package bd;
 
 
-import direcciones.Control;
+import controldirecciones.Control;
 import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.JOptionPane;
-import uml.direcciones.Tramo;
-import uml.direcciones.Via;
+import uml.Tramo;
+import uml.Via;
 
 
 public abstract class TramoBD extends GenericoBD{
-    private static Object ResultSupport;
+    //private static Object ResultSupport;
     
     public static Tramo getTramos(int cpro, int cmun, int cvia, int cpos ,int tinum, int portal)
     {        
         Tramo tramo = new Tramo();
         String query = "SELECT * "
-                     + "FROM ine_tramos2 "
+                     + "FROM ine_tramos "
                      + "WHERE (cpro = ? AND cmun = ? AND cvia = ? AND cpos = ? AND tinum = ?) AND ( ? BETWEEN ein AND esn) ";
         try
         {
@@ -25,8 +25,8 @@ public abstract class TramoBD extends GenericoBD{
            pstmt.setInt(2, cmun);
            pstmt.setInt(3, cvia);
            pstmt.setInt(4, cpos);
-           pstmt.setInt(4, tinum);
-           pstmt.setInt(5, portal);
+           pstmt.setInt(5, tinum);
+           pstmt.setInt(6, portal);
            rs = pstmt.executeQuery();
            
            if (rs!=null)
@@ -56,6 +56,7 @@ public abstract class TramoBD extends GenericoBD{
                    cesn = rs.getString("cesn");
                                       
                    tramo = new Tramo(ctra, distrito, seccion, subseccion, tinum2, ein, cein, esn, cesn);
+                   
                }
                if(rs.next())
                 JOptionPane.showMessageDialog(null, "ERROR!! la consulta de tramo devuelve mas de una fila");
@@ -76,7 +77,7 @@ public abstract class TramoBD extends GenericoBD{
         {
             desconectarBD();
         }        
-        
+        JOptionPane.showMessageDialog(null, tramo.toString());
         return tramo;
         
     }

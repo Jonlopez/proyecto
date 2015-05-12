@@ -1,10 +1,10 @@
 
-package vista.direcciones;
+package vista;
 
-import direcciones.Control;
+import controldirecciones.Control;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import uml.direcciones.Provincia;
+import uml.Provincia;
 
 /**
  *
@@ -12,8 +12,8 @@ import uml.direcciones.Provincia;
  */
 public class Formulario extends javax.swing.JFrame {
 
-    public SeleccionMuni seleccMuni;
-    public SeleccionLoca seleccLoca;
+    public SeleccionMuni   seleccMuni;
+    public SeleccionLoca   seleccLoca;
     public SeleccionCalle  seleccCalle;
     
     public Formulario() {
@@ -73,7 +73,7 @@ public class Formulario extends javax.swing.JFrame {
     public void continuaPortal()
     {
         this.seleccCalle.dispose();
-        this.tfCalle.setText(Control.direccion.getVia().getTvia() + "/  " + Control.direccion.getVia().getNvia());
+        this.tfCalle.setText(Control.direccion.getVia().getTvia() + " " + Control.direccion.getVia().getNvia());
         this.tfCalle.setEnabled(false);
         this.bBuscarCalle.setEnabled(false);
         Control.direccion.setCp(Integer.parseInt(this.ftfCP.getText()));
@@ -404,7 +404,6 @@ public class Formulario extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

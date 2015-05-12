@@ -1,9 +1,9 @@
 
-package bddirecciones;
+package bd;
 
-import direcciones.Control;
+import controldirecciones.Control;
 import java.util.ArrayList;
-import uml.direcciones.Municipio;
+import uml.Municipio;
 
 /**
  *
@@ -15,7 +15,7 @@ public abstract class MunicipioBD extends GenericoBD{
     public static ArrayList<Municipio> getMunicipios(String municipio, int cpro)
     {        
         ArrayList<Municipio> listado = new ArrayList();
-        String query = "SELECT * FROM ine_municipios WHERE cpro = ? AND lower(nmun) LIKE '%"+municipio+"%'";
+        String query = "SELECT DISTINCT * FROM ine_municipios WHERE cpro = ? AND lower(nmun) LIKE '%"+municipio+"%'";
         try
         {
            conectarBD();

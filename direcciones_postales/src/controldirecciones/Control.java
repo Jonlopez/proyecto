@@ -1,10 +1,10 @@
 
-package direcciones;
+package controldirecciones;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import uml.direcciones.*;
-import vista.direcciones.*;
+import uml.*;
+import vista.*;
 
 /**
  *
@@ -23,10 +23,10 @@ public class Control {
     public static SeleccionLoca seleccLoca;
     public static Direccion direccion;
 
-    public static void controlDir() {
+    public static void main(String[] args) {
     
     direccion = new Direccion();
-    form = new vista.direcciones.Formulario();
+    form = new vista.Formulario();
     cargaProvincias();
     form.setVisible(true);
         
