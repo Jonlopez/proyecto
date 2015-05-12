@@ -1,11 +1,11 @@
-package bd;
+package bddirecciones;
 
 
 import controldirecciones.Control;
 import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.JOptionPane;
-import uml.Tramo;
-import uml.Via;
+import umldirecciones.Tramo;
+import umldirecciones.Via;
 
 
 public abstract class TramoBD extends GenericoBD{

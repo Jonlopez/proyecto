@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista;
+package vistadirecciones;
 
 import controldirecciones.Control;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import uml.Municipio;
+import umldirecciones.Municipio;
 
 /**
  *

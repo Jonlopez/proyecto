@@ -1,9 +1,9 @@
-package bd;
+package bddirecciones;
 
 
 import controldirecciones.Control;
 import java.util.ArrayList;
-import uml.Poblacion;
+import umldirecciones.Poblacion;
 
 
 public abstract class PoblacionBD extends GenericoBD{

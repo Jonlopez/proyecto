@@ -1,10 +1,10 @@
-package vista;
+package vistadirecciones;
 
 import controldirecciones.Control;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import uml.Municipio;
-import uml.Via;
+import umldirecciones.Municipio;
+import umldirecciones.Via;
 
 /**
  *
