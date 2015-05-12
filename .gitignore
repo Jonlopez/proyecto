@@ -21,3 +21,5 @@ nbproject/*
 *.lock
 
 
+/direcciones_postales_1.0/build
+/direcciones_postales/nbproject/private/

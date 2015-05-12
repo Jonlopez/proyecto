@@ -1,7 +1,7 @@
 
-package uml.direcciones;
+package uml;
 
-import bddirecciones.ProvinciaBD;
+import bd.ProvinciaBD;
 
 
 public class Provincia extends ProvinciaBD{
