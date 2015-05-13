@@ -1,6 +1,7 @@
 
 package udalekuak;
 
+import bdudalekuak.UsuarioBd;
 import java.util.Date;
 import vista.ControlVistas;
 import javax.swing.JDialog;
@@ -27,8 +28,8 @@ public class Control {
  * @param pass
  * @param d 
  */    
-    public static void logIn(String user, String pass,JDialog d){        
-        boolean validar = false;
+    public static void logIn(String user, String pass, JDialog d)throws Exception{        
+        boolean validar = UsuarioBd.consultarUsuario(user, pass);
         if(validar)
             ControlVistas.habilitarAdmin(d);        
         else ControlVistas.enviarMensaje("Usuario no valido");

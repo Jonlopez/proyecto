@@ -1,6 +1,8 @@
 
 package vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author javi&Jon
@@ -20,7 +22,15 @@ public class Vprincipal extends javax.swing.JFrame {
  */
     private void deshabilitarMenus(){
         mConfiguracion.setEnabled(false);
-        mSorteo.setEnabled(false);        
+        mSorteo.setEnabled(false);
+        bLogOut.setEnabled(false);
+    }
+    
+    public void habilitarMenus(){
+        mConfiguracion.setEnabled(true);
+        mSorteo.setEnabled(true);
+        bLogin.setEnabled(false);
+        bLogOut.setEnabled(true);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,7 +42,7 @@ public class Vprincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         bLogin = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        bLogOut = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mConfiguracion = new javax.swing.JMenuItem();
@@ -58,10 +68,10 @@ public class Vprincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("LogOut");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bLogOut.setText("LogOut");
+        bLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bLogOutActionPerformed(evt);
             }
         });
 
@@ -147,14 +157,14 @@ public class Vprincipal extends javax.swing.JFrame {
                 .addGap(0, 1111, Short.MAX_VALUE)
                 .addComponent(bLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1))
+                .addComponent(bLogOut))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bLogin)
-                    .addComponent(jButton1))
+                    .addComponent(bLogOut))
                 .addGap(0, 755, Short.MAX_VALUE))
         );
 
@@ -166,12 +176,18 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mInscripcionActionPerformed
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
-        ControlVistas.muestraLogin(this, true);
+       try{
+           ControlVistas.muestraLogin(this, true);
+       }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(this, e.getMessage());
+         }  
     }//GEN-LAST:event_bLoginActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ControlVistas.logOut();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void bLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLogOutActionPerformed
+        bLogin.setEnabled(true);
+        deshabilitarMenus();
+    }//GEN-LAST:event_bLogOutActionPerformed
 
     private void mConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mConfiguracionActionPerformed
         ControlVistas.muestraConfig(this, true);
@@ -233,8 +249,8 @@ public class Vprincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bLogOut;
     private javax.swing.JButton bLogin;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

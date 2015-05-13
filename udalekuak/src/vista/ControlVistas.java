@@ -25,8 +25,10 @@ public class ControlVistas {
  * habilitan todas sus funciones
  * @param d 
  */    
-    public static void habilitarAdmin(JDialog d){        
+    public static void habilitarAdmin(JDialog d)throws Exception{     
+        vP.habilitarMenus();
         cerrarDialogo(d);
+        
     }
 /**
  * Este metodo se reutiliza para enviar

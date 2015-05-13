@@ -14,7 +14,7 @@ public class Admin extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Realizar sorteo");
+        setTitle("Inciar sesión como Admin");
     }
 
     /**
@@ -112,7 +112,12 @@ public class Admin extends javax.swing.JDialog {
  * @param evt 
  */
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-        udalekuak.Control.logIn(tfUser.getText(),tfpass.getName(),this);
+       try{
+           udalekuak.Control.logIn(tfUser.getText(),tfpass.getText(),this);
+       }
+         catch(Exception e){
+             
+         }              
     }//GEN-LAST:event_bAceptarActionPerformed
 /**
  * Se cancela el LogIn
