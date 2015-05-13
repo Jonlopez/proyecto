@@ -21,7 +21,7 @@ public class SeleccionLoca extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    public SeleccionLoca(java.awt.Frame parent, boolean modal) {
+    public SeleccionLoca(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -136,7 +136,7 @@ public class SeleccionLoca extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                SeleccionLoca dialog = new SeleccionLoca(new javax.swing.JFrame(), true);
+                SeleccionLoca dialog = new SeleccionLoca(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

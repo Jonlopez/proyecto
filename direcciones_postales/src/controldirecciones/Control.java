@@ -2,7 +2,6 @@
 package controldirecciones;
 
 import vistadirecciones.SeleccionLoca;
-import vistadirecciones.Formulario;
 import vistadirecciones.SeleccionMuni;
 import umldirecciones.Direccion;
 import umldirecciones.Tramo;
@@ -11,11 +10,11 @@ import umldirecciones.Municipio;
 import umldirecciones.Poblacion;
 import umldirecciones.Provincia;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import vistadirecciones.Formulario;
 
 /**
  *
- * @author javier_nogales
+ * @author javier_nogales & Jon Lopez
  */
 
 
@@ -32,22 +31,33 @@ public class Control {
 
     public static void main(String[] args) {
     
-    direccion = new Direccion();
-    form = new vistadirecciones.Formulario();
-    cargaProvincias();
-    form.setVisible(true);
+        direccion = new Direccion();
+        form = new vistadirecciones.Formulario(null, true);
+        cargaProvincias();
+        form.setVisible(true);
     
     }//END MAIN
     
-    public static Direccion devuelveDireccion()
+    /**
+     * Metodo que se utiliza para cargar la direccion en el programa padre
+     * 
+     * Se le pasan dos valores padre=para la ventana que lo lloama y valor=true
+     * retorna un objeto direccion con los datos que el usuario ha seleccionado.     * 
+     *
+     * @param padre
+     * @param valor
+     * @return 
+     */
+    public static Direccion devuelveDireccion(javax.swing.JDialog padre, boolean valor)
     {
         direccion = new Direccion();
-        form = new vistadirecciones.Formulario();
+        form = new vistadirecciones.Formulario(padre, valor);
         cargaProvincias();
         form.setVisible(true);
         return direccion;
     }
-        
+    
+    
     public static void cargaProvincias()
     {
         //Cargo el listado de prov. en el ArrayList listaProvincias llamando al
@@ -107,6 +117,14 @@ public class Control {
         return listaVias;
     }
     
+    /**
+     * Devuelve el tramo, que es la interseccion entre localidad y via.
+     * Primero comprueba si el portal es par o impar y despues pide los tramos a direccion
+     * 
+     * @param portal
+     * @param cpos
+     * @return 
+     */
     public static Tramo buscaTramo(int portal, int cpos)
     {
         int tinum;

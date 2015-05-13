@@ -21,7 +21,7 @@ public class SeleccionMuni extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    public SeleccionMuni(java.awt.Frame parent, boolean modal) {
+    public SeleccionMuni(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -134,7 +134,7 @@ public class SeleccionMuni extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                SeleccionMuni dialog = new SeleccionMuni(new javax.swing.JFrame(), true);
+                SeleccionMuni dialog = new SeleccionMuni(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

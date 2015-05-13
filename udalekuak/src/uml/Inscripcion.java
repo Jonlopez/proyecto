@@ -14,17 +14,23 @@ public class Inscripcion {
     private String telf3;
     private String telf4;
     private Direccion direccion;
+    private Tutor tutor;
+    private Menor menor;
+    private Solicitud solicitud;
 
     public Inscripcion() {
     }
 
-    public Inscripcion(int idIns, String telf1, String telf2, String telf3, String telf4, Direccion direccion) {
+    public Inscripcion(int idIns, String telf1, String telf2, String telf3, String telf4, Direccion direccion, Tutor tutor, Menor menor, Solicitud solicitud) {
         this.idIns = idIns;
         this.telf1 = telf1;
         this.telf2 = telf2;
         this.telf3 = telf3;
         this.telf4 = telf4;
         this.direccion = direccion;
+        this.tutor = tutor;
+        this.menor = menor;
+        this.solicitud = solicitud;
     }
 
     public int getIdIns() {
@@ -73,6 +79,30 @@ public class Inscripcion {
 
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
+    }
+
+    public Tutor getTutor() {
+        return tutor;
+    }
+
+    public void setTutor(Tutor tutor) {
+        this.tutor = tutor;
+    }
+
+    public Menor getMenor() {
+        return menor;
+    }
+
+    public void setMenor(Menor menor) {
+        this.menor = menor;
+    }
+
+    public Solicitud getSolicitud() {
+        return solicitud;
+    }
+
+    public void setSolicitud(Solicitud solicitud) {
+        this.solicitud = solicitud;
     }
     
     

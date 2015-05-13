@@ -116,7 +116,7 @@ public class Admin extends javax.swing.JDialog {
            udalekuak.Control.logIn(tfUser.getText(),tfpass.getText(),this);
        }
          catch(Exception e){
-             
+             ControlVistas.enviarMensaje("Erro de login");
          }              
     }//GEN-LAST:event_bAceptarActionPerformed
 /**

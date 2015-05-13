@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package vistadirecciones;
 
 import controldirecciones.Control;
@@ -8,17 +12,25 @@ import umldirecciones.Provincia;
 
 /**
  *
- * @author javier_nogales
+ * @author javi
  */
-public class Formulario extends javax.swing.JFrame {
+public class Formulario extends javax.swing.JDialog {
 
     public SeleccionMuni   seleccMuni;
     public SeleccionLoca   seleccLoca;
     public SeleccionCalle  seleccCalle;
     
-    public Formulario() {
-        initComponents();
-        this.setLocationRelativeTo(null);
+    /**
+     * Creates new form Formulario2
+     * 
+     * Nota: Se modifica el constructor, el tipo del padre pasa a ser "javax.swing.JDialog"
+     *          para que pueda recibir como padre a un JDialog en vez de un JFrame.
+     * 
+     */
+    public Formulario(javax.swing.JDialog parent, boolean modal) {
+        super(parent, modal);
+        initComponents();this.setLocationRelativeTo(null);
+        this.setAutoRequestFocus(rootPaneCheckingEnabled);
         this.tfLocalidad.setEnabled(false);
         this.bBuscarLoc.setEnabled(false);
         this.tfMunicipio.setEnabled(false);
@@ -30,7 +42,7 @@ public class Formulario extends javax.swing.JFrame {
         this.tfPiso.setEnabled(false);
         this.tfEscalera.setEnabled(false);
         this.tfMano.setEnabled(false);
-        this.bComprobar.setEnabled(false);
+        this.bAceptar.setEnabled(false);
     }
     
     public void setLocalidad(String loc)
@@ -82,11 +94,10 @@ public class Formulario extends javax.swing.JFrame {
         this.tfPiso.setEnabled(true);
         this.tfEscalera.setEnabled(true);
         this.tfMano.setEnabled(true);
-        this.bComprobar.setEnabled(true);
+        this.bAceptar.setEnabled(true);
     }
     
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,6 +107,23 @@ public class Formulario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bBuscarMun = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        tfPiso = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        tfEscalera = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        tfMano = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        bAceptar = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        bSalir = new javax.swing.JButton();
+        tfLocalidad = new javax.swing.JTextField();
+        tfCalle = new javax.swing.JTextField();
+        bBuscarLoc = new javax.swing.JButton();
+        bBuscarCalle = new javax.swing.JButton();
+        bElejirProv = new javax.swing.JButton();
         cbProvincia = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -104,55 +132,35 @@ public class Formulario extends javax.swing.JFrame {
         ftfCP = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         tfPortal = new javax.swing.JFormattedTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        bComprobar = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
-        bSalir = new javax.swing.JButton();
-        tfLocalidad = new javax.swing.JTextField();
-        tfCalle = new javax.swing.JTextField();
-        bBuscarLoc = new javax.swing.JButton();
-        bBuscarCalle = new javax.swing.JButton();
-        bElejirProv = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         tfMunicipio = new javax.swing.JTextField();
-        bBuscarMun = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        tfPiso = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        tfEscalera = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        tfMano = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Provincia *");
+        bBuscarMun.setText("Buscar");
+        bBuscarMun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBuscarMunActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setText("Localidad *");
+        jLabel10.setText("Piso");
 
-        jLabel3.setText("Calle *");
+        jLabel11.setText("Escalera");
 
-        jLabel4.setText("Código Postal *");
-
-        try {
-            ftfCP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        jLabel5.setText("Portal");
+        jLabel12.setText("Mano");
 
         jLabel8.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel8.setText("s/n = 0");
 
-        jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(221, 20, 60));
-        jLabel7.setText("Comprobador de Direcciones Postales");
+        jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel7.setForeground(java.awt.Color.black);
+        jLabel7.setText("DIRECCIÓN");
 
-        bComprobar.setText("Comprobar");
-        bComprobar.addActionListener(new java.awt.event.ActionListener() {
+        bAceptar.setText("Aceptar");
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bComprobarActionPerformed(evt);
+                bAceptarActionPerformed(evt);
             }
         });
 
@@ -184,92 +192,97 @@ public class Formulario extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Provincia *");
+
+        jLabel2.setText("Localidad *");
+
+        jLabel3.setText("Calle *");
+
+        jLabel4.setText("Código Postal *");
+
+        try {
+            ftfCP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel5.setText("Portal");
+
         jLabel9.setText("Municipio *");
-
-        bBuscarMun.setText("Buscar");
-        bBuscarMun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bBuscarMunActionPerformed(evt);
-            }
-        });
-
-        jLabel10.setText("Piso");
-
-        jLabel11.setText("Escalera");
-
-        jLabel12.setText("Mano");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfPortal, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(3, 3, 3)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(bElejirProv))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tfPiso, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tfPortal, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel11)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tfEscalera, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tfMano, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(ftfCP, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(bBuscarCalle))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(tfMunicipio)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(bBuscarMun))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(tfLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(bBuscarLoc)))))))
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel9)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(bElejirProv))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel10)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tfPiso, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel11)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tfEscalera, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel12)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tfMano, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(ftfCP, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(bBuscarCalle))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(tfMunicipio)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(bBuscarMun))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addComponent(tfLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(bBuscarLoc)))))))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel9)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(bAceptar)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(bSalir))
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(bComprobar)
-                                .addGap(184, 184, 184)
-                                .addComponent(bSalir))))
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 16, Short.MAX_VALUE))
+                        .addGap(196, 196, 196)
+                        .addComponent(jLabel7)))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap()
                 .addComponent(jLabel7)
-                .addGap(30, 30, 30)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -280,7 +293,7 @@ public class Formulario extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(tfMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bBuscarMun))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tfLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -308,19 +321,69 @@ public class Formulario extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(49, 49, 49)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bComprobar)
+                    .addComponent(bAceptar)
                     .addComponent(bSalir))
-                .addGap(25, 25, 25))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bBuscarMunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarMunActionPerformed
+        seleccMuni = new SeleccionMuni(this, true);
+        seleccMuni.cargaMunicipios(Control.buscaMunicipios(this.tfMunicipio.getText()));
+        seleccMuni.setLocationRelativeTo(this);
+        seleccMuni.setVisible(true);
+    }//GEN-LAST:event_bBuscarMunActionPerformed
+
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        
+        
+        if(this.tfPortal.getText().isEmpty())
+        JOptionPane.showMessageDialog(this, "No has introducido el número de portal");
+        else
+        {
+            Control.direccion.setTramo(
+                Control.buscaTramo(Integer.parseInt(this.tfPortal.getText()), Integer.parseInt(this.ftfCP.getText()))
+            );
+            
+            /* Este cacho de codigo se usa para comprobar que todos los datos que tiene direccion
+            JOptionPane.showMessageDialog(this,
+                "******************************************************\n"+
+                "** LA DIRECCIÓN INTRODUCIDA ES CORRECTA **\n"+
+                "******************************************************\n"+
+                "******   los datos han sido comprobados   ******\n"+
+                "******************************************************\n\n"+
+                Control.direccion.toString()
+            );
+            */
+        }
+        this.dispose();
+    }//GEN-LAST:event_bAceptarActionPerformed
+
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_bSalirActionPerformed
+
+    private void bBuscarLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarLocActionPerformed
+        seleccLoca = new SeleccionLoca(this, true);
+        seleccLoca.cargaLocalidades(Control.buscaLocalidades(this.tfLocalidad.getText()));
+        seleccLoca.setLocationRelativeTo(this);
+        seleccLoca.setVisible(true);
+    }//GEN-LAST:event_bBuscarLocActionPerformed
+
+    private void bBuscarCalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarCalleActionPerformed
+        if(this.ftfCP.getValue()!=null)
+        {
+            seleccCalle = new SeleccionCalle(this, true);
+            seleccCalle.cargaCalles(Control.buscaVias(this.tfCalle.getText()));
+            seleccCalle.setLocationRelativeTo(this);
+            seleccCalle.setVisible(true);
+        }else
+        JOptionPane.showMessageDialog(this, "No has introducido el código postal");
+    }//GEN-LAST:event_bBuscarCalleActionPerformed
 
     private void bElejirProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bElejirProvActionPerformed
         if (this.cbProvincia.getSelectedIndex()!=0)
@@ -331,53 +394,9 @@ public class Formulario extends javax.swing.JFrame {
             this.tfMunicipio.setEnabled(true);
             this.bBuscarMun.setEnabled(true);
         }else
-            JOptionPane.showMessageDialog(null, "No has elegido tu provincia!");
-        
+        JOptionPane.showMessageDialog(null, "No has elegido tu provincia!");
+
     }//GEN-LAST:event_bElejirProvActionPerformed
-
-    private void bBuscarLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarLocActionPerformed
-        seleccLoca = new SeleccionLoca(this, true);
-        seleccLoca.cargaLocalidades(Control.buscaLocalidades(this.tfLocalidad.getText()));
-        seleccLoca.setLocationRelativeTo(this);
-        seleccLoca.setVisible(true);
-    }//GEN-LAST:event_bBuscarLocActionPerformed
-
-    private void bBuscarMunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarMunActionPerformed
-        seleccMuni = new SeleccionMuni(this, true);
-        seleccMuni.cargaMunicipios(Control.buscaMunicipios(this.tfMunicipio.getText()));
-        seleccMuni.setLocationRelativeTo(this);
-        seleccMuni.setVisible(true);
-    }//GEN-LAST:event_bBuscarMunActionPerformed
-
-    private void bBuscarCalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarCalleActionPerformed
-        if(this.ftfCP.getValue()!=null)
-        {
-            seleccCalle = new SeleccionCalle(this, true);
-            seleccCalle.cargaCalles(Control.buscaVias(this.tfCalle.getText()));
-            seleccCalle.setLocationRelativeTo(this);
-            seleccCalle.setVisible(true);
-        }else
-            JOptionPane.showMessageDialog(this, "No has introducido el código postal");
-    }//GEN-LAST:event_bBuscarCalleActionPerformed
-
-    private void bComprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bComprobarActionPerformed
-        if(this.tfPortal.getText().isEmpty())
-            JOptionPane.showMessageDialog(this, "No has introducido el número de portal");
-        else
-        {
-            Control.direccion.setTramo(
-                Control.buscaTramo(Integer.parseInt(this.tfPortal.getText()), Integer.parseInt(this.ftfCP.getText()))
-            );
-            JOptionPane.showMessageDialog(this, 
-                    "******************************************************\n"+
-                    "** LA DIRECCIÓN INTRODUCIDA ES CORRECTA **\n"+
-                    "******************************************************\n"+
-                    "******   los datos han sido comprobados   ******\n"+
-                    "******************************************************\n\n"+
-                    Control.direccion.toString()
-            );
-        }
-    }//GEN-LAST:event_bComprobarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -405,20 +424,34 @@ public class Formulario extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Formulario().setVisible(true);
+                Formulario dialog = new Formulario(new javax.swing.JDialog(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAceptar;
     private javax.swing.JButton bBuscarCalle;
     private javax.swing.JButton bBuscarLoc;
     private javax.swing.JButton bBuscarMun;
-    private javax.swing.JButton bComprobar;
     private javax.swing.JButton bElejirProv;
     private javax.swing.JButton bSalir;
     private javax.swing.JComboBox cbProvincia;

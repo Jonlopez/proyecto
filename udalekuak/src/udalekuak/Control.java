@@ -7,7 +7,9 @@ import vista.ControlVistas;
 import javax.swing.JDialog;
 import uml.Sorteo;
 import java.util.ArrayList;
+import uml.Inscripcion;
 import uml.Solicitud;
+import uml.Usuario;
 
 /**
  *
@@ -17,7 +19,10 @@ public class Control {
 
     private static Sorteo sorteo;
     private static ArrayList<Solicitud>solicitudes;
+    private static ArrayList<Inscripcion>inscripciones;
     private static Solicitud solicitud;
+    private static Inscripcion inscripcion;
+    private static Usuario usuario;
     
     public static void main(String[] args) {
         vista.ControlVistas.inicializa();       
@@ -29,10 +34,12 @@ public class Control {
  * @param d 
  */    
     public static void logIn(String user, String pass, JDialog d)throws Exception{        
-        boolean validar = UsuarioBd.consultarUsuario(user, pass);
-        if(validar)
-            ControlVistas.habilitarAdmin(d);        
-        else ControlVistas.enviarMensaje("Usuario no valido");
+        usuario = new Usuario(user, pass);
+        usuario = UsuarioBd.consultarUsuario(usuario);
+        if(usuario == null)
+            throw new NullPointerException();   
+        
+        ControlVistas.habilitarAdmin(usuario,d); 
     }
 /**
  * Devuelve las fechas de la configuración de la aplicación
@@ -73,13 +80,20 @@ public class Control {
         return true;
     }
 /**
+ * comprobamos el id de la ultima Solicitud
+ * para generar uno nuevo a la siguiente
+ */    
+    public static int consultarIdSolicitud()throws Exception{
+        return bdudalekuak.SolicitudBd.consultaSolicitudId();
+    }
+/**
  * Guarda los datos de la solicitud y muestra mensaje 
  * de información
  * @param d 
  */    
-    public static void finalizarSolicitud(JDialog d){
-        bdudalekuak.InscripcionBd.insertarInscripcion();
-        bdudalekuak.SolicitudBd.insertarSolicitud();
+    public static void finalizarSolicitud(JDialog d,Inscripcion ins, Solicitud sol)throws Exception{
+        guardarInscripcion(ins);
+        bdudalekuak.SolicitudBd.insertarSolicitud(sol);
         ControlVistas.mostrarMensajesIns();
         ControlVistas.cerrarDialogo(d);
     }
@@ -114,9 +128,16 @@ public class Control {
         return solicitudes;
     }
 /**
- * Guarda las inscripciones de una en una
+ * Genera un array de inscripciones donde 
+ * ir coservando cada una hasta que finalice la solicitud
  */    
-    public static void guardarInscripcion(){
-        bdudalekuak.InscripcionBd.insertarInscripcion();
+    public static void guardarInscripcion(Inscripcion insc){
+        inscripcion = new Inscripcion();
+        inscripciones = new ArrayList();
+        for (int i = 0; i < inscripciones.size(); i++) {
+            inscripcion = insc;
+            inscripciones.add(insc);            
+        }
+        
     }
 }

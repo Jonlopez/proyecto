@@ -4,6 +4,7 @@ package vista;
 import javax.swing.JOptionPane;
 import javax.swing.JDialog;
 import uml.Solicitud;
+import uml.Usuario;
 
 /**
  *
@@ -23,10 +24,12 @@ public class ControlVistas {
 /**
  * Si nos logeamos como administrador se
  * habilitan todas sus funciones
+ * @param user
  * @param d 
  */    
-    public static void habilitarAdmin(JDialog d)throws Exception{     
+    public static void habilitarAdmin(Usuario user, JDialog d){     
         vP.habilitarMenus();
+        enviarMensaje("Bienvenido/a: " + user.getNombre());
         cerrarDialogo(d);
         
     }

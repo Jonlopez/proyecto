@@ -1,12 +1,21 @@
 
 package vista;
 
+import javax.swing.JOptionPane;
+import uml.Inscripcion;
+import uml.Solicitud;
+
 /**
  *
  * @author javi&Jon 
  */
 public class Sinscripcion extends javax.swing.JDialog {
 
+    private umldirecciones.Direccion direccion;
+    private int contador;
+    private Inscripcion inscrip;
+    private Solicitud sol;
+    
     /**
      * Creates new form Sinscripcion
      */
@@ -15,6 +24,8 @@ public class Sinscripcion extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Solicitud de inscripción");
+        contador = 1;
+        crearSolicitud();
     }
 
     /**
@@ -359,53 +370,87 @@ public class Sinscripcion extends javax.swing.JDialog {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDireccionActionPerformed
-        controldirecciones.Control.devuelveDireccion();
+        direccion = controldirecciones.Control.devuelveDireccion(this, true);
+         //Esta linea es para comprobar el objeto direccion que devuelve
+        javax.swing.JOptionPane.showMessageDialog(null, direccion.toString());
+       
     }//GEN-LAST:event_bDireccionActionPerformed
 /**
  * Se añade un nuevo participante a la solictud
  * @param evt 
  */
     private void bParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bParticipanteActionPerformed
-        udalekuak.Control.guardarInscripcion();
-        if(confirmacion()){
-            limpiarMenor();
-        }
-        else {
-            limpiarMenor();
-            limpiarTutor();
-        }
+        udalekuak.Control.guardarInscripcion(inscrip);               
+        confirmacion();        
         contadorInscripciones();
     }//GEN-LAST:event_bParticipanteActionPerformed
 
     private void bFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinalizarActionPerformed
-        udalekuak.Control.finalizarSolicitud(this);
+       try
+       {
+           udalekuak.Control.finalizarSolicitud(this,inscrip,sol);
+       }
+       catch (Exception e) {
+            ControlVistas.enviarMensaje("Fallo al guardar la solicitud");
+        }
     }//GEN-LAST:event_bFinalizarActionPerformed
+/**
+ * Creamos un objeto solicitud al que le asignamos un nº
+ * identificador 
+ */    
+    private void crearSolicitud(){        
+      try{
+          sol = new Solicitud();
+          int id = udalekuak.Control.consultarIdSolicitud();
+          sol.setIdSolicitud(id+1);
+      }
+        catch (Exception e) {
+            ControlVistas.enviarMensaje("Fallo al consultar id de solicitud");
+        }
+    }
 /**
  * Se pide confirmación para conservar los datos del tutor
  * o borrarlos
  * @return 
  */
-    private boolean confirmacion(){
-        return true;
+    private void confirmacion(){
+       int conf = JOptionPane.showConfirmDialog(null, "Desea conservar los datos de tutor");
+       if(conf==0)
+           limpiarMenor();
+       if(conf==1){
+           limpiarMenor();
+           limpiarTutor();
+       }
     }
 /**
  * Se limpian los campos del panel de menor
  */  
     private void limpiarMenor(){
+        tfNombreM.setText(null);
+        tfApelpM.setText(null);
+        tfApelsM.setText(null);
+        tfDniM.setText(null);
+        ftfFechaNac.setText(null);
         
     }
 /**
  * Se limpian los campos del panel de tutor
  */    
     private void limpiarTutor(){
-        
+        tfNombreT.setText(null);
+        tfApelpT.setText(null);
+        tfApelST.setText(null);
+        tfDniT.setText(null);        
     }
 /**
  * Se cuentan los participantes insertados 
  * para deshabilitar el boton de añadir otro
  */    
-    private void contadorInscripciones(){
-        
+    private void contadorInscripciones(){               
+        if(contador==2){
+          bParticipante.setEnabled(false); 
+        }            
+        else contador =  contador+1;
     }
     /**
      * @param args the command line arguments
