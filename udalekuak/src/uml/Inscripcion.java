@@ -1,6 +1,7 @@
 
 package uml;
 
+import java.util.Date;
 import umldirecciones.Direccion;
 
 /**
@@ -84,17 +85,44 @@ public class Inscripcion {
     public Tutor getTutor() {
         return tutor;
     }
-
-    public void setTutor(Tutor tutor) {
-        this.tutor = tutor;
+    
+    public void setTutor(Tutor t)
+    {
+        this.tutor = t;
+    }
+/**
+ * crea nuevo tutor y lo anade a la inscripcion pasandole los datos
+ * 
+ * esta pensado para pasarle los datos desde la ventan inscripcion en el proceso de alta
+ * 
+ * @param dni
+ * @param nombre
+ * @param apel1
+ * @param apel2 
+ */
+    public void setTutor(String dni, String nombre, String apel1, String apel2) {
+        this.tutor = new Tutor();
+        tutor.setDni(dni);
+        tutor.setNombre(nombre);
+        tutor.setApel1(apel1);
+        tutor.setApel2(apel2);
     }
 
     public Menor getMenor() {
         return menor;
     }
 
-    public void setMenor(Menor menor) {
-        this.menor = menor;
+    public void setMenor(String dni, String nombre, String apel1, String apel2, char sexo, String fnac, boolean discapacidad, char modelo,CentroEd centro ) {
+        this.menor = new Menor();
+        menor.setDni(dni);
+        menor.setNombre(nombre);
+        menor.setApel1(apel1);
+        menor.setApel2(apel2);
+        menor.setSexo(sexo);
+        menor.setfNac(fnac);
+        menor.setDiscapacidad(discapacidad);
+        menor.setModelo(modelo);
+        menor.setCentro(centro);
     }
 
     public Solicitud getSolicitud() {

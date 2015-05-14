@@ -2,8 +2,11 @@
 package vista;
 
 import javax.swing.JOptionPane;
+import udalekuak.Control;
+import uml.CentroEd;
 import uml.Inscripcion;
 import uml.Solicitud;
+import uml.Tutor;
 
 /**
  *
@@ -15,6 +18,11 @@ public class Sinscripcion extends javax.swing.JDialog {
     private int contador;
     private Inscripcion inscrip;
     private Solicitud sol;
+    private CentroEd centro;
+    private String telf1; 
+    private String telf2; 
+    private String telf3; 
+    private String telf4; 
     
     /**
      * Creates new form Sinscripcion
@@ -25,7 +33,8 @@ public class Sinscripcion extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         setTitle("Solicitud de inscripción");
         contador = 1;
-        crearSolicitud();
+        sol = Control.creaSolicitud();
+        deshabilitarTelefonos();
     }
 
     /**
@@ -48,7 +57,7 @@ public class Sinscripcion extends javax.swing.JDialog {
         tfDniT = new javax.swing.JTextField();
         tfNombreT = new javax.swing.JTextField();
         tfApelpT = new javax.swing.JTextField();
-        tfApelST = new javax.swing.JTextField();
+        tfApelsT = new javax.swing.JTextField();
         bDireccion = new javax.swing.JButton();
         chbTelf1 = new java.awt.Checkbox();
         chbTelf2 = new java.awt.Checkbox();
@@ -56,6 +65,7 @@ public class Sinscripcion extends javax.swing.JDialog {
         chbTelf4 = new java.awt.Checkbox();
         jScrollPane1 = new javax.swing.JScrollPane();
         taDireccion = new javax.swing.JTextArea();
+        bR4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -74,6 +84,8 @@ public class Sinscripcion extends javax.swing.JDialog {
         jLabel14 = new javax.swing.JLabel();
         cbCentro = new javax.swing.JComboBox();
         ftfFechaNac = new javax.swing.JFormattedTextField();
+        jLabel15 = new javax.swing.JLabel();
+        ftfModelo = new javax.swing.JFormattedTextField();
         blimpiar = new javax.swing.JButton();
         bParticipante = new javax.swing.JButton();
         bFinalizar = new javax.swing.JButton();
@@ -106,21 +118,60 @@ public class Sinscripcion extends javax.swing.JDialog {
         });
 
         chbTelf1.setLabel("Telefono 1");
+        chbTelf1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbTelf1ItemStateChanged(evt);
+            }
+        });
 
         chbTelf2.setLabel("Telefono 2");
+        chbTelf2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbTelf2ItemStateChanged(evt);
+            }
+        });
 
         chbTelf3.setLabel("Telefono 3");
+        chbTelf3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbTelf3ItemStateChanged(evt);
+            }
+        });
 
         chbTelf4.setLabel("Telefono 4");
+        chbTelf4.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbTelf4ItemStateChanged(evt);
+            }
+        });
 
         taDireccion.setColumns(20);
         taDireccion.setRows(5);
         jScrollPane1.setViewportView(taDireccion);
 
+        bR4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/images/Reload.png"))); // NOI18N
+        bR4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bR4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(chbTelf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(chbTelf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(chbTelf3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(chbTelf4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86)
+                .addComponent(bR4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,25 +188,15 @@ public class Sinscripcion extends javax.swing.JDialog {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(tfApelpT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
                                 .addComponent(tfNombreT, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tfDniT, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(tfApelST, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(tfDniT, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfApelsT, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel2))
-                .addContainerGap(76, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(chbTelf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addComponent(chbTelf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(chbTelf3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addComponent(chbTelf4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(136, 136, 136))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -172,7 +213,7 @@ public class Sinscripcion extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(tfApelST, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfApelsT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -181,11 +222,12 @@ public class Sinscripcion extends javax.swing.JDialog {
                         .addGap(7, 7, 7)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(chbTelf4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chbTelf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chbTelf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chbTelf3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(chbTelf4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(chbTelf1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(chbTelf2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(chbTelf3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bR4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(21, 21, 21))
         );
 
@@ -221,6 +263,14 @@ public class Sinscripcion extends javax.swing.JDialog {
 
         ftfFechaNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
+        jLabel15.setText("Modelo");
+
+        try {
+            ftfModelo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("?")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -240,7 +290,8 @@ public class Sinscripcion extends javax.swing.JDialog {
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel13)
                                     .addComponent(chbDiscapacidad)
-                                    .addComponent(jLabel14)))
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel15)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
                                 .addComponent(jLabel12)))
@@ -255,8 +306,9 @@ public class Sinscripcion extends javax.swing.JDialog {
                             .addComponent(tfApelpM)
                             .addComponent(tfApelsM)
                             .addComponent(cbCentro, 0, 406, Short.MAX_VALUE)
-                            .addComponent(ftfFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                            .addComponent(ftfFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ftfModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,10 +346,19 @@ public class Sinscripcion extends javax.swing.JDialog {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(cbCentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(ftfModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         blimpiar.setText("Limpiar");
+        blimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                blimpiarActionPerformed(evt);
+            }
+        });
 
         bParticipante.setText("Añadir participante");
         bParticipante.addActionListener(new java.awt.event.ActionListener() {
@@ -325,41 +386,45 @@ public class Sinscripcion extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bCancelar)
+                                .addGap(332, 332, 332)
+                                .addComponent(bParticipante)
+                                .addGap(18, 18, 18)
+                                .addComponent(bFinalizar))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(blimpiar)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(bCancelar)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bParticipante)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(bFinalizar))
-                                .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(blimpiar)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(2, 2, 2)
-                .addComponent(blimpiar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(blimpiar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bFinalizar)
                     .addComponent(bParticipante)
                     .addComponent(bCancelar))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addGap(53, 53, 53))
         );
 
         pack();
@@ -380,11 +445,75 @@ public class Sinscripcion extends javax.swing.JDialog {
  * @param evt 
  */
     private void bParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bParticipanteActionPerformed
-        udalekuak.Control.guardarInscripcion(inscrip);               
-        confirmacion();        
-        contadorInscripciones();
+        //valida los datos del formulario 
+        if(validaDatos())
+        {   
+            //Si es correcto procede a guardar datos
+            //crea inscripcion
+            inscrip = Control.creaInscripcion();
+            //anade id inscripcion
+            inscrip.setIdIns(contador);
+            contador ++;
+            //anade solicitud 
+            inscrip.setSolicitud(sol);
+            //anade direccion
+            inscrip.setDireccion(direccion);
+            //si tutor no existe
+            Tutor t = Control.buscaTutor(this.tfDniT.toString());
+            if(t==null)
+            {
+                //anade tutor pasandole los datos del formulario
+                inscrip.setTutor(
+                        this.tfDniT.getText(),
+                        this.tfNombreT.getText(),
+                        this.tfApelpT.getText(),
+                        this.tfApelsT.getText()
+                );
+            //si tutor existe
+            }else
+            {
+                //anade el tutor buscado anteriormente
+                inscrip.setTutor(t);
+            }
+            
+            //averigua el sexo
+            char sexo;
+            if(rbHombre.isSelected())
+                sexo = 'H';
+            else
+                sexo = 'M';
+            //gurada los datos anadiendo un menor a la inscripcion
+            inscrip.setMenor(
+                    this.tfDniM.getText(),
+                    this.tfNombreM.getText(),
+                    this.tfApelpM.getText(),
+                    this.tfApelsM.getText(),
+                    sexo,
+                    this.ftfFechaNac.getText(),
+                    this.chbDiscapacidad.isSelected(),
+                    this.ftfModelo.getText().charAt(0),
+                    centro                
+            );
+            //anade los telefonos
+            inscrip.setTelf1(telf1);
+            inscrip.setTelf2(telf2);
+            inscrip.setTelf3(telf3);
+            inscrip.setTelf4(telf4);
+            //inscripcion ya esta completa
+            
+            
+        }
+        //si no es correcto, muestra el mensaje correspondiente y no hace nada
+        limpiar();
+        //comprueba cuantas inscripciones hay ya en la solicitud
+        //cuando hay dos inscripciones deshabilita el boton anadir participante
+        compruebaCantidadInscripciones();
+        ;
     }//GEN-LAST:event_bParticipanteActionPerformed
-
+/**
+ * Finaliza la Solicitud
+ * @param evt 
+ */
     private void bFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinalizarActionPerformed
        try
        {
@@ -395,25 +524,62 @@ public class Sinscripcion extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_bFinalizarActionPerformed
 /**
- * Creamos un objeto solicitud al que le asignamos un nº
- * identificador 
- */    
-    private void crearSolicitud(){        
-      try{
-          sol = new Solicitud();
-          int id = udalekuak.Control.consultarIdSolicitud();
-          sol.setIdSolicitud(id+1);
-      }
-        catch (Exception e) {
-            ControlVistas.enviarMensaje("Fallo al consultar id de solicitud");
-        }
-    }
+ * limpia todos los campos de la ventana
+ * @param evt 
+ */
+    private void blimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blimpiarActionPerformed
+        limpiarTutor();
+        limpiarMenor();
+    }//GEN-LAST:event_blimpiarActionPerformed
+/**
+ * Concatenación de checkbox para añadir telefonos
+ * @param evt 
+ */
+    private void chbTelf1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbTelf1ItemStateChanged
+       telf1 =  JOptionPane.showInputDialog("Indica tu telefono: ");
+       chbTelf1.setEnabled(false);
+       chbTelf2.setEnabled(true);
+       bR4.setEnabled(true);
+    }//GEN-LAST:event_chbTelf1ItemStateChanged
+
+    private void chbTelf2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbTelf2ItemStateChanged
+       telf2 =  JOptionPane.showInputDialog("Indica tu telefono: ");
+       chbTelf2.setEnabled(false);
+       chbTelf3.setEnabled(true);
+    }//GEN-LAST:event_chbTelf2ItemStateChanged
+
+    private void chbTelf3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbTelf3ItemStateChanged
+       telf3 =  JOptionPane.showInputDialog("Indica tu telefono: ");
+       chbTelf3.setEnabled(false);
+       chbTelf4.setEnabled(true);
+    }//GEN-LAST:event_chbTelf3ItemStateChanged
+
+    private void chbTelf4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbTelf4ItemStateChanged
+       telf4 =  JOptionPane.showInputDialog("Indica tu telefono: ");       
+       chbTelf4.setEnabled(false);
+    }//GEN-LAST:event_chbTelf4ItemStateChanged
+/**
+ * Pide confirmación para borrar todos los telefonos 
+ * en caso de querer modificarlos
+ * @param evt 
+ */
+    private void bR4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bR4ActionPerformed
+       int c = JOptionPane.showConfirmDialog(this, "Se eliminaran todos los telefonos ¿Estas seguro?");
+       if(c==0){
+           telf1 = null;
+           telf2 = null;
+           telf3 = null;
+           telf4 = null;
+           deshabilitarTelefonos();
+       }
+    }//GEN-LAST:event_bR4ActionPerformed
+
 /**
  * Se pide confirmación para conservar los datos del tutor
  * o borrarlos
  * @return 
  */
-    private void confirmacion(){
+    private void limpiar(){
        int conf = JOptionPane.showConfirmDialog(null, "Desea conservar los datos de tutor");
        if(conf==0)
            limpiarMenor();
@@ -421,6 +587,35 @@ public class Sinscripcion extends javax.swing.JDialog {
            limpiarMenor();
            limpiarTutor();
        }
+    }
+/**
+ * Deshabilita los campos de telefono menos el primero
+ * y quita el tic del checkbox
+ */    
+    private void deshabilitarTelefonos(){
+        chbTelf1.setEnabled(true);
+        chbTelf2.setEnabled(false);
+        chbTelf3.setEnabled(false);
+        chbTelf4.setEnabled(false);
+        chbTelf1.setState(false);
+        chbTelf2.setState(false);
+        chbTelf3.setState(false);
+        chbTelf4.setState(false);
+        bR4.setEnabled(false);
+    }
+    
+    /**
+     * Valida los datos del formulario antes de proceder a guardar los datos
+     */
+    private boolean validaDatos()
+    {
+        boolean validacion = true;
+        
+        //aqui van todas las validaciones
+        
+        //se puede hacer un metodo para cada una y aqui llamarlos a todos
+        
+        return validacion;
     }
 /**
  * Se limpian los campos del panel de menor
@@ -439,14 +634,14 @@ public class Sinscripcion extends javax.swing.JDialog {
     private void limpiarTutor(){
         tfNombreT.setText(null);
         tfApelpT.setText(null);
-        tfApelST.setText(null);
+        tfApelsT.setText(null);
         tfDniT.setText(null);        
     }
 /**
  * Se cuentan los participantes insertados 
  * para deshabilitar el boton de añadir otro
  */    
-    private void contadorInscripciones(){               
+    private void compruebaCantidadInscripciones(){               
         if(contador==2){
           bParticipante.setEnabled(false); 
         }            
@@ -499,6 +694,7 @@ public class Sinscripcion extends javax.swing.JDialog {
     private javax.swing.JButton bDireccion;
     private javax.swing.JButton bFinalizar;
     private javax.swing.JButton bParticipante;
+    private javax.swing.JButton bR4;
     private javax.swing.ButtonGroup bgsexo;
     private javax.swing.JButton blimpiar;
     private javax.swing.JComboBox cbCentro;
@@ -508,12 +704,14 @@ public class Sinscripcion extends javax.swing.JDialog {
     private java.awt.Checkbox chbTelf3;
     private java.awt.Checkbox chbTelf4;
     private javax.swing.JFormattedTextField ftfFechaNac;
+    private javax.swing.JFormattedTextField ftfModelo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -528,10 +726,10 @@ public class Sinscripcion extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbHombre;
     private javax.swing.JRadioButton rbMujer;
     private javax.swing.JTextArea taDireccion;
-    private javax.swing.JTextField tfApelST;
     private javax.swing.JTextField tfApelpM;
     private javax.swing.JTextField tfApelpT;
     private javax.swing.JTextField tfApelsM;
+    private javax.swing.JTextField tfApelsT;
     private javax.swing.JTextField tfDniM;
     private javax.swing.JTextField tfDniT;
     private javax.swing.JTextField tfNombreM;

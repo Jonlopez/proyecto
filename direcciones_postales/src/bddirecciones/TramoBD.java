@@ -48,7 +48,7 @@ public abstract class TramoBD extends GenericoBD{
                    ctra = rs.getInt("ctra");
                    distrito = rs.getInt("dist");
                    seccion  = rs.getInt("secc");
-                   subseccion = rs.getString("subsc").trim();
+                   subseccion = rs.getString("subsecc").trim();
                    tinum2 = rs.getInt("tinum");
                    ein = rs.getInt("ein");
                    cein = rs.getString("cein");

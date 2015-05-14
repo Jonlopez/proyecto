@@ -1,7 +1,11 @@
 
 package uml;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -89,8 +93,17 @@ public class Menor {
         return fNac;
     }
 
-    public void setfNac(Date fNac) {
-        this.fNac = fNac;
+    public void setfNac(String fNac) {
+        try
+        {
+            SimpleDateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+            Date fecha = df.parse(fNac);
+            this.fNac = fecha;
+        }
+        catch (ParseException e)
+        {
+            JOptionPane.showMessageDialog(null, "error fecha: " + e.getMessage());
+        }
     }
 
     public boolean isDiscapacidad() {
