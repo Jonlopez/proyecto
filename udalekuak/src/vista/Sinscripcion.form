@@ -65,13 +65,13 @@
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="bFinalizar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bParticipante" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="66" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -117,7 +117,7 @@
                                   <Component id="jScrollPane1" alignment="0" min="-2" pref="427" max="-2" attributes="0"/>
                                   <Component id="tfDniT" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="tfApelST" min="-2" pref="427" max="-2" attributes="0"/>
+                              <Component id="tfApelsT" min="-2" pref="427" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -159,7 +159,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfApelST" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfApelsT" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -221,7 +221,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="tfApelpT">
         </Component>
-        <Component class="javax.swing.JTextField" name="tfApelST">
+        <Component class="javax.swing.JTextField" name="tfApelsT">
         </Component>
         <Component class="javax.swing.JButton" name="bDireccion">
           <Properties>
@@ -296,6 +296,7 @@
                                       <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="chbDiscapacidad" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -316,6 +317,7 @@
                               <Component id="tfApelsM" alignment="0" max="32767" attributes="0"/>
                               <Component id="cbCentro" alignment="0" pref="406" max="32767" attributes="0"/>
                               <Component id="ftfFechaNac" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
+                              <Component id="ftfModelo" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -366,7 +368,12 @@
                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cbCentro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ftfModelo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -463,6 +470,18 @@
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
               <Format subtype="1" type="1"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel15">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Modelo"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="ftfModelo">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="?" subtype="-1" type="5"/>
             </Property>
           </Properties>
         </Component>

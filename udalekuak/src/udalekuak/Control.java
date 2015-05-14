@@ -9,6 +9,7 @@ import uml.Sorteo;
 import java.util.ArrayList;
 import uml.Inscripcion;
 import uml.Solicitud;
+import uml.Tutor;
 import uml.Usuario;
 
 /**
@@ -21,11 +22,13 @@ public class Control {
     private static ArrayList<Solicitud>solicitudes;
     private static ArrayList<Inscripcion>inscripciones;
     private static Solicitud solicitud;
-    private static Inscripcion inscripcion;
+    public static Inscripcion inscripcion;
     private static Usuario usuario;
     
     public static void main(String[] args) {
-        vista.ControlVistas.inicializa();       
+        //ordena a control vistas que inicie la parte grafica
+        vista.ControlVistas.inicializa();
+        
     }
 /**
  * Validación del usuario administrador
@@ -79,13 +82,25 @@ public class Control {
     public static boolean obtenerCentros(){
         return true;
     }
-/**
- * comprobamos el id de la ultima Solicitud
- * para generar uno nuevo a la siguiente
+
+ /**
+ * Creamos un objeto solicitud al que le asignamos un nº
+ * identificador 
  */    
-    public static int consultarIdSolicitud()throws Exception{
-        return bdudalekuak.SolicitudBd.consultaSolicitudId();
+    public static Solicitud creaSolicitud(){ 
+      Solicitud sol = new Solicitud();
+      try
+      {          
+          int id = bdudalekuak.SolicitudBd.consultaSolicitudId();          
+          sol.setIdSolicitud(id+1);
+      }
+      catch (Exception e)
+      {
+            ControlVistas.enviarMensaje("Fallo al consultar id de solicitud");
+      }
+      return sol;
     }
+
 /**
  * Guarda los datos de la solicitud y muestra mensaje 
  * de información
@@ -137,7 +152,23 @@ public class Control {
         for (int i = 0; i < inscripciones.size(); i++) {
             inscripcion = insc;
             inscripciones.add(insc);            
-        }
-        
+        }        
     }
+    
+    public static Inscripcion creaInscripcion()
+    {
+        return new Inscripcion();
+    }
+    
+    public static Tutor buscaTutor(String dni)
+    {
+        Tutor t = null;
+        
+        //consulta el ide tutor con el dni
+        //si existe crea un tutor en la variable t
+        
+        //devolvemos t
+        return t;
+    }
+    
 }

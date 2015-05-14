@@ -67,5 +67,14 @@ public class Solicitud {
         this.inscripciones = inscripciones;
     }
     
+    /**
+     * Anade ina inscripcion al arraylist de inscripciones
+     * @param ins 
+     */
+    public void anadirInscripcion(Inscripcion ins)
+    {
+        this.inscripciones.add(ins);
+    }
+    
     
 }
