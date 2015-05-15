@@ -163,6 +163,12 @@ public class Sinscripcion extends javax.swing.JDialog {
             }
         });
 
+        try {
+            ftfDniT.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.##.###-U")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -273,6 +279,12 @@ public class Sinscripcion extends javax.swing.JDialog {
 
         try {
             ftfModelo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("U")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            ftfDniM.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.##.###-U")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
