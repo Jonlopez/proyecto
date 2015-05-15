@@ -12,6 +12,14 @@ import uml.Usuario;
  */
 public class ControlVistas {
     private static Vprincipal vP;
+    private static Admin vA;
+    private static Csolicitud vCs;
+    private static Dsolicitud vDc;
+    private static Lposterior vLps;
+    private static Lprevio vLpr;
+    private static Parametros vPa;
+    private static Sinscripcion vSi;
+    private static Sorteo vSor;
 
 /**
  * Se incializa el programa mosntrando la
@@ -56,8 +64,8 @@ public class ControlVistas {
  * @param modal 
  */    
     public static void muestraLogin(java.awt.Frame p, boolean modal){
-        Admin frmdialog2 = new Admin(p, true);        
-        frmdialog2.setVisible(true);
+        vA = new Admin(p, true);        
+        vA.setVisible(true);
     }    
  /**
   * Cierra la sesión de administrador
@@ -72,8 +80,8 @@ public class ControlVistas {
   * @param modal 
   */   
     public static void muestraConfig(java.awt.Frame p, boolean modal){
-        Parametros frmdialog2 = new Parametros(p, true);        
-        frmdialog2.setVisible(true);        
+        vPa = new Parametros(p, true);        
+        vPa.setVisible(true);        
     }
 /**
  * Muestra la ventana donde se ejecuta el sorteo
@@ -82,8 +90,8 @@ public class ControlVistas {
  * @param modal 
  */            
     public static void muestraSorteo(java.awt.Frame p, boolean modal){
-        Sorteo frmdialog2 = new Sorteo(p, true);        
-        frmdialog2.setVisible(true);        
+        vSor = new Sorteo(p, true);        
+        vSor.setVisible(true);        
     }
 /**
  * Muestra la ventana de inscripción
@@ -91,8 +99,8 @@ public class ControlVistas {
  * @param modal 
  */    
     public static void muestraInscripcion(java.awt.Frame p, boolean modal){
-        Sinscripcion frmdialog2 = new Sinscripcion(p, true);        
-        frmdialog2.setVisible(true);        
+        vSi = new Sinscripcion(p, true);        
+        vSi.setVisible(true);        
     }
 /**
  * Muestra la ventana para consultar la inscripción
@@ -100,8 +108,8 @@ public class ControlVistas {
  * @param modal 
  */    
     public static void muestraConsultaSol(java.awt.Frame p, boolean modal){
-        Csolicitud frmdialog2 = new Csolicitud(p, true);        
-        frmdialog2.setVisible(true);        
+        vCs = new Csolicitud(p, true);        
+        vCs.setVisible(true);        
     }
     /**
  * Muestra el listado previo al soreto de las inscripciones
@@ -109,8 +117,8 @@ public class ControlVistas {
  * @param modal 
  */    
     public static void muestraListadoPrevio(java.awt.Frame p, boolean modal){
-        Lprevio frmdialog2 = new Lprevio(p, true);        
-        frmdialog2.setVisible(true);        
+        vLpr = new Lprevio(p, true);        
+        vLpr.setVisible(true);        
     }
 /**
  * Muestra el listado posterior al sorteo de las inscripciones
@@ -119,8 +127,8 @@ public class ControlVistas {
  * @param modal 
  */    
     public static void muestraListadoPosterior(java.awt.Frame p, boolean modal){
-        Lposterior frmdialog2 = new Lposterior(p, true);        
-        frmdialog2.setVisible(true);        
+        vLps = new Lposterior(p, true);        
+        vLps.setVisible(true);        
     }
 /**
  * Muestra un pequeño resumen de la solicitud recien insertada
@@ -137,10 +145,11 @@ public class ControlVistas {
  * @param solicitud 
  */    
     public static void muestraDetalleSolicitud(java.awt.Frame p, boolean modal, Solicitud solicitud){
-        Dsolicitud frmdialog2 = new Dsolicitud(p, true);        
-        frmdialog2.setVisible(true);
+        vDc = new Dsolicitud(p, true);        
+        vDc.setVisible(true);
         
     }
+    
 /**
  * Finaliza la aplicación
  */    
