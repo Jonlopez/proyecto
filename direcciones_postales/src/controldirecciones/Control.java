@@ -54,6 +54,8 @@ public class Control {
         form = new vistadirecciones.Formulario(padre, valor);
         cargaProvincias();
         form.setVisible(true);
+        javax.swing.JOptionPane.showMessageDialog(null, direccion.toString());
+        
         return direccion;
     }
     
