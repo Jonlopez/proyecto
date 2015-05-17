@@ -476,9 +476,22 @@ public class Sinscripcion extends javax.swing.JDialog {
  * @param evt 
  */
     private void bParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bParticipanteActionPerformed
-    try{
+        //guarda la inscripcion
+        guardaDatosInscripcion();
+        //Pregunta si queremos conservar los datos de tutor
+        limpiar();    
+        //comprueba cuantas inscripciones hay ya en la solicitud
+        //cuando hay dos inscripciones deshabilita el boton anadir participante
+        compruebaCantidadInscripciones();    
+        
+              
+        
+            
+    }//GEN-LAST:event_bParticipanteActionPerformed
+    private void guardaDatosInscripcion()
+    {
         //valida los datos del formulario 
-            if(validaDatos())
+        if(validaDatos())
         {   
             //Si es correcto procede a guardar datos
             //crea inscripcion
@@ -532,30 +545,20 @@ public class Sinscripcion extends javax.swing.JDialog {
             inscrip.setTelf3(telf3);
             inscrip.setTelf4(telf4);
             //inscripcion ya esta completa
-        //Pregunta si queremos conservar los datos de tutor
-            limpiar();    
-        //comprueba cuantas inscripciones hay ya en la solicitud
-        //cuando hay dos inscripciones deshabilita el boton anadir participante
-        compruebaCantidadInscripciones();    
         }
-        //si no es correcto, muestra el mensaje correspondiente y no hace nada
-        
-              
-        }
-    catch(Exception e){
-        JOptionPane.showMessageDialog(this,"Error en la validacion de los datos" + e.getMessage());
-    }        
-    }//GEN-LAST:event_bParticipanteActionPerformed
-/**
+    }  
+ /**
  * Finaliza la Solicitud
  * @param evt 
  */
     private void bFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinalizarActionPerformed
-       try
-       {
+        //guarda la inscripcion
+        guardaDatosInscripcion();
+        try
+        {
            udalekuak.Control.finalizarSolicitud(this,inscrip,sol);
-       }
-       catch (Exception e) {
+        }
+        catch (Exception e) {
             ControlVistas.enviarMensaje("Fallo al guardar la solicitud");
         }
     }//GEN-LAST:event_bFinalizarActionPerformed

@@ -107,10 +107,18 @@ public class Control {
  * @param d 
  */    
     public static void finalizarSolicitud(JDialog d,Inscripcion ins, Solicitud sol)throws Exception{
-        guardarInscripcion(ins);
-        bdudalekuak.SolicitudBd.insertarSolicitud(sol);
-        ControlVistas.mostrarMensajesIns();
-        ControlVistas.cerrarDialogo(d);
+        //confirma los datos(manda a un JConfirm) de la solicitud que se van a insertar
+        
+        //si se aceptan los datos:
+            //inserta solicitud
+            bdudalekuak.SolicitudBd.insertarSolicitud(sol);
+            //inserta tutor y guarda su nuevo id
+            
+            //inserta menor y guarda su nuevo id
+            
+            //inserta inscripcion con el id de tutor y el id de menor
+            ControlVistas.mostrarMensajesIns();
+            ControlVistas.cerrarDialogo(d);
     }
 /**
  * Devuelve los datos de una solicitud
@@ -141,20 +149,9 @@ public class Control {
         solicitudes = new ArrayList();
         bdudalekuak.SolicitudBd.consultaListSolicitudBySorteo();
         return solicitudes;
-    }
-/**
- * Genera un array de inscripciones donde 
- * ir coservando cada una hasta que finalice la solicitud
- */    
-    public static void guardarInscripcion(Inscripcion insc){
-        inscripcion = new Inscripcion();
-        inscripciones = new ArrayList();
-        for (int i = 0; i < inscripciones.size(); i++) {
-            inscripcion = insc;
-            inscripciones.add(insc);            
-        }        
-    }
-    
+    }   
+
+   
     public static Inscripcion creaInscripcion()
     {
         return new Inscripcion();
