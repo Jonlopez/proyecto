@@ -556,7 +556,11 @@ public class Sinscripcion extends javax.swing.JDialog {
         guardaDatosInscripcion();
         try
         {
-           udalekuak.Control.finalizarSolicitud(this,inscrip,sol);
+            //esta linea hay que revisarla porque:
+            // esta pasando "this" para cerrar la ventana desde el metodo finalizarSolicitud()
+            // creo que no es correcto ya que la ventan se puede cerrar sola con this.dispose()
+            // ??? lo que no tengo claro es si habria que ponerlo en el try o despues ???
+           udalekuak.Control.finalizarSolicitud(inscrip,sol);
         }
         catch (Exception e) {
             ControlVistas.enviarMensaje("Fallo al guardar la solicitud");

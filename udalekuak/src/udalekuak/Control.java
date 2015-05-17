@@ -7,6 +7,7 @@ import vista.ControlVistas;
 import javax.swing.JDialog;
 import uml.Sorteo;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import uml.Inscripcion;
 import uml.Solicitud;
 import uml.Tutor;
@@ -106,9 +107,9 @@ public class Control {
  * de información
  * @param d 
  */    
-    public static void finalizarSolicitud(JDialog d,Inscripcion ins, Solicitud sol)throws Exception{
+    public static void finalizarSolicitud(Inscripcion ins, Solicitud sol)throws Exception{
         //confirma los datos(manda a un JConfirm) de la solicitud que se van a insertar
-        
+        if (JOptionPane.showConfirmDialog(ControlVistas.vSi, "Vas a dar de alta una solicitud con los siguientes datos:\n") == JOptionPane.YES_OPTION){}
         //si se aceptan los datos:
             //inserta solicitud
             bdudalekuak.SolicitudBd.insertarSolicitud(sol);
@@ -116,9 +117,8 @@ public class Control {
             
             //inserta menor y guarda su nuevo id
             
-            //inserta inscripcion con el id de tutor y el id de menor
+            //inserta inscripcion con: id dtutor, id menor, direccion, telefonos, solicitud
             ControlVistas.mostrarMensajesIns();
-            ControlVistas.cerrarDialogo(d);
     }
 /**
  * Devuelve los datos de una solicitud

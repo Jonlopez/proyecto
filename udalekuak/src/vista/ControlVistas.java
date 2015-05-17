@@ -18,7 +18,7 @@ public class ControlVistas {
     private static Lposterior vLps;
     private static Lprevio vLpr;
     private static Parametros vPa;
-    private static Sinscripcion vSi;
+    public static Sinscripcion vSi;
     private static Sorteo vSor;
 
 /**
