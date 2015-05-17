@@ -17,6 +17,7 @@ public class Vprincipal extends javax.swing.JFrame {
         this.setExtendedState(MAXIMIZED_BOTH);
         deshabilitarMenus();
     }
+    
 /**
  * deshabilita los menus de Usuario administrador
  */
@@ -57,6 +58,7 @@ public class Vprincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
 
         bLogin.setText("LogIn ");
         bLogin.setFocusable(false);
@@ -154,7 +156,7 @@ public class Vprincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 1111, Short.MAX_VALUE)
+                .addContainerGap(1111, Short.MAX_VALUE)
                 .addComponent(bLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bLogOut))
