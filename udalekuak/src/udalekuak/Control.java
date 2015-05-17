@@ -1,6 +1,10 @@
 
 package udalekuak;
 
+import bdudalekuak.InscripcionBd;
+import bdudalekuak.MenorBd;
+import bdudalekuak.PersonaBd;
+import bdudalekuak.TutorBd;
 import bdudalekuak.UsuarioBd;
 import java.util.Date;
 import vista.ControlVistas;
@@ -9,9 +13,11 @@ import uml.Sorteo;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import uml.Inscripcion;
+import uml.Menor;
 import uml.Solicitud;
 import uml.Tutor;
 import uml.Usuario;
+import bddirecciones.DireccionBD;
 
 /**
  *
@@ -104,21 +110,122 @@ public class Control {
 
 /**
  * Guarda los datos de la solicitud y muestra mensaje 
+ * 
+ * Guarda todos los datos por orden parqa que no den error la pk de las tablas
+ * Partimos de que no existe ningun menor en la bd como los que vamos a insertar
+ *  esto ya ha sido validado al rellenar la inscripcion.
+ * 
  * de información
  * @param d 
  */    
-    public static void finalizarSolicitud(Inscripcion ins, Solicitud sol)throws Exception{
-        //confirma los datos(manda a un JConfirm) de la solicitud que se van a insertar
-        if (JOptionPane.showConfirmDialog(ControlVistas.vSi, "Vas a dar de alta una solicitud con los siguientes datos:\n") == JOptionPane.YES_OPTION){}
+    public static void finalizarSolicitud(Solicitud sol)throws Exception{
+        //antes de empezar, recordar que aqui ya tenemos el objeto solicitud creado y 
+        //  completo con su(s) inscripcion(es) y tutores y menores y direcciones. Es el
+        //  objeto que nos pasan en el parametro.
+        
+        //PROCEDEMOS:
+        //confirma los datos(JConfirm) de la solicitud que se van a insertar
+        if (JOptionPane.showConfirmDialog(ControlVistas.vSi, "Vas a dar de alta una solicitud con los siguientes datos:\n" + solicitud.toString()) == JOptionPane.YES_OPTION){
         //si se aceptan los datos:
+            
+            //IMPORTANTE!! la repeticion de menores ya ha sido compobada y controlada en la ventana de inscripcion
+            
             //inserta solicitud
             bdudalekuak.SolicitudBd.insertarSolicitud(sol);
-            //inserta tutor y guarda su nuevo id
             
-            //inserta menor y guarda su nuevo id
+            //ahora crea un bucle para insertar los datos de las (de 1 a 3) inscripciones
+            //recorre las inscripciones de la solicitud
+            for(int i=0;i<sol.getInscripciones().size();i++)
+            {
+                //crea variable inscripcion para ahorrar codigo (se la llama muchas veces en cada ciclo del for)
+                Inscripcion ins = sol.getInscripciones().get(i);
+                
+                //declara idTutor e idMenor
+                int idTutor;
+                int idMenor;
+                
+                //comprueba si el dni tutor existe en la tabla
+                if(TutorBd.buscaTutor(ins.getTutor().getDni())==null)
+                {
+                    //no existe el tutor
+                    //busca el ultimo id de persona y lo guarda en la variable
+                    idTutor = PersonaBd.buscaUltimoId() + 1;
+                    //anade su nuevo ide al tutor
+                    ins.getTutor().setIdTutor(idTutor);
+                    //ya tiene tutor su nuevo id y ahora inserta tutor en la BD
+                    TutorBd.insertarTutor(ins.getTutor());                    
+                }else
+                {
+                    //si existe el tutor
+                    //busca su idTutor y lo guarda en la variable
+                    idTutor = TutorBd.buscaTutor(ins.getTutor().getDni()).getIdTutor();
+                    //anade el id buscado al tutor
+                    ins.getTutor().setIdTutor(idTutor);
+                    //este dato nos servira para insertar el id de tutor en la inscripcion mas adelante                    
+                }
+                
+                //NO comprueba si menor existe, porque ya esta comprobado
+                //partimos sabiendo que menor no existe
+                
+                //busca el ultimo id de persona y lo guarda en la variable
+                idMenor = PersonaBd.buscaUltimoId() + 1;
+                //anade su nuevo id al menor
+                ins.getMenor().setIdMenor(idMenor);
+                //ya tiene menor su nuevo id y ahora inserta menor en la BD
+                MenorBd.insertarMenor(ins.getMenor());//inserta menor y guarda su nuevo id               
+                
+                //insertar la direccion
+                //genera un nuevo ide de direccion para la direccion que tenemos en esta inscripcion
+                ins.getDireccion().setId_dir(ins.getDireccion().generaNuevoId());
+                ins.getDireccion().insertaDireccion(ins.getDireccion());
+                //aqui podemos apreciar la diferencia entre hacer la claseBD abstracta y con herencia o hacerla static
+                //la libreria direcciones_postales esta hecha con clasesBD abstractas y heredadas.
+                //sin embargo udalekuak esta hecho con clasesBD static.
+                
+                //ahora ya tenemos todas las pk necesarias para que no de error la insercion de inscripcion
+                
+                //inserta inscripcion con los id's verificados y correctos
+                //ademas de sus telefonos direccion y solicitud
+                InscripcionBd.insertarInscripcion(ins);
+                
+            }//END for -- fin recorre inscripciones solicitud
             
-            //inserta inscripcion con: id dtutor, id menor, direccion, telefonos, solicitud
-            ControlVistas.mostrarMensajesIns();
+            
+            //AQUI YA HEMOS INSERTADO LAS 3 INSCRIPCIONES EN LA BD
+            
+        }//END IF confirmacion datos
+        
+        //ya ha acabado de recorred la(s) inscripcion(es) y de insertarlas en la BD
+        //el proceso de alta se da por concluido
+        //si no confirma los datos
+        else{
+            //descarta todos los datos introducidos
+            //vuelve a la vista principal
+            ControlVistas.vuelveVprincipal();
+        }
+    
+    }//END finalizarSolicitud()
+    
+    /**
+     * comprueba si existe un menor o no, retorna true o fale
+     * @param m
+     * @return 
+     */
+    public static boolean existeMenor(Menor m)
+    {
+        boolean existe = false;
+            if(MenorBd.buscaMenor
+                    (
+                        m.getNombre(),
+                        m.getApel1(),
+                        m.getApel2(),
+                        m.getSexo(),
+                        m.getfNac()
+                    ) != null)
+            {
+                existe = true;
+            }
+        return existe;
     }
 /**
  * Devuelve los datos de una solicitud
@@ -129,7 +236,7 @@ public class Control {
     public static void obtenerSolicitud(String dni, Date fecha){
         solicitud = new Solicitud();
         bdudalekuak.SolicitudBd.consultaSolicitud();
-        ControlVistas.muestraDetalleSolicitud(null, true, solicitud);
+        ControlVistas.muestraDetalleSolicitud(solicitud);
     }
 /**
  * Devuelve el listado previo al sorteo

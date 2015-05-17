@@ -32,15 +32,18 @@ public class Sinscripcion extends javax.swing.JDialog {
     
     /**
      * Creates new form Sinscripcion
+     * 
+     * crea una nueva solicitud en la variable 
+     * pone el contador a 1 
      */
     public Sinscripcion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(parent);
         setTitle("Solicitud de inscripción");
         contador = 1;
-        sol = Control.creaSolicitud();
-        deshabilitarTelefonos();
+        //sol = Control.creaSolicitud();
+        //deshabilitarTelefonos();
     }
 
     /**
@@ -488,6 +491,9 @@ public class Sinscripcion extends javax.swing.JDialog {
         
             
     }//GEN-LAST:event_bParticipanteActionPerformed
+    /**
+     * Guarda los datos en un objeto inscripcion para poder pasar a la siguiente si la hubiese
+     */
     private void guardaDatosInscripcion()
     {
         //valida los datos del formulario 
@@ -499,8 +505,8 @@ public class Sinscripcion extends javax.swing.JDialog {
             //anade id inscripcion
             inscrip.setIdIns(contador);
             contador ++;
-            //anade solicitud 
-            inscrip.setSolicitud(sol);
+            //anade solicitud a inscripcion, y ademas anade inscripcion en solicitud.inscripciones(arrayList)
+            inscrip.setSolicitudBidireccional(sol);
             //anade direccion
             inscrip.setDireccion(direccion);
             //si tutor no existe
@@ -546,6 +552,28 @@ public class Sinscripcion extends javax.swing.JDialog {
             inscrip.setTelf4(telf4);
             //inscripcion ya esta completa
         }
+        
+        //se comprueba si el menor ya esta inscrito en otra solicitud de la BD
+        //NOTA!! falta comprobar si esta repetido en la solicitud en curso
+        if(Control.existeMenor(inscrip.getMenor()))
+        {
+            //si que lo esta
+            //mensaje de error
+            JOptionPane.showMessageDialog
+            (
+                this, 
+                inscrip.getMenor().getNombre() +
+                " " +
+                inscrip.getMenor().getApel1() +
+                " " +
+                inscrip.getMenor().getApel2() +
+                " ya esta inscrito en otra solicitud.\n" +
+                "¡NO PUEDE APUNTAR DOS VECES A LA MISMA PERSONA!"
+            );            
+            //se borran los datos de menor          
+            this.limpiarMenor();
+        }
+        //si no esta repetido se continua con el proceso
     }  
  /**
  * Finaliza la Solicitud
@@ -556,11 +584,9 @@ public class Sinscripcion extends javax.swing.JDialog {
         guardaDatosInscripcion();
         try
         {
-            //esta linea hay que revisarla porque:
-            // esta pasando "this" para cerrar la ventana desde el metodo finalizarSolicitud()
-            // creo que no es correcto ya que la ventan se puede cerrar sola con this.dispose()
-            // ??? lo que no tengo claro es si habria que ponerlo en el try o despues ???
-           udalekuak.Control.finalizarSolicitud(inscrip,sol);
+            //he quitado el parametro que pasaba esta ventana como padre
+            //al cambiarse la forma de llamar a las ventanas desde control vista ya no hace falta
+           udalekuak.Control.finalizarSolicitud(sol);
         }
         catch (Exception e) {
             ControlVistas.enviarMensaje("Fallo al guardar la solicitud");
@@ -631,6 +657,31 @@ public class Sinscripcion extends javax.swing.JDialog {
            limpiarTutor();
        }
     }
+
+/**
+ * Se limpian los campos del panel de menor
+ */  
+    private void limpiarMenor(){
+        tfNombreM.setText(null);
+        tfApelpM.setText(null);
+        tfApelsM.setText(null);
+        ftfDniM.setText(null);
+        ftfFechaNac.setText(null);
+        contador--;            
+        centro = null;
+        inscrip = null;
+    }
+/**
+ * Se limpian los campos del panel de tutor
+ */    
+    private void limpiarTutor(){
+        tfNombreT.setText(null);
+        tfApelpT.setText(null);
+        tfApelsT.setText(null);
+        ftfDniT.setText(null);        
+    }
+    
+    
 /**
  * Deshabilita los campos de telefono menos el primero
  * y quita el tic del checkbox
@@ -763,25 +814,7 @@ public class Sinscripcion extends javax.swing.JDialog {
         if (ftfModelo.getValue()== null)
                 throw new CampoVacio("Modelo");
     }
-/**
- * Se limpian los campos del panel de menor
- */  
-    private void limpiarMenor(){
-        tfNombreM.setText(null);
-        tfApelpM.setText(null);
-        tfApelsM.setText(null);
-        ftfDniM.setText(null);
-        ftfFechaNac.setText(null);
-    }
-/**
- * Se limpian los campos del panel de tutor
- */    
-    private void limpiarTutor(){
-        tfNombreT.setText(null);
-        tfApelpT.setText(null);
-        tfApelsT.setText(null);
-        ftfDniT.setText(null);        
-    }
+
 /**
  * Se cuentan los participantes insertados 
  * para deshabilitar el boton de añadir otro

@@ -1,13 +1,23 @@
 
 package bdudalekuak;
 
+import uml.Tutor;
+
 /**
  *
  * @author javi&Jon
  */
 public class TutorBd extends GenericoBd{
     
-    public static void insertarTutor(){
+    public static Tutor buscaTutor(String dni)
+    {
+        Tutor tutor = null;
+        
+        return tutor;
+    }
+    
+        
+    public static void insertarTutor(Tutor t){
         
     }
 /**

@@ -172,12 +172,12 @@ public class Vprincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mInscripcionActionPerformed
-        ControlVistas.muestraInscripcion(this, true);
+        ControlVistas.muestraInscripcion();
     }//GEN-LAST:event_mInscripcionActionPerformed
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
        try{
-           ControlVistas.muestraLogin(this, true);
+           ControlVistas.muestraLogin();
        }
          catch(Exception e){
              JOptionPane.showMessageDialog(this, e.getMessage());
@@ -190,23 +190,23 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_bLogOutActionPerformed
 
     private void mConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mConfiguracionActionPerformed
-        ControlVistas.muestraConfig(this, true);
+        ControlVistas.muestraConfig();
     }//GEN-LAST:event_mConfiguracionActionPerformed
 
     private void mSorteoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mSorteoActionPerformed
-        ControlVistas.muestraSorteo(this, true);
+        ControlVistas.muestraSorteo();
     }//GEN-LAST:event_mSorteoActionPerformed
 
     private void mConsultaInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mConsultaInsActionPerformed
-        ControlVistas.muestraConsultaSol(this, true);
+        ControlVistas.muestraConsultaSol();
     }//GEN-LAST:event_mConsultaInsActionPerformed
 
     private void mListPrevioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mListPrevioActionPerformed
-        ControlVistas.muestraListadoPrevio(this, true);
+        ControlVistas.muestraListadoPrevio();
     }//GEN-LAST:event_mListPrevioActionPerformed
 
     private void mListPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mListPostActionPerformed
-        ControlVistas.muestraListadoPosterior(this, true);
+        ControlVistas.muestraListadoPosterior();
     }//GEN-LAST:event_mListPostActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed

@@ -29,6 +29,18 @@ public class ControlVistas {
         vP = new Vprincipal();
         vP.setVisible(true);
     }
+    
+    public static void vuelveVprincipal()
+    {
+        vA.dispose();
+        vCs.dispose();
+        vDc.dispose();
+        vLps.dispose();
+        vLpr.dispose();
+        vPa.dispose();
+        vSi.dispose();
+        vSor.dispose();
+    }
 /**
  * Si nos logeamos como administrador se
  * habilitan todas sus funciones
@@ -60,11 +72,10 @@ public class ControlVistas {
 /**
  * Muestra la ventana para inciar sesión
  * como usuario Administrador
- * @param p
- * @param modal 
+ * 
  */    
-    public static void muestraLogin(java.awt.Frame p, boolean modal){
-        vA = new Admin(p, true);        
+    public static void muestraLogin(){
+        vA = new Admin(vP, true);        
         vA.setVisible(true);
     }    
  /**
@@ -76,78 +87,69 @@ public class ControlVistas {
  /**
   * Muestra la ventana de parametros
   * (Falta cargar datos)
-  * @param p
-  * @param modal 
+  * 
   */   
-    public static void muestraConfig(java.awt.Frame p, boolean modal){
-        vPa = new Parametros(p, true);        
+    public static void muestraConfig(){
+        vPa = new Parametros(vP, true);        
         vPa.setVisible(true);        
     }
 /**
  * Muestra la ventana donde se ejecuta el sorteo
  * con opción a borrar si ya se ha realizado
- * @param p
- * @param modal 
  */            
-    public static void muestraSorteo(java.awt.Frame p, boolean modal){
-        vSor = new Sorteo(p, true);        
+    public static void muestraSorteo(){
+        vSor = new Sorteo(vP, true);        
         vSor.setVisible(true);        
     }
 /**
  * Muestra la ventana de inscripción
- * @param p
- * @param modal 
+ * 
  */    
-    public static void muestraInscripcion(java.awt.Frame p, boolean modal){
-        vSi = new Sinscripcion(p, true);        
+    public static void muestraInscripcion(){
+        vSi = new Sinscripcion(vP, true);        
         vSi.setVisible(true);        
     }
 /**
  * Muestra la ventana para consultar la inscripción
- * @param p
- * @param modal 
+ *  
  */    
-    public static void muestraConsultaSol(java.awt.Frame p, boolean modal){
-        vCs = new Csolicitud(p, true);        
+    public static void muestraConsultaSol(){
+        vCs = new Csolicitud(vP, true);        
         vCs.setVisible(true);        
     }
     /**
  * Muestra el listado previo al soreto de las inscripciones
- * @param p
- * @param modal 
+ * 
  */    
-    public static void muestraListadoPrevio(java.awt.Frame p, boolean modal){
-        vLpr = new Lprevio(p, true);        
+    public static void muestraListadoPrevio(){
+        vLpr = new Lprevio(vP, true);        
         vLpr.setVisible(true);        
     }
 /**
  * Muestra el listado posterior al sorteo de las inscripciones
  * ordenad por el número asignado por este
- * @param p
- * @param modal 
+ * 
  */    
-    public static void muestraListadoPosterior(java.awt.Frame p, boolean modal){
-        vLps = new Lposterior(p, true);        
+    public static void muestraListadoPosterior(){
+        vLps = new Lposterior(vP, true);        
         vLps.setVisible(true);        
     }
 /**
  * Muestra un pequeño resumen de la solicitud recien insertada
  * y el numero de Solicitud que pertenece a esta
  */    
-    public static void mostrarMensajesIns(){
+    public static void mostrarResumenSol(){
         
     }
 /**
  * Llama y llena con datos la venta Detalle de solicitud 
  * (Falta sobrecargar el constructor de Dsolicitud)
- * @param p
- * @param modal
+ * 
  * @param solicitud 
  */    
-    public static void muestraDetalleSolicitud(java.awt.Frame p, boolean modal, Solicitud solicitud){
-        vDc = new Dsolicitud(p, true);        
+    public static void muestraDetalleSolicitud(Solicitud solicitud){
+        vDc = new Dsolicitud(vP, true);        
         vDc.setVisible(true);
-        
     }
     
 /**

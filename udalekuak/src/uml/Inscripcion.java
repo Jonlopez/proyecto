@@ -130,7 +130,14 @@ public class Inscripcion {
     }
 
     public void setSolicitud(Solicitud solicitud) {
+        this.solicitud = solicitud;        
+    }
+    
+    public void setSolicitudBidireccional(Solicitud solicitud)
+    {
         this.solicitud = solicitud;
+        //ademas, anade la inscripcion al arraylist(inscripciones) de solicitud
+        solicitud.anadirInscripcion(this);
     }
     
     

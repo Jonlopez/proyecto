@@ -6,19 +6,38 @@ package umldirecciones;
  * @author javier_nogales
  */
 
-public class Direccion {
+public class Direccion extends bddirecciones.DireccionBD{
     
-    private Provincia   provincia;
-    private Municipio   municipio;
-    private Poblacion   localidad;
-    private int         cp;
-    private Via         via;
-    private Tramo       tramo;
+    private int         id_dir;
     private int         portal;
     private char        letra;
     private String      escalera;
     private int         piso;
     private String      mano;
+    private Provincia   provincia;    
+    private Municipio   municipio;
+    private Poblacion   localidad;
+    private Tramo       tramo;
+    private Via         via;    
+    private int         cp;
+    
+    
+    
+    /*CAMPOS DE LA TABLA DIRECCIONES
+      ------------------------------
+    
+        id_dir			NUMBER(4) ,
+	portal			NUMBER(4) NOT NULL,
+	letra			CHAR,
+	escalera		VARCHAR2(10),
+	piso			NUMBER(3),
+	mano			VARCHAR2(10),
+	cpro 			NUMBER(2),
+	cmun 			NUMBER(3),
+	cun 			NUMBER(7),
+	ctra 			NUMBER(4),
+	cvia 			NUMBER(5),
+    */
     
     
     
@@ -110,6 +129,14 @@ public class Direccion {
 
     public void setMano(String mano) {
         this.mano = mano;
+    }
+
+    public int getId_dir() {
+        return id_dir;
+    }
+
+    public void setId_dir(int id_dir) {
+        this.id_dir = id_dir;
     }
     
     

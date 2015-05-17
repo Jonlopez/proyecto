@@ -11,6 +11,7 @@ package vista;
  */
 public class Dsolicitud extends javax.swing.JDialog {
 
+   
     /**
      * Creates new form Dsolicitud
      */
