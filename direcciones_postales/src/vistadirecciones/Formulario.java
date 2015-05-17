@@ -39,6 +39,7 @@ public class Formulario extends javax.swing.JDialog {
         this.tfCalle.setEnabled(false);
         this.bBuscarCalle.setEnabled(false);
         this.tfPortal.setEnabled(false);
+        this.tfLetra.setEnabled(false);
         this.tfPiso.setEnabled(false);
         this.tfEscalera.setEnabled(false);
         this.tfMano.setEnabled(false);
@@ -134,6 +135,8 @@ public class Formulario extends javax.swing.JDialog {
         tfPortal = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         tfMunicipio = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        tfLetra = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -210,6 +213,8 @@ public class Formulario extends javax.swing.JDialog {
 
         jLabel9.setText("Municipio *");
 
+        jLabel6.setText("Letra");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -234,10 +239,30 @@ public class Formulario extends javax.swing.JDialog {
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(tfMunicipio)
+                                                    .addComponent(tfLocalidad))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(bElejirProv))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(bBuscarMun)
+                                                    .addComponent(bBuscarLoc, javax.swing.GroupLayout.Alignment.TRAILING)))
                                             .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(bElejirProv))
+                                                    .addComponent(ftfCP, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(tfCalle)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(bBuscarCalle))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel6)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tfLetra, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jLabel10)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(tfPiso, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,21 +273,7 @@ public class Formulario extends javax.swing.JDialog {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jLabel12)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(tfMano, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(ftfCP, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(bBuscarCalle))
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(tfMunicipio)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(bBuscarMun))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                    .addComponent(tfLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(bBuscarLoc)))))))
+                                                .addComponent(tfMano, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addComponent(jLabel4)
                             .addComponent(jLabel1)
                             .addComponent(jLabel9)
@@ -275,7 +286,7 @@ public class Formulario extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(196, 196, 196)
                         .addComponent(jLabel7)))
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,7 +327,9 @@ public class Formulario extends javax.swing.JDialog {
                     .addComponent(jLabel11)
                     .addComponent(tfEscalera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
-                    .addComponent(tfMano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfMano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(tfLetra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addGap(49, 49, 49)
@@ -345,9 +358,25 @@ public class Formulario extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(this, "No has introducido el número de portal");
         else
         {
-            Control.direccion.setTramo(
-                Control.buscaTramo(Integer.parseInt(this.tfPortal.getText()), Integer.parseInt(this.ftfCP.getText()))
-            );
+            //busca el portal y el cp en la tabla tramos
+            try{
+                //si lo encuentra devuelve un objeto tramo que se guarda en diraccion
+                Control.direccion.setTramo
+                (
+                    Control.buscaTramo(Integer.parseInt(this.tfPortal.getText()), Integer.parseInt(this.ftfCP.getText()))
+                    //si no lo encuentra no devuelve objeto y saltara la excepcion NullPointerException
+                );
+                //si no salta la excepcion es porque la direccion ha sido verificada y es correcta
+                //procede a guardar los demas datos de direccion
+                Control.direccion.setPortal(Integer.parseInt(this.tfPortal.getText()));
+                Control.direccion.setLetra(this.tfLetra.getText().charAt(0));
+                Control.direccion.setEscalera(this.tfLetra.getText());
+                Control.direccion.setLetra(this.tfLetra.getText().charAt(0));
+                Control.direccion.setPiso(Integer.parseInt(this.tfPiso.getText()));
+                Control.direccion.setMano(this.tfMano.getText());            }
+            catch (NullPointerException e){JOptionPane.showMessageDialog(this, "El codigo postal o el número de portal," +
+                                                                               "no concuerdan con el resto de datos,\n" +
+                                                                               "porfavor, revise los datos.");}
             
             /* Este cacho de codigo se usa para comprobar que todos los datos que tiene direccion
             JOptionPane.showMessageDialog(this,
@@ -464,12 +493,14 @@ public class Formulario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField tfCalle;
     private javax.swing.JTextField tfEscalera;
+    private javax.swing.JTextField tfLetra;
     private javax.swing.JTextField tfLocalidad;
     private javax.swing.JTextField tfMano;
     private javax.swing.JTextField tfMunicipio;

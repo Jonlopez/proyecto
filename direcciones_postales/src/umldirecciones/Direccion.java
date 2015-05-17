@@ -8,12 +8,19 @@ package umldirecciones;
 
 public class Direccion {
     
-    private Provincia provincia;
-    private Municipio municipio;
-    private Poblacion localidad;
-    private int       cp;
-    private Via       via;
-    private Tramo     tramo;
+    private Provincia   provincia;
+    private Municipio   municipio;
+    private Poblacion   localidad;
+    private int         cp;
+    private Via         via;
+    private Tramo       tramo;
+    private int         portal;
+    private char        letra;
+    private String      escalera;
+    private int         piso;
+    private String      mano;
+    
+    
     
     public Direccion(){}
 
@@ -64,6 +71,48 @@ public class Direccion {
     public void setTramo(Tramo tramo) {
         this.tramo = tramo;
     }
+
+    public int getPortal() {
+        return portal;
+    }
+
+    public void setPortal(int portal) {
+        this.portal = portal;
+    }
+
+    public char getLetra() {
+        return letra;
+    }
+
+    public void setLetra(char letra) {
+        this.letra = letra;
+    }
+
+    public String getEscalera() {
+        return escalera;
+    }
+
+    public void setEscalera(String escalera) {
+        this.escalera = escalera;
+    }
+
+    public int getPiso() {
+        return piso;
+    }
+
+    public void setPiso(int piso) {
+        this.piso = piso;
+    }
+
+    public String getMano() {
+        return mano;
+    }
+
+    public void setMano(String mano) {
+        this.mano = mano;
+    }
+    
+    
     
     @Override
     public String toString()

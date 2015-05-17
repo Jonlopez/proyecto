@@ -127,10 +127,13 @@ public class Control {
      */
     public static Tramo buscaTramo(int portal, int cpos)
     {
+        //primero comprueba si el portal es par o impar
         int tinum;
         if(portal%2==0)
+            //si es par pone la variable tinum a 2
             tinum = 2;
         else
+            //si es impar pone la variable tinum a 1
             tinum = 1;
         
         direccion.setTramo(Tramo.getTramos
