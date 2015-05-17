@@ -456,8 +456,7 @@ public class Sinscripcion extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 /**
  * Cierra el dialogo de inscripción
- * @param evt 
- */
+ * @param evt  */
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         ControlVistas.cerrarDialogo(this);
     }//GEN-LAST:event_bCancelarActionPerformed

@@ -1,6 +1,7 @@
 
 package vista;
 
+import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JDialog;
 import uml.Solicitud;
@@ -12,6 +13,7 @@ import uml.Usuario;
  */
 public class ControlVistas {
     private static Vprincipal vP;
+    private static PanelFondo pF;
     private static Admin vA;
     private static Csolicitud vCs;
     private static Dsolicitud vDc;
@@ -23,10 +25,15 @@ public class ControlVistas {
 
 /**
  * Se incializa el programa mosntrando la
- * ventana principal
+ * ventana principal al que añadimos un panel
+ * con un fondo
  */    
     public static void inicializa(){
-        vP = new Vprincipal();
+        vP = new Vprincipal();        
+        
+        pF = new PanelFondo();
+        vP.add(pF, BorderLayout.CENTER);
+        vP.pack();
         vP.setVisible(true);
     }
 /**
