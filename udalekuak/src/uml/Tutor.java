@@ -18,6 +18,11 @@ public class Tutor {
 
     public Tutor() {
     }
+    
+    public Tutor(int idTutor)
+    {
+        this.idTutor = idTutor;
+    }
 
     public Tutor(int idTutor, String nombre, String apel1, String apel2, String dni, ArrayList<Menor> menores, ArrayList<Inscripcion> inscripciones) {
         this.idTutor = idTutor;

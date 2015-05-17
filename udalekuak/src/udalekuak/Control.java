@@ -98,12 +98,12 @@ public class Control {
       Solicitud sol = new Solicitud();
       try
       {          
-          int id = bdudalekuak.SolicitudBd.consultaSolicitudId();          
+          int id = bdudalekuak.SolicitudBd.consultaUltimoId();          
           sol.setIdSolicitud(id+1);
       }
       catch (Exception e)
       {
-            ControlVistas.enviarMensaje("Fallo al consultar id de solicitud");
+            ControlVistas.enviarMensaje("Fallo al consultar id de solicitud" + e.getMessage());
       }
       return sol;
     }
@@ -145,30 +145,31 @@ public class Control {
                 int idMenor;
                 
                 //comprueba si el dni tutor existe en la tabla
-                if(TutorBd.buscaTutor(ins.getTutor().getDni())==null)
+                if(TutorBd.buscaDniTutor(ins.getTutor().getDni())==null)
                 {
                     //no existe el tutor
                     //busca el ultimo id de persona y lo guarda en la variable
-                    idTutor = PersonaBd.buscaUltimoId() + 1;
+                    idTutor = PersonaBd.consultaUltimoId() + 1;
                     //anade su nuevo ide al tutor
                     ins.getTutor().setIdTutor(idTutor);
                     //ya tiene tutor su nuevo id y ahora inserta tutor en la BD
                     TutorBd.insertarTutor(ins.getTutor());                    
                 }else
                 {
+                    //esta hecho en dos pasos para que se vea mas claro pero no tiene sentido, habria que hacerlo en uno
                     //si existe el tutor
                     //busca su idTutor y lo guarda en la variable
-                    idTutor = TutorBd.buscaTutor(ins.getTutor().getDni()).getIdTutor();
-                    //anade el id buscado al tutor
+                    idTutor = TutorBd.buscaDniTutor(ins.getTutor().getDni()).getIdTutor();
+                    //anade el id buscado al tutor, y como es logico, no lo inserta
                     ins.getTutor().setIdTutor(idTutor);
-                    //este dato nos servira para insertar el id de tutor en la inscripcion mas adelante                    
+                    //este dato nos servir para insertar el id de tutor en la inscripcion mas adelante                    
                 }
                 
                 //NO comprueba si menor existe, porque ya esta comprobado
                 //partimos sabiendo que menor no existe
                 
                 //busca el ultimo id de persona y lo guarda en la variable
-                idMenor = PersonaBd.buscaUltimoId() + 1;
+                idMenor = PersonaBd.consultaUltimoId() + 1;
                 //anade su nuevo id al menor
                 ins.getMenor().setIdMenor(idMenor);
                 //ya tiene menor su nuevo id y ahora inserta menor en la BD
@@ -178,7 +179,7 @@ public class Control {
                 //genera un nuevo ide de direccion para la direccion que tenemos en esta inscripcion
                 ins.getDireccion().setId_dir(ins.getDireccion().generaNuevoId());
                 ins.getDireccion().insertaDireccion(ins.getDireccion());
-                //aqui podemos apreciar la diferencia entre hacer la claseBD abstracta y con herencia o hacerla static
+                //aqui podemos apreciar la diferencia de uso entre hacer la claseBD abstracta y con herencia o hacerla static
                 //la libreria direcciones_postales esta hecha con clasesBD abstractas y heredadas.
                 //sin embargo udalekuak esta hecho con clasesBD static.
                 

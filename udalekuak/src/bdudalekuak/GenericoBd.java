@@ -14,10 +14,10 @@ import javax.swing.JOptionPane;
  */
 public class GenericoBd {
     private static final String BD       = "orcl";
-    //private static final String URL      = "jdbc:oracle:thin:@192.168.56.102:1521:" + BD;
-    private static final String URL      = "jdbc:oracle:thin:@192.168.2.2:1521:" + BD;
-    private static final String USER     = "SYSTEM";//"JAVI";
-    private static final String PASSWORD = "root";//javi";    
+    private static final String URL      = "jdbc:oracle:thin:@192.168.56.102:1521:" + BD; //maquina de Javi
+    //private static final String URL      = "jdbc:oracle:thin:@192.168.2.2:1521:" + BD; //maquina de Jon
+    private static final String USER     = "JAVI";
+    private static final String PASSWORD = "javi";    
     
     protected static Connection con = null;
     
@@ -53,6 +53,28 @@ public class GenericoBd {
     }
    public static Connection getCon(){
         return con;
-    } 
-    
+    }
+   /*ESTE METODO ESTA PARAMETRIZADO PARA QUITAR EL QUE TIENE CADA CLASE *BD, PERO TODAVIA NO ESTA IMPLEMENTADO EN LAS LLAMADAS
+   public static int consultaUltimoId(String campo, String tabla)
+    {
+        int id = 0;
+        try
+        {   
+            conectarBD();
+            String query = "SELECT NVL(MAX(" + campo + "), 0) AS id_persona FROM " + tabla;
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+            if(rs.next())
+                id = rs.getInt("id_persona");
+            rs.close();
+            desconectarBD();
+        }
+        catch (Exception e)
+        {
+              JOptionPane.showMessageDialog(null, "Fallo al consultar id de persona -->  " + e.getMessage());
+        }
+        return id;
+    }
+   */
+   
 }//END CLASS GenericoBD

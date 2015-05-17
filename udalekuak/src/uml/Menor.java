@@ -21,13 +21,17 @@ public class Menor {
     private Date fNac;
     private boolean discapacidad;
     private char modelo;
-    private Tutor tutor;
     private CentroEd centro;
 
     public Menor() {
     }
+    
+    public Menor(int idMenor)
+    {
+        this.idMenor = idMenor;
+    }
 
-    public Menor(int idMenor, String nombre, String apel1, String apel2, String dni, char sexo, Date fNac, boolean discapacidad, char modelo, Tutor tutor, CentroEd centro) {
+    public Menor(int idMenor, String nombre, String apel1, String apel2, String dni, char sexo, Date fNac, boolean discapacidad, char modelo) {
         this.idMenor = idMenor;
         this.nombre = nombre;
         this.apel1 = apel1;
@@ -37,7 +41,6 @@ public class Menor {
         this.fNac = fNac;
         this.discapacidad = discapacidad;
         this.modelo = modelo;
-        this.tutor = tutor;
         this.centro = centro;
     }
 
@@ -106,7 +109,7 @@ public class Menor {
         }
     }
 
-    public boolean isDiscapacidad() {
+    public boolean getDiscapacidad() {
         return discapacidad;
     }
 
@@ -122,14 +125,7 @@ public class Menor {
         this.modelo = modelo;
     }
 
-    public Tutor getTutor() {
-        return tutor;
-    }
-
-    public void setTutor(Tutor tutor) {
-        this.tutor = tutor;
-    }
-
+    
     public CentroEd getCentro() {
         return centro;
     }

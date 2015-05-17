@@ -42,7 +42,7 @@ public class Sinscripcion extends javax.swing.JDialog {
         setLocationRelativeTo(parent);
         setTitle("Solicitud de inscripción");
         contador = 1;
-        //sol = Control.creaSolicitud();
+        sol = Control.creaSolicitud();
         //deshabilitarTelefonos();
     }
 

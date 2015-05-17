@@ -5,6 +5,10 @@
  */
 package bdudalekuak;
 
+import static bdudalekuak.GenericoBd.conectarBD;
+import static bdudalekuak.GenericoBd.stmt;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author javi
@@ -67,10 +71,24 @@ public class PersonaBd extends GenericoBd{
      * busca el ultimo id que existe en la tabla personas de la base de datos
      * @return 
      */
-    public static int buscaUltimoId()
+    public static int consultaUltimoId()
     {
         int id = 0;
-            //falta crear el codigo para buscar el id
+        try
+        {   
+            conectarBD();
+            String query = "SELECT NVL(MAX(id_persona), 0) AS id_persona FROM persona";
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+            if(rs.next())
+                id = rs.getInt("id_persona");
+            rs.close();
+            desconectarBD();
+        }
+        catch (Exception e)
+        {
+              JOptionPane.showMessageDialog(null, "Fallo al consultar id de persona -->  " + e.getMessage());
+        }
         return id;
     }
     

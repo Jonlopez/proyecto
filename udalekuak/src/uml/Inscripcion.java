@@ -14,6 +14,7 @@ public class Inscripcion {
     private String telf2;
     private String telf3;
     private String telf4;
+    private int telf_contacto;
     private Direccion direccion;
     private Tutor tutor;
     private Menor menor;
@@ -90,6 +91,15 @@ public class Inscripcion {
     {
         this.tutor = t;
     }
+
+    public int getTelf_contacto() {
+        return telf_contacto;
+    }
+
+    public void setTelf_contacto(int telf_contacto) {
+        this.telf_contacto = telf_contacto;
+    }
+    
 /**
  * crea nuevo tutor y lo anade a la inscripcion pasandole los datos
  * 
