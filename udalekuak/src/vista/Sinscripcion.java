@@ -469,9 +469,9 @@ public class Sinscripcion extends javax.swing.JDialog {
  * @param evt 
  */
     private void bDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDireccionActionPerformed
-        direccion = controldirecciones.Control.devuelveDireccion(this, true);
+        controldirecciones.Control.devuelveDireccion(this, true);
          //Esta linea es para comprobar el objeto direccion que devuelve
-        javax.swing.JOptionPane.showMessageDialog(null, direccion.toString());
+        //javax.swing.JOptionPane.showMessageDialog(null, direccion.toString());
        
     }//GEN-LAST:event_bDireccionActionPerformed
 /**

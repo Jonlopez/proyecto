@@ -48,13 +48,13 @@ public class Control {
      * @param valor
      * @return 
      */
-    public static Direccion devuelveDireccion(javax.swing.JDialog padre, boolean valor)
+    public static void devuelveDireccion(javax.swing.JDialog padre, boolean valor)
     {
         direccion = new Direccion();
         form = new vistadirecciones.Formulario(padre, valor);
         cargaProvincias();
         form.setVisible(true);
-        return direccion;
+        //return direccion;
     }
     
     
