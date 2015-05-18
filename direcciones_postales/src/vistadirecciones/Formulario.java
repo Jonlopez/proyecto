@@ -158,7 +158,6 @@ public class Formulario extends javax.swing.JDialog {
         jLabel8.setText("s/n = 0");
 
         jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel7.setForeground(java.awt.Color.black);
         jLabel7.setText("DIRECCIÓN");
 
         bAceptar.setText("Aceptar");
