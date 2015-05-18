@@ -26,16 +26,9 @@ public class Sinscripcion extends javax.swing.JDialog {
     private Inscripcion inscrip;
     private Solicitud sol;
     private CentroEd centro;
-<<<<<<< HEAD
-    private String telf1; 
-    private String telf2; 
-    private String telf3; 
-    private String telf4; 
-=======
     private String telefonoCon;
     private ArrayList<CentroEd>listadoCentros;
      
->>>>>>> temporal4
     
     /**
      * Creates new form Sinscripcion
@@ -519,14 +512,6 @@ public class Sinscripcion extends javax.swing.JDialog {
  * Consulta de dirección en la Base de Datos
  * @param evt 
  */
-<<<<<<< HEAD
-    private void bDireccionActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        //direccion = controldirecciones.Control.creaDireccion();
-        direccion = controldirecciones.Control.eligeDireccion(this, true, direccion);
-         //Esta linea es para comprobar el objeto direccion que devuelve
-        javax.swing.JOptionPane.showMessageDialog(this, direccion.toString());       
-    }                                          
-=======
     private void bDireccionActionPerformed(java.awt.event.ActionEvent evt)
     {                                           
         direccion = controldirecciones.Control.devuelveDireccion(this, true);
@@ -548,7 +533,6 @@ public class Sinscripcion extends javax.swing.JDialog {
                 else if(bgTelefonos.getSelection()== rbTelf4)
                           telefonoCon = tfTelf4.getText();
     }
->>>>>>> temporal4
 
 
 /**
