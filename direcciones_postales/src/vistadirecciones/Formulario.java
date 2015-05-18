@@ -93,6 +93,7 @@ public class Formulario extends javax.swing.JDialog {
         this.ftfCP.setEnabled(false);
         this.tfPortal.setEnabled(true);
         this.tfPiso.setEnabled(true);
+        this.tfLetra.setEnabled(true);
         this.tfEscalera.setEnabled(true);
         this.tfMano.setEnabled(true);
         this.bAceptar.setEnabled(true);
@@ -373,10 +374,14 @@ public class Formulario extends javax.swing.JDialog {
                 Control.direccion.setEscalera(this.tfLetra.getText());
                 Control.direccion.setLetra(this.tfLetra.getText().charAt(0));
                 Control.direccion.setPiso(Integer.parseInt(this.tfPiso.getText()));
-                Control.direccion.setMano(this.tfMano.getText());            }
-            catch (NullPointerException e){JOptionPane.showMessageDialog(this, "El codigo postal o el número de portal," +
-                                                                               "no concuerdan con el resto de datos,\n" +
-                                                                               "porfavor, revise los datos.");}
+                Control.direccion.setMano(this.tfMano.getText());            
+            }
+            catch (NullPointerException e)
+            {
+                JOptionPane.showMessageDialog(this, "El codigo postal o el número de portal," +
+                                                    "no concuerdan con el resto de datos,\n" +
+                                                    "porfavor, revise los datos.");
+            }
             
             /* Este cacho de codigo se usa para comprobar que todos los datos que tiene direccion
             JOptionPane.showMessageDialog(this,
