@@ -10,7 +10,7 @@ public class Direccion extends bddirecciones.DireccionBD{
     
     private int         id_dir;
     private int         portal;
-    private char        letra;
+    private String        letra;
     private String      escalera;
     private int         piso;
     private String      mano;
@@ -99,11 +99,11 @@ public class Direccion extends bddirecciones.DireccionBD{
         this.portal = portal;
     }
 
-    public char getLetra() {
+    public String getLetra() {
         return letra;
     }
 
-    public void setLetra(char letra) {
+    public void setLetra(String letra) {
         this.letra = letra;
     }
 
@@ -144,14 +144,11 @@ public class Direccion extends bddirecciones.DireccionBD{
     @Override
     public String toString()
     {
-        return "La dirección seleccionada es: \n\n" +
-               this.provincia.toString() + 
-               this.municipio.toString() +
-               this.localidad.toString() + 
-               "----- CODIGO POSTAL -----\n" +
-               this.cp + "\n\n" +
-               this.via.toString()       +
-               this.tramo.toString();
+        return this.via.getTvia() + "/ " + this.via.getNvia() + "\n" +
+                "Nº " + this.portal + " - " + this.piso + "º" + " " + this.mano + "\n" +
+                this.cp + "\n" +
+                this.localidad.getNentsi50() + "\n" +
+                this.provincia.getNpro();
     }
     
     

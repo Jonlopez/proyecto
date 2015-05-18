@@ -77,7 +77,7 @@ public abstract class TramoBD extends GenericoBD{
         {
             desconectarBD();
         }        
-        JOptionPane.showMessageDialog(null, tramo.toString());
+        //JOptionPane.showMessageDialog(null, tramo.toString());
         return tramo;
         
     }

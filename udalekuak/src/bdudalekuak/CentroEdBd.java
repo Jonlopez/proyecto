@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import uml.CentroEd;
 import umldirecciones.Provincia;
 
@@ -15,50 +16,42 @@ import umldirecciones.Provincia;
 public class CentroEdBd extends GenericoBd{
     private static ArrayList listadoCentros;
     private static CentroEd centro;
-    private static String plantilla;
-    private static PreparedStatement sentenciaCon;
-    private static ResultSet resultado;
     
 /**
  * Devuelve todos los centros de Álava 
  * o de fuera de esta
  */    
-    public static ArrayList<CentroEd> consultarCentrosAlava(int p)throws Exception{
+    public static ArrayList<CentroEd> consultarCentros(boolean alava){
          
         listadoCentros = new ArrayList();
-        conectarBD();
-            plantilla = "select id_centro, nombre_ced from centro_ed where cprov = ? ";
-            sentenciaCon.setInt(1, p);
-            resultado = sentenciaCon.executeQuery();            
-            while(resultado.next()){
-                centro = new CentroEd();
-                centro.setIdCentro(resultado.getInt("id_centro"));
-                centro.setNombreCtr(resultado.getString("nombre_ced"));
-            }
-            resultado.close();
+        String query;
+        try{
+            conectarBD();
+                if(alava)
+                    query = "select id_centro, nombre_ced from centro_ed where cpro = 01 ";
+                else
+                    query = "select id_centro, nombre_ced from centro_ed where cpro = 20 OR cpro = 48";
+                stmt = con.createStatement();
+                rs = stmt.executeQuery(query);
+                while(rs.next()){
+                    centro = new CentroEd();
+                    centro.setIdCentro(rs.getInt("id_centro"));
+                    centro.setNombreCtr(rs.getString("nombre_ced"));
+                    listadoCentros.add(centro);
+                }
+                rs.close();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Error en la consulta de centros --> " + e.getMessage());
+        }
+        finally
+        {
             desconectarBD();
-            
+        }           
         return listadoCentros;
     
     }
     
-    public static ArrayList<CentroEd> consultarCentrosFuera(int p, int pr)throws Exception{
-         
-        listadoCentros = new ArrayList();
-        conectarBD();
-            plantilla = "select id_centro, nombre_ced from centro_ed where cprov = (?,?) ";
-            sentenciaCon.setInt(1, p);
-            sentenciaCon.setInt(2, pr);
-            resultado = sentenciaCon.executeQuery();            
-            while(resultado.next()){
-                centro = new CentroEd();
-                centro.setIdCentro(resultado.getInt("id_centro"));
-                centro.setNombreCtr(resultado.getString("nombre_ced"));
-            }
-            resultado.close();
-            desconectarBD();
-            
-        return listadoCentros;
     
-    }
 }
