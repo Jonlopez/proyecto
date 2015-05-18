@@ -29,7 +29,8 @@ public class Formulario extends javax.swing.JDialog {
      */
     public Formulario(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
-        initComponents();this.setLocationRelativeTo(null);
+        initComponents();
+        this.setLocationRelativeTo(parent);
         this.setAutoRequestFocus(rootPaneCheckingEnabled);
         this.tfLocalidad.setEnabled(false);
         this.bBuscarLoc.setEnabled(false);
@@ -158,7 +159,6 @@ public class Formulario extends javax.swing.JDialog {
         jLabel8.setText("s/n = 0");
 
         jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel7.setForeground(java.awt.Color.black);
         jLabel7.setText("DIRECCIÓN");
 
         bAceptar.setText("Aceptar");
@@ -370,10 +370,16 @@ public class Formulario extends javax.swing.JDialog {
                 //si no salta la excepcion es porque la direccion ha sido verificada y es correcta
                 //procede a guardar los demas datos de direccion
                 Control.direccion.setPortal(Integer.parseInt(this.tfPortal.getText()));
+<<<<<<< HEAD
                 //Control.direccion.setLetra(this.tfLetra.getText().charAt(0));
+=======
+                Control.direccion.setLetra(this.tfLetra.getText());
+>>>>>>> temporal4
                 Control.direccion.setEscalera(this.tfEscalera.getText());
                 Control.direccion.setPiso(Integer.parseInt(this.tfPiso.getText()));
-                Control.direccion.setMano(this.tfMano.getText());            
+                Control.direccion.setMano(this.tfMano.getText());
+                Control.direccion.setCp(Integer.parseInt(this.ftfCP.getText()));
+                this.dispose();           
             }
             catch (NullPointerException e)
             {
@@ -393,9 +399,12 @@ public class Formulario extends javax.swing.JDialog {
             );
             */
         }
+<<<<<<< HEAD
         //JOptionPane.showMessageDialog(this, Control.direccion.toString());
         this.dispose();
         
+=======
+>>>>>>> temporal4
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed

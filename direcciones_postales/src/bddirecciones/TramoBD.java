@@ -81,6 +81,10 @@ public abstract class TramoBD extends GenericoBD{
         {
             desconectarBD();
         }        
+<<<<<<< HEAD
+=======
+        //JOptionPane.showMessageDialog(null, tramo.toString());
+>>>>>>> temporal4
         return tramo;
     }
     

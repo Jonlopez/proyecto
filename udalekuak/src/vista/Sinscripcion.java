@@ -5,6 +5,7 @@ import Excepciones.CampoVacio;
 import Excepciones.DniNoValido;
 import Excepciones.FechaNoValida;
 import Excepciones.TelefonoNoValido;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -25,10 +26,16 @@ public class Sinscripcion extends javax.swing.JDialog {
     private Inscripcion inscrip;
     private Solicitud sol;
     private CentroEd centro;
+<<<<<<< HEAD
     private String telf1; 
     private String telf2; 
     private String telf3; 
     private String telf4; 
+=======
+    private String telefonoCon;
+    private ArrayList<CentroEd>listadoCentros;
+     
+>>>>>>> temporal4
     
     /**
      * Creates new form Sinscripcion
@@ -43,7 +50,7 @@ public class Sinscripcion extends javax.swing.JDialog {
         setTitle("Solicitud de inscripción");
         contador = 1;
         sol = Control.creaSolicitud();
-        //deshabilitarTelefonos();
+        llenarCbCentros(Control.buscarCentrosCB(true));
     }
 
     /**
@@ -56,6 +63,8 @@ public class Sinscripcion extends javax.swing.JDialog {
     private void initComponents() {
 
         bgsexo = new javax.swing.ButtonGroup();
+        bgTelefonos = new javax.swing.ButtonGroup();
+        bgCentro = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -67,10 +76,6 @@ public class Sinscripcion extends javax.swing.JDialog {
         tfApelpT = new javax.swing.JTextField();
         tfApelsT = new javax.swing.JTextField();
         bDireccion = new javax.swing.JButton();
-        chbTelf1 = new java.awt.Checkbox();
-        chbTelf2 = new java.awt.Checkbox();
-        chbTelf3 = new java.awt.Checkbox();
-        chbTelf4 = new java.awt.Checkbox();
         jScrollPane1 = new javax.swing.JScrollPane();
         taDireccion = new javax.swing.JTextArea();
         ftfDniT = new javax.swing.JFormattedTextField();
@@ -80,6 +85,10 @@ public class Sinscripcion extends javax.swing.JDialog {
         tfTelf3 = new javax.swing.JTextField();
         tfTelf4 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
+        rbTelf4 = new javax.swing.JRadioButton();
+        rbTelf1 = new javax.swing.JRadioButton();
+        rbTelf2 = new javax.swing.JRadioButton();
+        rbTelf3 = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -95,12 +104,14 @@ public class Sinscripcion extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
         chbDiscapacidad = new javax.swing.JCheckBox();
         jLabel14 = new javax.swing.JLabel();
-        cbCentro = new javax.swing.JComboBox();
+        cbCentroEd = new javax.swing.JComboBox();
         ftfFechaNac = new javax.swing.JFormattedTextField();
         jLabel15 = new javax.swing.JLabel();
         ftfModelo = new javax.swing.JFormattedTextField();
         ftfDniM = new javax.swing.JFormattedTextField();
         jLabel16 = new javax.swing.JLabel();
+        rbAlava = new javax.swing.JRadioButton();
+        rbFuera = new javax.swing.JRadioButton();
         blimpiar = new javax.swing.JButton();
         bParticipante = new javax.swing.JButton();
         bFinalizar = new javax.swing.JButton();
@@ -137,7 +148,7 @@ public class Sinscripcion extends javax.swing.JDialog {
         jScrollPane1.setViewportView(taDireccion);
 
         try {
-            ftfDniT.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.##.###-U")));
+            ftfDniT.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-U")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -145,6 +156,14 @@ public class Sinscripcion extends javax.swing.JDialog {
         jLabel17.setText("Telefonos:");
 
         jLabel18.setText("importante: indica en la casilla cual es el telefono de localización en caso de urgencia.");
+
+        bgTelefonos.add(rbTelf4);
+
+        bgTelefonos.add(rbTelf1);
+
+        bgTelefonos.add(rbTelf2);
+
+        bgTelefonos.add(rbTelf3);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -154,13 +173,18 @@ public class Sinscripcion extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(bDireccion))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel17)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6)
+                                .addComponent(bDireccion)))
                         .addGap(34, 34, 34)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfApelpT)
@@ -168,78 +192,76 @@ public class Sinscripcion extends javax.swing.JDialog {
                             .addComponent(ftfDniT)
                             .addComponent(tfApelsT)
                             .addComponent(jScrollPane1)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(jLabel18)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addGap(29, 29, 29)
                                 .addComponent(tfTelf1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chbTelf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbTelf1)
+                                .addGap(19, 19, 19)
                                 .addComponent(tfTelf2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chbTelf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfTelf3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chbTelf3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(43, 43, 43)
+                                        .addComponent(tfTelf3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(rbTelf2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rbTelf3)
+                                .addGap(19, 19, 19)
                                 .addComponent(tfTelf4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chbTelf4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel18))
-                        .addGap(0, 10, Short.MAX_VALUE)))
+                                .addComponent(rbTelf4)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(ftfDniT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tfNombreT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfApelpT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(tfApelsT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(ftfDniT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(tfNombreT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
+                        .addComponent(bDireccion))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfTelf3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbTelf3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(rbTelf2, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfTelf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))
+                        .addComponent(tfTelf2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfApelpT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(tfApelsT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(bDireccion))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(tfTelf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel17))
-                            .addComponent(tfTelf2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chbTelf1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chbTelf2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfTelf3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chbTelf3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfTelf4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chbTelf4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(rbTelf1)
+                            .addComponent(tfTelf4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rbTelf4))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addGap(48, 48, 48))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -268,9 +290,8 @@ public class Sinscripcion extends javax.swing.JDialog {
 
         chbDiscapacidad.setText("Discapacidad");
 
+        jLabel14.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         jLabel14.setText("Centro de ensañanza");
-
-        cbCentro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         ftfFechaNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
@@ -291,6 +312,23 @@ public class Sinscripcion extends javax.swing.JDialog {
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel16.setText("(A-B-C)");
 
+        bgCentro.add(rbAlava);
+        rbAlava.setSelected(true);
+        rbAlava.setText("Alava");
+        rbAlava.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbAlavaActionPerformed(evt);
+            }
+        });
+
+        bgCentro.add(rbFuera);
+        rbFuera.setText("Fuera de Alava");
+        rbFuera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbFueraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -298,7 +336,6 @@ public class Sinscripcion extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -310,8 +347,7 @@ public class Sinscripcion extends javax.swing.JDialog {
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel13)
                                     .addComponent(chbDiscapacidad)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel15)))
+                                    .addComponent(jLabel14)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
                                 .addComponent(jLabel12)))
@@ -320,7 +356,6 @@ public class Sinscripcion extends javax.swing.JDialog {
                             .addComponent(tfNombreM)
                             .addComponent(tfApelpM)
                             .addComponent(tfApelsM)
-                            .addComponent(cbCentro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ftfDniM)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,13 +363,29 @@ public class Sinscripcion extends javax.swing.JDialog {
                                         .addComponent(rbHombre)
                                         .addGap(38, 38, 38)
                                         .addComponent(rbMujer))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(ftfModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel16))
                                     .addComponent(ftfFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbAlava)
+                    .addComponent(jLabel15))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(ftfModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel16))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(rbFuera)
+                        .addGap(28, 28, 28)
+                        .addComponent(cbCentroEd, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(114, 114, 114))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,16 +419,19 @@ public class Sinscripcion extends javax.swing.JDialog {
                     .addComponent(ftfFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chbDiscapacidad)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel14)
+                .addGap(3, 3, 3)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(cbCentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rbAlava)
+                    .addComponent(rbFuera)
+                    .addComponent(cbCentroEd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(ftfModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         blimpiar.setText("Limpiar Datos");
@@ -415,33 +469,35 @@ public class Sinscripcion extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(255, Short.MAX_VALUE)
+                        .addContainerGap(306, Short.MAX_VALUE)
                         .addComponent(bParticipante)
                         .addGap(18, 18, 18)
                         .addComponent(bFinalizar)
                         .addGap(52, 52, 52)
                         .addComponent(bCancelar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(blimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(blimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(blimpiar))
-                .addGap(23, 23, 23)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(blimpiar)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bFinalizar)
@@ -463,12 +519,36 @@ public class Sinscripcion extends javax.swing.JDialog {
  * Consulta de dirección en la Base de Datos
  * @param evt 
  */
+<<<<<<< HEAD
     private void bDireccionActionPerformed(java.awt.event.ActionEvent evt) {                                           
         //direccion = controldirecciones.Control.creaDireccion();
         direccion = controldirecciones.Control.eligeDireccion(this, true, direccion);
          //Esta linea es para comprobar el objeto direccion que devuelve
         javax.swing.JOptionPane.showMessageDialog(this, direccion.toString());       
     }                                          
+=======
+    private void bDireccionActionPerformed(java.awt.event.ActionEvent evt)
+    {                                           
+        direccion = controldirecciones.Control.devuelveDireccion(this, true);
+        if(direccion!=null)
+        {
+            taDireccion.setText(direccion.toString());
+        }
+        //Esta linea es para comprobar el objeto direccion que devuelve
+        //javax.swing.JOptionPane.showMessageDialog(null, direccion.toString());       
+    }  
+    
+    private void telefonoDeContacto (){
+       if(bgTelefonos.getSelection()== rbTelf1)
+           telefonoCon = tfTelf1.getText();
+       else if(bgTelefonos.getSelection()== rbTelf2)
+                telefonoCon = tfTelf2.getText();
+            else if(bgTelefonos.getSelection()== rbTelf3)
+                      telefonoCon = tfTelf3.getText();
+                else if(bgTelefonos.getSelection()== rbTelf4)
+                          telefonoCon = tfTelf4.getText();
+    }
+>>>>>>> temporal4
 
 
 /**
@@ -482,11 +562,7 @@ public class Sinscripcion extends javax.swing.JDialog {
         limpiar();    
         //comprueba cuantas inscripciones hay ya en la solicitud
         //cuando hay dos inscripciones deshabilita el boton anadir participante
-        compruebaCantidadInscripciones();    
-        
-              
-        
-            
+        compruebaCantidadInscripciones(); 
     }//GEN-LAST:event_bParticipanteActionPerformed
     /**
      * Guarda los datos en un objeto inscripcion para poder pasar a la siguiente si la hubiese
@@ -549,7 +625,8 @@ public class Sinscripcion extends javax.swing.JDialog {
             inscrip.setTelf4(tfTelf4.getText());
             
             //anade anadir telefono de contacto
-            
+            telefonoDeContacto();
+            inscrip.setTelf_contacto(telefonoCon);
             //inscripcion ya esta completa
         }
         
@@ -605,6 +682,18 @@ public class Sinscripcion extends javax.swing.JDialog {
  
 //GEN-LAST:event_bDireccionActionPerformed
 
+    private void rbFueraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFueraActionPerformed
+         
+            llenarCbCentros(Control.buscarCentrosCB(false));            
+        
+    }//GEN-LAST:event_rbFueraActionPerformed
+
+    private void rbAlavaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAlavaActionPerformed
+          
+            llenarCbCentros(Control.buscarCentrosCB(true));            
+        
+    }//GEN-LAST:event_rbAlavaActionPerformed
+
 /**
  * Se pide confirmación para conservar los datos del tutor
  * o borrarlos
@@ -642,23 +731,6 @@ public class Sinscripcion extends javax.swing.JDialog {
         tfApelsT.setText(null);
         ftfDniT.setText(null);        
     }
-    
-    
-/**
- * Deshabilita los campos de telefono menos el primero
- * y quita el tic del checkbox
- */    
-    private void deshabilitarTelefonos(){
-        chbTelf1.setEnabled(true);
-        chbTelf2.setEnabled(false);
-        chbTelf3.setEnabled(false);
-        chbTelf4.setEnabled(false);
-        chbTelf1.setState(false);
-        chbTelf2.setState(false);
-        chbTelf3.setState(false);
-        chbTelf4.setState(false);
-    }
-    
     /**
      * Valida los datos del formulario antes de proceder a guardar los datos
      */
@@ -767,7 +839,7 @@ public class Sinscripcion extends javax.swing.JDialog {
     }
     
     private void validarCentro() throws Exception{
-        if (cbCentro.getIgnoreRepaint())
+        if (cbCentroEd.getIgnoreRepaint())
                 throw new CampoVacio("FechaN");
     }
     
@@ -786,6 +858,18 @@ public class Sinscripcion extends javax.swing.JDialog {
         }            
         else contador =  contador+1;
     }
+    
+  
+    private void llenarCbCentros(ArrayList<CentroEd> listado)
+    {
+        cbCentroEd.removeAllItems();
+        for (int i = 0; i < listado.size(); i++)
+        {
+            this.cbCentroEd.addItem(listado.get(i).getNombreCtr());          
+        }
+    }
+    
+ 
     /**
      * @param args the command line arguments
      */
@@ -833,14 +917,12 @@ public class Sinscripcion extends javax.swing.JDialog {
     private javax.swing.JButton bDireccion;
     private javax.swing.JButton bFinalizar;
     private javax.swing.JButton bParticipante;
+    private javax.swing.ButtonGroup bgCentro;
+    private javax.swing.ButtonGroup bgTelefonos;
     private javax.swing.ButtonGroup bgsexo;
     private javax.swing.JButton blimpiar;
-    private javax.swing.JComboBox cbCentro;
+    private javax.swing.JComboBox cbCentroEd;
     private javax.swing.JCheckBox chbDiscapacidad;
-    private java.awt.Checkbox chbTelf1;
-    private java.awt.Checkbox chbTelf2;
-    private java.awt.Checkbox chbTelf3;
-    private java.awt.Checkbox chbTelf4;
     private javax.swing.JFormattedTextField ftfDniM;
     private javax.swing.JFormattedTextField ftfDniT;
     private javax.swing.JFormattedTextField ftfFechaNac;
@@ -866,8 +948,14 @@ public class Sinscripcion extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rbAlava;
+    private javax.swing.JRadioButton rbFuera;
     private javax.swing.JRadioButton rbHombre;
     private javax.swing.JRadioButton rbMujer;
+    private javax.swing.JRadioButton rbTelf1;
+    private javax.swing.JRadioButton rbTelf2;
+    private javax.swing.JRadioButton rbTelf3;
+    private javax.swing.JRadioButton rbTelf4;
     private javax.swing.JTextArea taDireccion;
     private javax.swing.JTextField tfApelpM;
     private javax.swing.JTextField tfApelpT;

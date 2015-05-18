@@ -18,6 +18,8 @@ import uml.Solicitud;
 import uml.Tutor;
 import uml.Usuario;
 import bddirecciones.DireccionBD;
+import bdudalekuak.CentroEdBd;
+import uml.CentroEd;
 
 /**
  *
@@ -31,6 +33,7 @@ public class Control {
     private static Solicitud solicitud;
     public static Inscripcion inscripcion;
     private static Usuario usuario;
+    private static ArrayList<CentroEd>listadoCentros;
     
     public static void main(String[] args) {
         //ordena a control vistas que inicie la parte grafica
@@ -86,10 +89,11 @@ public class Control {
  * en Álava o false para los que esten fuera de esta
  * @return 
  */    
-    public static boolean obtenerCentros(){
-        return true;
+    public static ArrayList<CentroEd> buscarCentrosCB(boolean alava)
+    {        
+        return CentroEdBd.consultarCentros(alava);
     }
-
+   
  /**
  * Creamos un objeto solicitud al que le asignamos un nº
  * identificador 

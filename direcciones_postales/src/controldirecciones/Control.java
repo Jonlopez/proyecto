@@ -48,7 +48,11 @@ public class Control {
      * @param valor
      * @return 
      */
+<<<<<<< HEAD
     public static Direccion eligeDireccion(javax.swing.JDialog padre, boolean valor,Direccion d)
+=======
+    public static Direccion devuelveDireccion(javax.swing.JDialog padre, boolean valor)
+>>>>>>> temporal4
     {
         direccion = d;//este objeto direccion tiene la misma referencia que el que nos pasan como parametro
         direccion = new Direccion();
@@ -56,11 +60,14 @@ public class Control {
         cargaProvincias();
         form.setVisible(true);
         return direccion;
+<<<<<<< HEAD
     }
     
     public static Direccion creaDireccion()
     {
         return new Direccion();
+=======
+>>>>>>> temporal4
     }
     
     
