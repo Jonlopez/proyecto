@@ -25,10 +25,10 @@ public class Sinscripcion extends javax.swing.JDialog {
     private Inscripcion inscrip;
     private Solicitud sol;
     private CentroEd centro;
-    //private String telf1; 
-    //private String telf2; 
-    //private String telf3; 
-    //private String telf4; 
+    private String telf1; 
+    private String telf2; 
+    private String telf3; 
+    private String telf4; 
     
     /**
      * Creates new form Sinscripcion
@@ -464,10 +464,10 @@ public class Sinscripcion extends javax.swing.JDialog {
  * @param evt 
  */
     private void bDireccionActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        controldirecciones.Control.devuelveDireccion(this, true);
+        //direccion = controldirecciones.Control.creaDireccion();
+        direccion = controldirecciones.Control.eligeDireccion(this, true, direccion);
          //Esta linea es para comprobar el objeto direccion que devuelve
-        //javax.swing.JOptionPane.showMessageDialog(null, direccion.toString());
-       
+        javax.swing.JOptionPane.showMessageDialog(this, direccion.toString());       
     }                                          
 
 

@@ -31,7 +31,7 @@ public class Control {
 
     public static void main(String[] args) {
     
-        direccion = new Direccion();
+        //direccion = new Direccion(); habilitar para uso independiente
         form = new vistadirecciones.Formulario(null, true);
         cargaProvincias();
         form.setVisible(true);
@@ -48,13 +48,19 @@ public class Control {
      * @param valor
      * @return 
      */
-    public static void devuelveDireccion(javax.swing.JDialog padre, boolean valor)
+    public static Direccion eligeDireccion(javax.swing.JDialog padre, boolean valor,Direccion d)
     {
+        direccion = d;//este objeto direccion tiene la misma referencia que el que nos pasan como parametro
         direccion = new Direccion();
         form = new vistadirecciones.Formulario(padre, valor);
         cargaProvincias();
         form.setVisible(true);
-        //return direccion;
+        return direccion;
+    }
+    
+    public static Direccion creaDireccion()
+    {
+        return new Direccion();
     }
     
     
@@ -136,7 +142,7 @@ public class Control {
             //si es impar pone la variable tinum a 1
             tinum = 1;
         
-        direccion.setTramo(Tramo.getTramos
+        return Tramo.getTramos
         (
                 direccion.getProvincia().getCpro(),
                 direccion.getMunicipio().getCmun(),
@@ -144,9 +150,9 @@ public class Control {
                 cpos,
                 tinum,
                 portal                
-        ));
+        );
         
-        return direccion.getTramo();
+        //return direccion.getTramo();
     }
     
 }//END CLASS
