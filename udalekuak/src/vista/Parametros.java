@@ -13,6 +13,8 @@ public class Parametros extends javax.swing.JDialog {
     public Parametros(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(parent);
+        setTitle("Configuración de parámetros");
     }
 
     /**

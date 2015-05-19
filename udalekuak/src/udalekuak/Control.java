@@ -46,13 +46,12 @@ public class Control {
  * @param pass
  * @param d 
  */    
-    public static void logIn(String user, String pass, JDialog d)throws Exception{        
+    public static void logIn(String user, String pass, JDialog d){        
         usuario = new Usuario(user, pass);
-        usuario = UsuarioBd.consultarUsuario(usuario);
-        if(usuario == null)
-            throw new NullPointerException();   
-        
-        ControlVistas.habilitarAdmin(usuario,d); 
+        if(UsuarioBd.consultarUsuario(usuario))       
+            ControlVistas.habilitarAdmin(usuario,d);
+        else 
+            JOptionPane.showMessageDialog(d, "combinacion usuario, contraseña no valida");
     }
 /**
  * Devuelve las fechas de la configuración de la aplicación

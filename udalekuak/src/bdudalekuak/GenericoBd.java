@@ -14,8 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class GenericoBd {
     private static final String BD       = "orcl";
-    private static final String URL      = "jdbc:oracle:thin:@192.168.56.102:1521:" + BD; //maquina de Javi
-    //private static final String URL      = "jdbc:oracle:thin:@192.168.2.2:1521:" + BD; //maquina de Jon
+    //private static final String URL      = "jdbc:oracle:thin:@192.168.56.102:1521:" + BD; //maquina de Javi
+    private static final String URL      = "jdbc:oracle:thin:@192.168.2.2:1521:" + BD; //maquina de Jon
     private static final String USER     = "JAVI";
     private static final String PASSWORD = "javi";    
     
@@ -32,7 +32,7 @@ public class GenericoBd {
             Class.forName("oracle.jdbc.OracleDriver");
             con = DriverManager.getConnection(URL, USER, PASSWORD);
             //if(con!=null)
-            //    JOptionPane.showMessageDialog(null, "Conexion exitosa!");
+              // JOptionPane.showMessageDialog(null, "Conexion exitosa!");
         }
         catch(Exception e)
         {

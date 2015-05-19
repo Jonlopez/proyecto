@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import uml.Usuario;
 
 /**
@@ -24,21 +25,27 @@ public class UsuarioBd extends GenericoBd{
  * @return
  * @throws Exception 
  */    
-    public static Usuario consultarUsuario(Usuario user)throws Exception{
-        
-        conectarBD();
-        plantilla = "select nombre from usuario where nombre = ?";
+    public static boolean consultarUsuario(Usuario user){
+        boolean existe = false;
+        try{
+           conectarBD();
+        plantilla = "select nombre from usuario where nombre = ? and contrasenna = ?";
         sentenciaCon = getCon().prepareStatement(plantilla);
         sentenciaCon.setString(1, user.getNombre());
+        sentenciaCon.setString(2, user.getContrasenna());
         resultado = sentenciaCon.executeQuery();
         if(resultado.next()){
-            usuario = new Usuario();
-            usuario.setNombre(resultado.getString("nombre"));
+            existe = true;
         }
         else
-            usuario = null;
+            existe = false;
         resultado.close();
-        desconectarBD();
-        return usuario;
+        desconectarBD(); 
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error " + ex.getMessage());
+        }
+        
+        return existe;
     }
 }

@@ -112,12 +112,9 @@ public class Admin extends javax.swing.JDialog {
  * @param evt 
  */
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-       try{
+       
            udalekuak.Control.logIn(tfUser.getText(),tfpass.getText(),this);
-       }
-         catch(Exception e){
-             ControlVistas.enviarMensaje("Erro de login");
-         }              
+                 
     }//GEN-LAST:event_bAceptarActionPerformed
 /**
  * Se cancela el LogIn

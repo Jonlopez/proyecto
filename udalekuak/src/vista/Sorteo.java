@@ -13,6 +13,8 @@ public class Sorteo extends javax.swing.JDialog {
     public Sorteo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+         setLocationRelativeTo(parent);
+        setTitle("Realizar sorteo");
     }
 
     /**
@@ -54,6 +56,12 @@ public class Sorteo extends javax.swing.JDialog {
         });
 
         jLabel1.setText("DATOS DEL SORTEO");
+
+        tfFechaInicio.setEnabled(false);
+
+        tfFechaFin.setEnabled(false);
+
+        tfFechaSorteo.setEnabled(false);
 
         jLabel2.setText("Fecha inicio inscripciones");
 
