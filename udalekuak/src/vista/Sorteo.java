@@ -57,6 +57,12 @@ public class Sorteo extends javax.swing.JDialog {
 
         jLabel1.setText("DATOS DEL SORTEO");
 
+        tfFechaInicio.setEnabled(false);
+
+        tfFechaFin.setEnabled(false);
+
+        tfFechaSorteo.setEnabled(false);
+
         jLabel2.setText("Fecha inicio inscripciones");
 
         jLabel3.setText("Fecha fin inscripciones");
