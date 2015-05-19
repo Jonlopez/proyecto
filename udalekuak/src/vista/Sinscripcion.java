@@ -689,11 +689,11 @@ public class Sinscripcion extends javax.swing.JDialog {
             validarDni(dniM);
             validarString();            
             validarTelefono(tC);
-            if(t2=="")
+            if(!t2.equals(""))
             validarTelefono(t2);
-            if(t3=="")
+            if(!t3.equals(""))
             validarTelefono(t3);
-            if(t4=="")
+            if(!t4.equals(""))
             validarTelefono(t4);
             validarSexo();
             validarFechaN();
