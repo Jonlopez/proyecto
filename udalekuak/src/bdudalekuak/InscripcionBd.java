@@ -17,7 +17,7 @@ public class InscripcionBd extends GenericoBd{
  */    
     public static void insertarInscripcion(Inscripcion i){
         
-        String query = "INSERT INTO inscripcion VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO inscripcion VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         try
         {
@@ -33,7 +33,6 @@ public class InscripcionBd extends GenericoBd{
             pstmt.setString(7, i.getTelf2());
             pstmt.setString(8, i.getTelf3());
             pstmt.setString(9, i.getTelf4());
-            pstmt.setString(10, i.getTelf_contacto());
             
             pstmt.executeUpdate();             
             desconectarBD();

@@ -4,6 +4,7 @@ package vista;
 import Excepciones.CampoVacio;
 import Excepciones.DniNoValido;
 import Excepciones.FechaNoValida;
+import Excepciones.ModeloNoValido;
 import Excepciones.TelefonoNoValido;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -26,8 +27,6 @@ public class Sinscripcion extends javax.swing.JDialog {
     private Inscripcion inscrip;
     private Solicitud sol;
     private CentroEd centro;
-    private String telefonoCon;
-    private ArrayList<CentroEd>listadoCentros;
      
     
     /**
@@ -72,16 +71,14 @@ public class Sinscripcion extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         taDireccion = new javax.swing.JTextArea();
         ftfDniT = new javax.swing.JFormattedTextField();
-        tfTelf1 = new javax.swing.JTextField();
+        tfTelfContacto = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         tfTelf2 = new javax.swing.JTextField();
         tfTelf3 = new javax.swing.JTextField();
         tfTelf4 = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        rbTelf4 = new javax.swing.JRadioButton();
-        rbTelf1 = new javax.swing.JRadioButton();
-        rbTelf2 = new javax.swing.JRadioButton();
-        rbTelf3 = new javax.swing.JRadioButton();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -146,17 +143,13 @@ public class Sinscripcion extends javax.swing.JDialog {
             ex.printStackTrace();
         }
 
-        jLabel17.setText("Telefonos:");
+        jLabel17.setText("Teléfono Pricipal");
 
-        jLabel18.setText("importante: indica en la casilla cual es el telefono de localización en caso de urgencia.");
+        jLabel19.setText("otros teléfonos");
 
-        bgTelefonos.add(rbTelf4);
+        jLabel20.setText("teléfono de localización en caso de urgendia (OBLICGATORIO)");
 
-        bgTelefonos.add(rbTelf1);
-
-        bgTelefonos.add(rbTelf2);
-
-        bgTelefonos.add(rbTelf3);
+        jLabel21.setText("(opcionales)");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -170,43 +163,35 @@ public class Sinscripcion extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(bDireccion)
                             .addComponent(jLabel17)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel6)
-                                .addComponent(bDireccion)))
+                            .addComponent(jLabel19))
                         .addGap(34, 34, 34)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfTelfContacto, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                                    .addComponent(tfTelf2))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(tfTelf3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tfTelf4, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel21))
+                                    .addComponent(jLabel20))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(tfApelpT)
                             .addComponent(tfNombreT)
                             .addComponent(ftfDniT)
-                            .addComponent(tfApelsT)
-                            .addComponent(jScrollPane1)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(tfTelf1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbTelf1)
-                                .addGap(19, 19, 19)
-                                .addComponent(tfTelf2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(43, 43, 43)
-                                        .addComponent(tfTelf3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(rbTelf2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rbTelf3)
-                                .addGap(19, 19, 19)
-                                .addComponent(tfTelf4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbTelf4)))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+                            .addComponent(tfApelsT))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -229,32 +214,23 @@ public class Sinscripcion extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(tfApelsT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(bDireccion))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfTelf3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbTelf3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(rbTelf2, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfTelf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17))
-                        .addComponent(tfTelf2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbTelf1)
-                            .addComponent(tfTelf4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rbTelf4))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                    .addComponent(bDireccion)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfTelfContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel20))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfTelf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19)
+                    .addComponent(tfTelf3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfTelf4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21))
+                .addContainerGap())
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -286,7 +262,11 @@ public class Sinscripcion extends javax.swing.JDialog {
         jLabel14.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         jLabel14.setText("Centro de ensañanza");
 
-        ftfFechaNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        try {
+            ftfFechaNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         jLabel15.setText("Modelo");
 
@@ -297,7 +277,7 @@ public class Sinscripcion extends javax.swing.JDialog {
         }
 
         try {
-            ftfDniM.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.##.###-U")));
+            ftfDniM.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-U")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -523,18 +503,6 @@ public class Sinscripcion extends javax.swing.JDialog {
         //javax.swing.JOptionPane.showMessageDialog(null, direccion.toString());       
     }  
     
-    private void telefonoDeContacto (){
-       if(bgTelefonos.getSelection()== rbTelf1)
-           telefonoCon = tfTelf1.getText();
-       else if(bgTelefonos.getSelection()== rbTelf2)
-                telefonoCon = tfTelf2.getText();
-            else if(bgTelefonos.getSelection()== rbTelf3)
-                      telefonoCon = tfTelf3.getText();
-                else if(bgTelefonos.getSelection()== rbTelf4)
-                          telefonoCon = tfTelf4.getText();
-    }
-
-
 /**
  * Se añade un nuevo participante a la solictud
  * @param evt 
@@ -554,7 +522,7 @@ public class Sinscripcion extends javax.swing.JDialog {
     private void guardaDatosInscripcion()
     {
         //valida los datos del formulario 
-        if(validaDatos())
+        if(validaDatos(ftfDniM.getText(),ftfDniT.getText(),tfTelfContacto.getText(),tfTelf2.getText(),tfTelf3.getText(),tfTelf4.getText()))
         {   
             //Si es correcto procede a guardar datos
             //crea inscripcion
@@ -603,14 +571,10 @@ public class Sinscripcion extends javax.swing.JDialog {
                     centro                
             );
             //anade los telefonos
-            inscrip.setTelf1(tfTelf1.getText());
+            inscrip.setTelf1(tfTelfContacto.getText());
             inscrip.setTelf2(tfTelf2.getText());
             inscrip.setTelf3(tfTelf3.getText());
             inscrip.setTelf4(tfTelf4.getText());
-            
-            //anade anadir telefono de contacto
-            telefonoDeContacto();
-            inscrip.setTelf_contacto(telefonoCon);
             //inscripcion ya esta completa
         }
         
@@ -718,12 +682,19 @@ public class Sinscripcion extends javax.swing.JDialog {
     /**
      * Valida los datos del formulario antes de proceder a guardar los datos
      */
-    private boolean validaDatos(){
+    private boolean validaDatos(String dniT, String dniM, String tC, String t2, String t3, String t4){
         try{
-            validarDniT();
-            validarDniM();
+            
+            validarDni(dniT);             
+            validarDni(dniM);
             validarString();            
-            validarTelefono();
+            validarTelefono(tC);
+            if(t2=="")
+            validarTelefono(t2);
+            if(t3=="")
+            validarTelefono(t3);
+            if(t4=="")
+            validarTelefono(t4);
             validarSexo();
             validarFechaN();
             validarDiscapacidad();
@@ -737,15 +708,19 @@ public class Sinscripcion extends javax.swing.JDialog {
             return false;
         }
         catch (DniNoValido e) {
-            JOptionPane.showMessageDialog(this,"El dni no es correcto");
+            JOptionPane.showMessageDialog(this,"El dni no es correcto tiene que tener este fotmato ##.###.###-U");
             return false;
         }
         catch(TelefonoNoValido e){
-            JOptionPane.showMessageDialog(this,"El telefono no es correcto");
+            JOptionPane.showMessageDialog(this,"El telefono no es correcto ");
             return false;
         }
         catch(FechaNoValida e){
             JOptionPane.showMessageDialog(this,"La fecha de nacimiento no es correcta");
+            return false;
+        }
+        catch(ModeloNoValido e){
+            JOptionPane.showMessageDialog(this,"El modelo solo puede ser A,B ó C escrito en mayusculas");
             return false;
         }
         catch (Exception e) {
@@ -757,31 +732,20 @@ public class Sinscripcion extends javax.swing.JDialog {
  * Diferentes validaciones
  * @throws Exception 
  */    
-    private void validarDniT() throws Exception{
-        if (ftfDniT.getValue()== null)
-                throw new CampoVacio("Dni");
+    private void validarDni(String ftfdni) throws Exception{        
         String juegoCaracteres="TRWAGMYFPDXBNJZSQVHLCKET";
-        String dni = ftfDniT.getText().substring(0, 2);
-        dni += ftfDniT.getText().substring(3, 6);
-        dni += ftfDniT.getText().substring(7, 10);
+        String dni = ftfdni.substring(0, 2);
+        dni += ftfdni.substring(3, 6);
+        dni += ftfdni.substring(7, 10);
         int modulo= Integer.parseInt(dni) % 23;
         char letra = juegoCaracteres.charAt(modulo);
-        if (ftfDniT.getText().charAt(11)!= letra)
+        if (ftfdni.charAt(11)!= letra)
                 throw new DniNoValido();
     }
     
-    private void validarDniM() throws Exception{        
-        String juegoCaracteres="TRWAGMYFPDXBNJZSQVHLCKET";
-        String dni = ftfDniM.getText().substring(0, 2);
-        dni += ftfDniM.getText().substring(3, 6);
-        dni += ftfDniM.getText().substring(7, 10);
-        int modulo= Integer.parseInt(dni) % 23;
-        char letra = juegoCaracteres.charAt(modulo);
-        if (ftfDniM.getText().charAt(11)!= letra)
-                throw new DniNoValido();
-    } 
-    
     private void validarString() throws Exception{
+        if (ftfDniT.getValue()== null)
+                throw new CampoVacio("Dni");
         if (tfNombreM.getText().isEmpty())
                 throw new CampoVacio("Nombre");
         if (tfNombreT.getText().isEmpty())
@@ -796,13 +760,13 @@ public class Sinscripcion extends javax.swing.JDialog {
                 throw new CampoVacio("Apellido");
         if (taDireccion.getText().isEmpty())
                 throw new CampoVacio("Direccion");
-        if (tfTelf1.getText().isEmpty())
+        if (tfTelfContacto.getText().isEmpty())
                 throw new CampoVacio("Telefono");
     }
     
-    private void validarTelefono() throws Exception{
-        Pattern pat = Pattern.compile("^[6,7,8,9]{1}[0-9]{8}$");
-        Matcher mat = pat.matcher(tfTelf1.getText());
+    private void validarTelefono(String telf) throws Exception{
+        Pattern pat = Pattern.compile("^[6,7,8]{1}([0-9]{8}||[0-9]{12})$");
+        Matcher mat = pat.matcher(telf);
         if (mat.matches()==false) 
            throw new TelefonoNoValido();
     }
@@ -824,12 +788,16 @@ public class Sinscripcion extends javax.swing.JDialog {
     
     private void validarCentro() throws Exception{
         if (cbCentroEd.getIgnoreRepaint())
-                throw new CampoVacio("FechaN");
+                throw new CampoVacio("Centro");
     }
     
     private void validarModelo() throws Exception{
         if (ftfModelo.getValue()== null)
                 throw new CampoVacio("Modelo");
+        Pattern pat = Pattern.compile("^[ABC]{1}$");
+        Matcher mat = pat.matcher(ftfModelo.getText());
+        if (mat.matches()==false) 
+           throw new ModeloNoValido();
     }
 
 /**
@@ -920,8 +888,10 @@ public class Sinscripcion extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -936,10 +906,6 @@ public class Sinscripcion extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbFuera;
     private javax.swing.JRadioButton rbHombre;
     private javax.swing.JRadioButton rbMujer;
-    private javax.swing.JRadioButton rbTelf1;
-    private javax.swing.JRadioButton rbTelf2;
-    private javax.swing.JRadioButton rbTelf3;
-    private javax.swing.JRadioButton rbTelf4;
     private javax.swing.JTextArea taDireccion;
     private javax.swing.JTextField tfApelpM;
     private javax.swing.JTextField tfApelpT;
@@ -947,9 +913,9 @@ public class Sinscripcion extends javax.swing.JDialog {
     private javax.swing.JTextField tfApelsT;
     private javax.swing.JTextField tfNombreM;
     private javax.swing.JTextField tfNombreT;
-    private javax.swing.JTextField tfTelf1;
     private javax.swing.JTextField tfTelf2;
     private javax.swing.JTextField tfTelf3;
     private javax.swing.JTextField tfTelf4;
+    private javax.swing.JTextField tfTelfContacto;
     // End of variables declaration//GEN-END:variables
 }
