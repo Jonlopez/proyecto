@@ -43,7 +43,7 @@ public class Sinscripcion extends javax.swing.JDialog {
         setTitle("Solicitud de inscripción");
         contador = 1;
         sol = Control.creaSolicitud();
-        buscarCentrosEdCB();
+        llenarCbCentros(Control.buscarCentrosCB(true));
     }
 
     /**
@@ -141,7 +141,7 @@ public class Sinscripcion extends javax.swing.JDialog {
         jScrollPane1.setViewportView(taDireccion);
 
         try {
-            ftfDniT.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.##.###-U")));
+            ftfDniT.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-U")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -512,11 +512,15 @@ public class Sinscripcion extends javax.swing.JDialog {
  * Consulta de dirección en la Base de Datos
  * @param evt 
  */
-    private void bDireccionActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        controldirecciones.Control.devuelveDireccion(this, true);
-         //Esta linea es para comprobar el objeto direccion que devuelve
-        //javax.swing.JOptionPane.showMessageDialog(null, direccion.toString());
-       
+    private void bDireccionActionPerformed(java.awt.event.ActionEvent evt)
+    {                                           
+        direccion = controldirecciones.Control.devuelveDireccion(this, true);
+        if(direccion!=null)
+        {
+            taDireccion.setText(direccion.toString());
+        }
+        //Esta linea es para comprobar el objeto direccion que devuelve
+        //javax.swing.JOptionPane.showMessageDialog(null, direccion.toString());       
     }  
     
     private void telefonoDeContacto (){
@@ -663,11 +667,15 @@ public class Sinscripcion extends javax.swing.JDialog {
 //GEN-LAST:event_bDireccionActionPerformed
 
     private void rbFueraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFueraActionPerformed
-        llenarCbCentrosFuera();
+         
+            llenarCbCentros(Control.buscarCentrosCB(false));            
+        
     }//GEN-LAST:event_rbFueraActionPerformed
 
     private void rbAlavaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAlavaActionPerformed
-        llenarCbCentrosAlava();
+          
+            llenarCbCentros(Control.buscarCentrosCB(true));            
+        
     }//GEN-LAST:event_rbAlavaActionPerformed
 
 /**
@@ -835,35 +843,17 @@ public class Sinscripcion extends javax.swing.JDialog {
         else contador =  contador+1;
     }
     
-    private void buscarCentrosEdCB(){
-        if(rbAlava.isSelected())
-            llenarCbCentrosAlava();
-        else llenarCbCentrosFuera();
-    }
-    
-    private void llenarCbCentrosAlava(){
-        try{
-            listadoCentros = Control.buscarCentrosCB(01);
-            for (int i = 0; i < listadoCentros.size(); i++) {
-                cbCentroEd.addItem(listadoCentros.get(i).getNombreCtr());                
-            }
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(this, "error al buscar los centros");
+  
+    private void llenarCbCentros(ArrayList<CentroEd> listado)
+    {
+        cbCentroEd.removeAllItems();
+        for (int i = 0; i < listado.size(); i++)
+        {
+            this.cbCentroEd.addItem(listado.get(i).getNombreCtr());          
         }
     }
     
-    private void llenarCbCentrosFuera(){
-        try{
-            listadoCentros = Control.buscarCentrosCB(20,48);
-            for (int i = 0; i < listadoCentros.size(); i++) {
-                cbCentroEd.addItem(listadoCentros.get(i).getNombreCtr());                
-            }
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(this, "error al buscar los centros");
-        }
-    }
+ 
     /**
      * @param args the command line arguments
      */

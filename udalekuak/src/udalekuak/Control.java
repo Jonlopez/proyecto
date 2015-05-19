@@ -89,26 +89,11 @@ public class Control {
  * en Álava o false para los que esten fuera de esta
  * @return 
  */    
-    public static ArrayList<CentroEd> buscarCentrosCB(int p) throws Exception{
-        listadoCentros = new ArrayList();        
-        listadoCentros = CentroEdBd.consultarCentrosAlava(p);
-        
-        if(listadoCentros == null)
-            throw new NullPointerException();
-        
-        return listadoCentros;
+    public static ArrayList<CentroEd> buscarCentrosCB(boolean alava)
+    {        
+        return CentroEdBd.consultarCentros(alava);
     }
-    
-    public static ArrayList<CentroEd> buscarCentrosCB(int p, int pr) throws Exception{
-        listadoCentros = new ArrayList();        
-        listadoCentros = CentroEdBd.consultarCentrosFuera(p, pr);
-        
-        if(listadoCentros == null)
-            throw new NullPointerException();
-        
-        return listadoCentros;
-    }
-
+   
  /**
  * Creamos un objeto solicitud al que le asignamos un nº
  * identificador 

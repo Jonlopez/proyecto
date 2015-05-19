@@ -27,9 +27,10 @@ public class UsuarioBd extends GenericoBd{
     public static Usuario consultarUsuario(Usuario user)throws Exception{
         
         conectarBD();
-        plantilla = "select nombre from usuario where nombre = ?";
+        plantilla = "select nombre from usuario where nombre = ? and contrasenna = ?";
         sentenciaCon = getCon().prepareStatement(plantilla);
         sentenciaCon.setString(1, user.getNombre());
+        sentenciaCon.setString(2, user.getContrasenna());
         resultado = sentenciaCon.executeQuery();
         if(resultado.next()){
             usuario = new Usuario();

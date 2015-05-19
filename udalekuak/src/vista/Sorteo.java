@@ -13,6 +13,8 @@ public class Sorteo extends javax.swing.JDialog {
     public Sorteo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+         setLocationRelativeTo(parent);
+        setTitle("Realizar sorteo");
     }
 
     /**
