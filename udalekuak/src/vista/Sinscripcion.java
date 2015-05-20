@@ -708,19 +708,19 @@ public class Sinscripcion extends javax.swing.JDialog {
             return false;
         }
         catch (DniNoValido e) {
-            JOptionPane.showMessageDialog(this,"El dni no es correcto tiene que tener este fotmato ##.###.###-U");
+            JOptionPane.showMessageDialog(this,"El dni no es correcto tiene que tener este fotmato ##.###.###-U"+ e.getMessage());
             return false;
         }
         catch(TelefonoNoValido e){
-            JOptionPane.showMessageDialog(this,"El telefono no es correcto ");
+            JOptionPane.showMessageDialog(this,"El telefono no es correcto "+ e.getMessage());
             return false;
         }
         catch(FechaNoValida e){
-            JOptionPane.showMessageDialog(this,"La fecha de nacimiento no es correcta");
+            JOptionPane.showMessageDialog(this,"La fecha de nacimiento no es correcta"+ e.getMessage());
             return false;
         }
         catch(ModeloNoValido e){
-            JOptionPane.showMessageDialog(this,"El modelo solo puede ser A,B ó C escrito en mayusculas");
+            JOptionPane.showMessageDialog(this,"El modelo solo puede ser A,B ó C escrito en mayusculas"+ e.getMessage());
             return false;
         }
         catch (Exception e) {
