@@ -38,26 +38,26 @@ public class DireccionBD extends GenericoBD{
     }
     
     public  void insertaDireccion(Direccion d)
-    {
+    {      
+        String query;
+        query = "INSERT INTO direccion (id_dir, portal, piso, mano, cpro, cmun, cun, ctra, cvia) VALUES (?,?,?,?,?,?,?,?,?)";
+        //String query2 = "Insert into DIRECCION (ID_DIR,PORTAL,LETRA,ESCALERA,PISO,MANO,CPRO,CMUN,CUN,CTRA,CVIA) values ('22','6',null,null,'1','A','1','59','63501','5202','4717')";
         try
-        {
-            conectarBD();        
-            String query = "INSERT INTO direccion (id_dir) VALUES (?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?)";
-            
+        { 
+            conectarBD();
+            //stmt = con.createStatement();
+            //stmt.executeUpdate(query);
             pstmt = con.prepareStatement(query);        
             pstmt.setInt(1, d.getId_dir());       
-            pstmt.setInt(2, d.getPortal());       
-            pstmt.setString(3, String.valueOf(d.getLetra()));       
-            pstmt.setString(4, d.getEscalera());
-            pstmt.setInt(5, d.getPiso());
-            pstmt.setString(6, d.getMano());
-            pstmt.setInt(7, d.getProvincia().getCpro());
-            pstmt.setInt(8, d.getMunicipio().getCmun());
-            pstmt.setInt(9, d.getLocalidad().getCun());
-            pstmt.setInt(10, d.getTramo().getCtra());
-            pstmt.setInt(11, d.getVia().getCvia());
-            
-            pstmt.executeUpdate();             
+            pstmt.setInt(2, d.getPortal());
+            pstmt.setInt(3, d.getPiso());
+            pstmt.setString(4, d.getMano());
+            pstmt.setInt(5, d.getProvincia().getCpro());
+            pstmt.setInt(6, d.getMunicipio().getCmun());
+            pstmt.setInt(7, d.getLocalidad().getCun());
+            pstmt.setInt(8, d.getTramo().getCtra());
+            pstmt.setInt(9, d.getVia().getCvia());
+            int retorno = pstmt.executeUpdate();
             desconectarBD();
         }
         catch(Exception e)

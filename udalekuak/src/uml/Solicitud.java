@@ -13,17 +13,18 @@ public class Solicitud {
     private int idSolicitud;
     private int pSorteo;
     private Date fElc;
-    private Calendar hElc;
+    private int id_sorteo;
     private ArrayList<Inscripcion>inscripciones;
 
     public Solicitud() {
+        inscripciones = new ArrayList();
+        id_sorteo = 2015;//falta crear en control la carga del sorteo al comenzar
     }
 
-    public Solicitud(int idSolicitud, int pSorteo, Date fElc, Calendar hElc, ArrayList<Inscripcion> inscripciones) {
+    public Solicitud(int idSolicitud, int pSorteo, Date fElc, ArrayList<Inscripcion> inscripciones) {
         this.idSolicitud = idSolicitud;
         this.pSorteo = pSorteo;
         this.fElc = fElc;
-        this.hElc = hElc;
         this.inscripciones = inscripciones;
     }
 
@@ -51,13 +52,15 @@ public class Solicitud {
         this.fElc = fElc;
     }
 
-    public Calendar gethElc() {
-        return hElc;
+    public int getIdSorteo() {
+        return id_sorteo;
     }
 
-    public void sethElc(Calendar hElc) {
-        this.hElc = hElc;
+    public void setIdSorteo(int id_sorteo) {
+        this.id_sorteo = id_sorteo;
     }
+
+    
 
     public ArrayList<Inscripcion> getInscripciones() {
         return inscripciones;
@@ -68,7 +71,7 @@ public class Solicitud {
     }
     
     /**
-     * Anade ina inscripcion al arraylist de inscripciones
+     * Anade una inscripcion al arraylist de inscripciones
      * @param ins 
      */
     public void anadirInscripcion(Inscripcion ins)

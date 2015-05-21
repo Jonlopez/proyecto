@@ -7,6 +7,8 @@ package bdudalekuak;
  */
 public class SorteoBd extends GenericoBd{
 
+    
+    
 /**
  * consulta las fechas de configuración de la aplicación
  */    

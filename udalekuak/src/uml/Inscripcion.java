@@ -14,7 +14,6 @@ public class Inscripcion {
     private String telf2;
     private String telf3;
     private String telf4;
-    private String telf_contacto;
     private Direccion direccion;
     private Tutor tutor;
     private Menor menor;
@@ -90,14 +89,6 @@ public class Inscripcion {
     public void setTutor(Tutor t)
     {
         this.tutor = t;
-    }
-
-    public String getTelf_contacto() {
-        return telf_contacto;
-    }
-
-    public void setTelf_contacto(String telf_contacto) {
-        this.telf_contacto = telf_contacto;
     }
     
 /**

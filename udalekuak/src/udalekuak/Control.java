@@ -119,16 +119,17 @@ public class Control {
  *  esto ya ha sido validado al rellenar la inscripcion.
  * 
  * de información
- * @param d 
+     * @param sol
+ *  
  */    
-    public static void finalizarSolicitud(Solicitud sol)throws Exception{
+    public static void finalizarSolicitud(Solicitud sol) throws Exception{
         //antes de empezar, recordar que aqui ya tenemos el objeto solicitud creado y 
         //  completo con su(s) inscripcion(es) y tutores y menores y direcciones. Es el
         //  objeto que nos pasan en el parametro.
         
         //PROCEDEMOS:
         //confirma los datos(JConfirm) de la solicitud que se van a insertar
-        if (JOptionPane.showConfirmDialog(ControlVistas.vSi, "Vas a dar de alta una solicitud con los siguientes datos:\n" + solicitud.toString()) == JOptionPane.YES_OPTION){
+        if (JOptionPane.showConfirmDialog(ControlVistas.vSi, "Vas a dar de alta una solicitud con los siguientes datos:\n" + sol.toString()) == JOptionPane.YES_OPTION){
         //si se aceptan los datos:
             
             //IMPORTANTE!! la repeticion de menores ya ha sido compobada y controlada en la ventana de inscripcion
@@ -146,6 +147,8 @@ public class Control {
                 //declara idTutor e idMenor
                 int idTutor;
                 int idMenor;
+                
+                
                 
                 //comprueba si el dni tutor existe en la tabla
                 if(TutorBd.buscaDniTutor(ins.getTutor().getDni())==null)
@@ -194,7 +197,7 @@ public class Control {
                 
             }//END for -- fin recorre inscripciones solicitud
             
-            
+            JOptionPane.showMessageDialog(null, "Vas por aqui :) alegra esa cara ");//mensaje para motivador para buscar errores
             //AQUI YA HEMOS INSERTADO LAS 3 INSCRIPCIONES EN LA BD
             
         }//END IF confirmacion datos
@@ -269,14 +272,9 @@ public class Control {
     }
     
     public static Tutor buscaTutor(String dni)
-    {
-        Tutor t = null;
-        
+    {       
         //consulta el ide tutor con el dni
-        //si existe crea un tutor en la variable t
-        
-        //devolvemos t
-        return t;
+        return TutorBd.buscaDniTutor(dni);       
     }
     
 }

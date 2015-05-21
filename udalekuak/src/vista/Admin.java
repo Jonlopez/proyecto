@@ -113,7 +113,7 @@ public class Admin extends javax.swing.JDialog {
  */
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
        
-           udalekuak.Control.logIn(tfUser.getText(),tfpass.getText(),this);
+           udalekuak.Control.logIn(tfUser.getText().toLowerCase(),String.valueOf(tfpass.getPassword()),this);
                  
     }//GEN-LAST:event_bAceptarActionPerformed
 /**
