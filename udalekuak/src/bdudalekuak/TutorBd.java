@@ -31,11 +31,14 @@ public class TutorBd extends GenericoBd{
             {
                 t = new Tutor(rs.getInt("id_persona"));                
             }
-            desconectarBD();
         }
         catch(Exception e)
         {
             JOptionPane.showMessageDialog(null, "Error en la busqueda de tutor --->  " + e.getMessage());
+        }
+        finally
+        {
+            desconectarBD();
         }
         return t;
     }

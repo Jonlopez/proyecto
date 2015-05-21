@@ -54,15 +54,17 @@ public class SolicitudBd extends GenericoBd{
     }
 /**
  * Inserta las inscripciones de una solicitud
+     * @param sol
  */    
     public static void insertarSolicitud(Solicitud sol){        
         try
         {
             conectarBD();        
-            String query = "INSERT INTO solicitud (id_solicitud) VALUES (?)";
+            String query = "INSERT INTO solicitud (id_solicitud, id_sorteo) VALUES (?,?)";
             pstmt = con.prepareStatement(query);        
-            pstmt.setInt(1, sol.getIdSolicitud());
-            pstmt.executeUpdate();             
+            pstmt.setInt(1, sol.getIdSolicitud());        
+            pstmt.setInt(2, sol.getIdSorteo());
+            rs = pstmt.executeQuery();             
             desconectarBD();
         }
         catch(Exception e)

@@ -14,6 +14,7 @@ import uml.Tutor;
 public class MenorBd extends GenericoBd{
 /**
  * Inserta los datos del menor 
+     * @param m
  */    
     public static void insertarMenor(Menor m){
         String queryPersona = "INSERT INTO persona VALUES(?, ?, ?, ?)";
@@ -32,8 +33,12 @@ public class MenorBd extends GenericoBd{
             //if(rs==null)
             //    JOptionPane.showMessageDialog(null, "Error, no se inserto la Persona");
             
-            //commitamos para que exista persona y no de error la fk de menor
-            stmt.execute("COMMIT");
+            //ATENCION no commitamos porque el driver tiene el autocommit activado y commita despues de cada sentencia
+            
+            
+            //limpiamos las variables
+            pstmt.clearParameters();
+            rs.close();
             
             //segundo hacemos insert en menor
             pstmt = con.prepareStatement(queryMenor);
@@ -48,8 +53,7 @@ public class MenorBd extends GenericoBd{
                 else 
                     discap = 'N';
             pstmt.setString(5, String.valueOf(discap));//(1) a esto me referia antes
-            pstmt.setInt(6, m.getCentro().getIdCentro());            
-            //rs = null;
+            pstmt.setInt(6, m.getCentro().getIdCentro());           
             rs = pstmt.executeQuery();
             //if(rs=null)
             //    JOptionPane.showMessageDialog(null, "Error, no se inserto el Menor");
@@ -71,7 +75,7 @@ public class MenorBd extends GenericoBd{
         String query = "SELECT persona.nombre, persona.apel1, persona.apel2, menor.* "
                      + "FROM menor, persona "
                      + "WHERE menor.id_persona = persona.id_persona "//join para unir las tablas persona y menor
-                      + "AND nombre = ? AND aple1 = ? AND apel2 = ? AND sexo = ? AND fnac = ?";
+                      + "AND nombre = ? AND apel1 = ? AND apel2 = ? AND sexo = ? AND f_nac = ?";
         try
         {
             conectarBD();
@@ -107,7 +111,7 @@ public class MenorBd extends GenericoBd{
         }
         catch(Exception e)
         {
-            JOptionPane.showMessageDialog(null, "Error en la busqueda de tutor --->  " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en la busqueda de menor --->  " + e.getMessage());
         }
         
         return m;

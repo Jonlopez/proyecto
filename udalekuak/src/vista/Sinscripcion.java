@@ -31,6 +31,7 @@ public class Sinscripcion extends javax.swing.JDialog {
     private Inscripcion inscrip;
     private Solicitud sol;
     private CentroEd centro;
+    private ArrayList<CentroEd> centros;
      
     
     /**
@@ -46,7 +47,8 @@ public class Sinscripcion extends javax.swing.JDialog {
         setTitle("Solicitud de inscripción");
         contador = 1;
         sol = Control.creaSolicitud();
-        llenarCbCentros(Control.buscarCentrosCB(true));
+        centros = Control.buscarCentrosCB(true);
+        llenarCbCentros(centros);
     }
 
     /**
@@ -535,7 +537,8 @@ public class Sinscripcion extends javax.swing.JDialog {
             inscrip.setIdIns(contador);
             contador ++;
             //anade solicitud a inscripcion, y ademas anade inscripcion en solicitud.inscripciones(arrayList)
-            inscrip.setSolicitudBidireccional(sol);
+            inscrip.setSolicitud(sol);
+            sol.anadirInscripcion(inscrip);
             //anade direccion
             inscrip.setDireccion(direccion);
             //si tutor no existe
@@ -556,6 +559,9 @@ public class Sinscripcion extends javax.swing.JDialog {
                 inscrip.setTutor(t);
             }
             
+            
+           
+            
             //averigua el sexo
             char sexo;
             if(rbHombre.isSelected())
@@ -574,6 +580,11 @@ public class Sinscripcion extends javax.swing.JDialog {
                     this.ftfModelo.getText().charAt(0),
                     centro                
             );
+             //busca centro en el combo box
+            centro = centros.get(this.cbCentroEd.getSelectedIndex());
+            //se lo anade a menor
+            inscrip.getMenor().setCentro(centro);
+            
             //anade los telefonos
             inscrip.setTelf1(tfTelfContacto.getText());
             inscrip.setTelf2(tfTelf2.getText());
@@ -618,7 +629,7 @@ public class Sinscripcion extends javax.swing.JDialog {
            udalekuak.Control.finalizarSolicitud(sol);
         }
         catch (Exception e) {
-            ControlVistas.enviarMensaje("Fallo al guardar la solicitud");
+            ControlVistas.enviarMensaje("Fallo al guardar la solicitud" +e.getMessage());
         }
     }//GEN-LAST:event_bFinalizarActionPerformed
 /**
@@ -687,16 +698,16 @@ public class Sinscripcion extends javax.swing.JDialog {
     private boolean validaDatos(String dniT, String dniM, String tC, String t2, String t3, String t4){
         try{
             
-            validarDni(dniT);             
-            validarDni(dniM);
+            //validarDni(dniT);             
+            //validarDni(dniM);
             validarString();            
-            validarTelefono(tC);
-            if(!t2.equals(""))
-            validarTelefono(t2);
-            if(!t3.equals(""))
-            validarTelefono(t3);
-            if(!t4.equals(""))
-            validarTelefono(t4);
+            //validarTelefono(tC);
+            //if(!t2.equals(""))
+            //validarTelefono(t2);
+            //if(!t3.equals(""))
+            //validarTelefono(t3);
+            //if(!t4.equals(""))
+            //validarTelefono(t4);
             validarSexo();
             validarFechaN();
             validarDiscapacidad();
@@ -766,10 +777,11 @@ public class Sinscripcion extends javax.swing.JDialog {
                 throw new CampoVacio("Telefono");
     }
     
-    private void validarTelefono(String telf) throws Exception{
-        Pattern pat = Pattern.compile("^[6,7,8]{1}([0-9]{8}||[0-9]{12})$");
+    private void validarTelefono(String telf) throws Exception
+    {
+        Pattern pat = Pattern.compile("[0-9]{9}");//"^[6,7,8]{1}([0-9]{8}||[0-9]{12})$"
         Matcher mat = pat.matcher(telf);
-        if (mat.matches()==false) 
+        if (!mat.matches()) 
            throw new TelefonoNoValido();
     }
     
