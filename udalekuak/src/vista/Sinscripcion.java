@@ -677,7 +677,7 @@ public class Sinscripcion extends javax.swing.JDialog {
         tfNombreM.setText(null);
         tfApelpM.setText(null);
         tfApelsM.setText(null);
-        ftfDniM.setText(null);
+        ftfDniM.setValue("");
         ftfFechaNac.setText(null);
         contador--;            
         centro = null;
@@ -690,7 +690,7 @@ public class Sinscripcion extends javax.swing.JDialog {
         tfNombreT.setText(null);
         tfApelpT.setText(null);
         tfApelsT.setText(null);
-        ftfDniT.setText(null);        
+        ftfDniT.setValue("");        
     }
     /**
      * Valida los datos del formulario antes de proceder a guardar los datos
