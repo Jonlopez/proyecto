@@ -8,7 +8,15 @@ import umldirecciones.Via;
 
 
 public abstract class ViaBD extends GenericoBD{
-    
+    /**
+     * busca las calles en la tabla.
+     * busca si algun nombre de calle contiene los caracteres de busqueda
+     * 
+     * @param via
+     * @param cmun
+     * @param cpro
+     * @return 
+     */
     public static ArrayList<Via> getVias(String via, int cmun, int cpro)
     {        
         ArrayList<Via> listado = new ArrayList();
@@ -22,7 +30,6 @@ public abstract class ViaBD extends GenericoBD{
            pstmt = con.prepareStatement(query);
            pstmt.setInt(1, cpro);
            pstmt.setInt(2, cmun);
-           //pstmt.setString(3, via);
            rs = pstmt.executeQuery();
            if (rs!=null)
            {
@@ -39,13 +46,13 @@ public abstract class ViaBD extends GenericoBD{
                    nvia = rs.getString("nvia").trim();
                    v = new Via(Control.direccion.getMunicipio(), cvia, tvia, pos, nvia);
                    listado.add(v);
-               }//END WHILE
+               }
                
            }else{System.out.println("la tabla provincias esta bacía o no da resultados");}
            
            con.close();
            
-        }//END TRY//END TRY
+        }//end try
         
         catch(Exception e)
         {

@@ -4,7 +4,11 @@ package bddirecciones;
 import java.util.ArrayList;
 import umldirecciones.Provincia;
 
-
+/**
+ * busca las provincias en la tabla provincias.
+ * busca todas la que hay, sin filtros.
+ * @author javi
+ */
 public abstract class ProvinciaBD extends GenericoBD{
     
     public static ArrayList<Provincia> getProvincias()
