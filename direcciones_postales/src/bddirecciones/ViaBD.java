@@ -18,11 +18,12 @@ public abstract class ViaBD extends GenericoBD{
      * @return 
      */
     public static ArrayList<Via> getVias(String via, int cmun, int cpro)
-    {        
+    {     
+        //hace una seleccion de las calles por municipio (cpro y cmun el la pk de ine_vias)
         ArrayList<Via> listado = new ArrayList();
         String query = "SELECT cvia, tvia, pos, nvia "
                      + "FROM ine_vias "
-                     + "WHERE cpro = ? AND cmun = ? AND upper(nvia) LIKE '%"+via.toUpperCase()+"%' "
+                     + "WHERE cpro = ? AND cmun = ? AND upper(nvia) LIKE '%"+via.toUpperCase()+"%' "//en otras esta con el lower de SQL
                      + "ORDER BY nvia";
         try
         {

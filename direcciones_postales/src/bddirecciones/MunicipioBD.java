@@ -23,9 +23,8 @@ public abstract class MunicipioBD extends GenericoBD{
     public static ArrayList<Municipio> getMunicipios(String municipio, int cpro)
     {        
         ArrayList<Municipio> listado = new ArrayList();
-        String query = "SELECT cmun, nmun FROM ine_municipios WHERE cpro = ? AND lower(nmun) LIKE lower('%"+ municipio + "%')";
-        //Nota: La razon de utilizar DISTINCT es porque la tabla, los municipios estan repetidos
-        //      la tabla hace referencia a nucleos poblacionales que 
+        String query = "SELECT cmun, nmun FROM ine_municipios WHERE cpro = ? AND lower(nmun) LIKE lower('%"+ municipio + "%') ORDER BY nmun";
+        //he puesto las dos formas, en unas clases he puestlo el lower de java y en otras el lower de SQL
         try
         {
            conectarBD();
