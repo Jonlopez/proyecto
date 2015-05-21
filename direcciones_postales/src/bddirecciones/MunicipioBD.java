@@ -12,17 +12,29 @@ import umldirecciones.Municipio;
 
 public abstract class MunicipioBD extends GenericoBD{
     
+    /**
+     * busca en la tabla ine_municipios por codigo de provincia.
+     * recive como parametros:
+     * @param municipio
+     * @param cpro
+     * retorna un arraylist con todos los municipios que ha encontrado.
+     * @return 
+     */
     public static ArrayList<Municipio> getMunicipios(String municipio, int cpro)
     {        
         ArrayList<Municipio> listado = new ArrayList();
-        String query = "SELECT DISTINCT * FROM ine_municipios WHERE cpro = ? AND lower(nmun) LIKE '%"+municipio+"%'";
+        String query = "SELECT cmun, nmun FROM ine_municipios WHERE cpro = ? AND lower(nmun) LIKE lower('%"+ municipio + "%')";
+        //Nota: La razon de utilizar DISTINCT es porque la tabla, los municipios estan repetidos
+        //      la tabla hace referencia a nucleos poblacionales que 
         try
         {
            conectarBD();
+           
            pstmt = con.prepareStatement(query);
            pstmt.setInt(1, cpro);
-           //pstmt.setString(2, municipio);
+           
            rs = pstmt.executeQuery();
+           
            if (rs!=null)
            {
                Municipio m;
@@ -34,20 +46,13 @@ public abstract class MunicipioBD extends GenericoBD{
                    nmun = rs.getString("nmun");
                    m = new Municipio(null, cmun, nmun);
                    listado.add(m);
-               }//END WHILE
-               
-           }else{System.out.println("la tabla municipios esta bacía o no da resultados");}
-           
-           con.close();
-           
-        }//END TRY//END TRY
-        
+               }               
+           }else{System.out.println("la tabla municipios esta bacía o no da resultados");}           
+        }        
         catch(Exception e)
         {
-            System.out.println("Problemas con la carga de municipios: " +
-                                e.getMessage() + e.getLocalizedMessage());
-        }
-        
+            System.out.println("Problemas con la carga de municipios: " + e.getMessage());
+        }        
         finally
         {
             desconectarBD();

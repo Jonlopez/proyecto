@@ -13,7 +13,7 @@ public abstract class TramoBD extends GenericoBD{
     
     public static Tramo getTramos(int cpro, int cmun, int cvia, int cpos ,int tinum, int portal)
     {        
-        Tramo tramo = new Tramo();
+        Tramo tramo = null;
         String query = "SELECT * "
                      + "FROM ine_tramos "
                      + "WHERE (cpro = ? AND cmun = ? AND cvia = ? AND cpos = ? AND tinum = ?) AND ( ? BETWEEN ein AND esn) ";
