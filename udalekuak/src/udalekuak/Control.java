@@ -19,6 +19,7 @@ import uml.Tutor;
 import uml.Usuario;
 import bddirecciones.DireccionBD;
 import bdudalekuak.CentroEdBd;
+import bdudalekuak.SorteoBd;
 import uml.CentroEd;
 
 /**
@@ -27,7 +28,7 @@ import uml.CentroEd;
  */
 public class Control {
 
-    private static Sorteo sorteo;
+    public static Sorteo sorteo;
     private static ArrayList<Solicitud>solicitudes;
     private static ArrayList<Inscripcion>inscripciones;
     private static Solicitud solicitud;
@@ -76,12 +77,15 @@ public class Control {
  */  
     public static void ejecutarSorteo(){
         
+        SorteoBd.ejecutaSorteo();
+        
     }
 /**
  * Borra el resultado del Pl-Sql que realiza el sorteo
  */    
-    public static void borrarSorteo(){
-        
+    public static void borrarSorteo()
+    {
+        SorteoBd.borraSorteo();
     }
 /**
  * Retorna valor true para los centros que se encuentren 
@@ -238,7 +242,6 @@ public class Control {
  * Devuelve los datos de una solicitud
  * @param dni
  * @param fecha
- * @return
  */    
     public static void obtenerSolicitud(String dni, Date fecha){
         solicitud = new Solicitud();
