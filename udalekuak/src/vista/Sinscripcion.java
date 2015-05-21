@@ -6,7 +6,11 @@ import Excepciones.DniNoValido;
 import Excepciones.FechaNoValida;
 import Excepciones.ModeloNoValido;
 import Excepciones.TelefonoNoValido;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -636,9 +640,7 @@ public class Sinscripcion extends javax.swing.JDialog {
         limpiarTutor();
         limpiarMenor();
     }//GEN-LAST:event_blimpiarActionPerformed
-
 //GEN-FIRST:event_bDireccionActionPerformed
- 
 //GEN-LAST:event_bDireccionActionPerformed
 
     private void rbFueraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFueraActionPerformed
@@ -727,7 +729,7 @@ public class Sinscripcion extends javax.swing.JDialog {
             return false;
         }
         catch(FechaNoValida e){
-            JOptionPane.showMessageDialog(this,"La fecha de nacimiento no es correcta"+ e.getMessage());
+            JOptionPane.showMessageDialog(this,"La fecha de nacimiento no es correcta\n tiene que estar escrita ne este formato: dd/mm/yyyy "+ e.getMessage());
             return false;
         }
         catch(ModeloNoValido e){
@@ -791,6 +793,10 @@ public class Sinscripcion extends javax.swing.JDialog {
     private void validarFechaN() throws Exception{
         if (ftfFechaNac.getValue()== null)
                 throw new CampoVacio("FechaN");
+       Pattern pat = Pattern.compile("^(0?[1-9]|[12][0-9]|3[01])[\\/](0?[1-9]|1[012])[/\\\\/](19|20)\\d{2}$");
+        Matcher mat = pat.matcher(ftfFechaNac.getText());
+        if (mat.matches()==false) 
+           throw new FechaNoValida();
     }
     
     private void validarDiscapacidad() throws Exception{ 
