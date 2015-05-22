@@ -4,10 +4,7 @@ package uml;
 import java.util.Date;
 import umldirecciones.Direccion;
 
-/**
- *
- * @author Jon
- */
+
 public class Inscripcion {
     private int idIns;
     private String telf1;

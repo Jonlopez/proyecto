@@ -4,10 +4,7 @@ package bdudalekuak;
 import javax.swing.JOptionPane;
 import uml.Tutor;
 
-/**
- *
- * @author javi&Jon
- */
+
 public class TutorBd extends GenericoBd{
     
     

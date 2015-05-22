@@ -24,10 +24,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import bdudalekuakPU.Sorteo;
 
-/**
- *
- * @author javi&Jon 
- */
+
 public class Control {
 
 

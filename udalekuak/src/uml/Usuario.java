@@ -1,10 +1,7 @@
 
 package uml;
 
-/**
- *
- * @author Jon
- */
+
 public class Usuario {
     private String nombre;
     private String contrasenna;

@@ -3,10 +3,7 @@ package uml;
 
 import umldirecciones.Provincia;
 
-/**
- *
- * @author Jon
- */
+
 public class CentroEd {
     private int idCentro;
     private String nombreCtr;

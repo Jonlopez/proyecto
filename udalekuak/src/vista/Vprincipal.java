@@ -3,10 +3,7 @@ package vista;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author javi&Jon
- */
+
 public class Vprincipal extends javax.swing.JFrame {
 
     /**

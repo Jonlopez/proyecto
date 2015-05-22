@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- *
- * @author Jon
- */
+
 public class Solicitud {
     private int idSolicitud;
     private int pSorteo;

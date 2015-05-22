@@ -4,10 +4,7 @@ package uml;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- *
- * @author Jon
- */
+
 public class Sorteo {
     private int idSorteo;
     private Date fIniInsc;

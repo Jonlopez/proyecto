@@ -6,10 +6,7 @@ package bdudalekuak;
 import javax.swing.JOptionPane;
 import uml.Inscripcion;
 
-/**
- *
- * @author javi&Jon
- */
+
 public class InscripcionBd extends GenericoBd{
 
  /**

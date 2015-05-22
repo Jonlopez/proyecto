@@ -4,10 +4,7 @@ package bdudalekuak;
 import javax.swing.JOptionPane;
 import uml.Solicitud;
 
-/**
- *
- * @author javi&Jon
- */
+
 public class SolicitudBd extends GenericoBd{
     
     

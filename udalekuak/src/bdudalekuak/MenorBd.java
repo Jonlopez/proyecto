@@ -6,10 +6,7 @@ import static bdudalekuak.GenericoBd.pstmt;
 import javax.swing.JOptionPane;
 import uml.Menor;
 
-/**
- *
- * @author javi&Jon
- */
+
 public class MenorBd extends GenericoBd{
 /**
  * Inserta los datos del menor 

@@ -7,10 +7,7 @@ import javax.swing.JDialog;
 import uml.Solicitud;
 import uml.Usuario;
 
-/**
- *
- * @author javi&Jon
- */
+
 public class ControlVistas {
     private static Vprincipal vP;
     private static PanelFondo pF;

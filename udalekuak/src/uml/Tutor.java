@@ -3,10 +3,7 @@ package uml;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Jon
- */
+
 public class Tutor {
     private int idTutor;
     private String nombre;

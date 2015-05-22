@@ -7,10 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Jon
- */
+
 public class Menor {
     private int idMenor;
     private String nombre;

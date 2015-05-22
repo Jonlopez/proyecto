@@ -20,10 +20,7 @@ import uml.Inscripcion;
 import uml.Solicitud;
 import uml.Tutor;
 
-/**
- *
- * @author javi&Jon 
- */
+
 public class Sinscripcion extends javax.swing.JDialog {
 
     private umldirecciones.Direccion direccion;

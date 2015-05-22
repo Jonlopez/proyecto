@@ -1,10 +1,7 @@
 
 package vista;
 
-/**
- *
- * @author javi
- */
+
 public class Sorteo extends javax.swing.JDialog {
 
     /**

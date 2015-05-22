@@ -12,10 +12,7 @@ import javax.swing.JOptionPane;
 import udalekuak.Control;
 import uml.Sorteo;
 
-/**
- *
- * @author javi&Jon
- */
+
 public class SorteoBd extends GenericoBd{
 
     

@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import uml.CentroEd;
 
-/**
- *
- * @author javi&Jon
- */
+
 public class CentroEdBd extends GenericoBd{
     private static ArrayList listadoCentros;
     private static CentroEd centro;

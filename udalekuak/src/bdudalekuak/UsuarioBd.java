@@ -6,10 +6,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import uml.Usuario;
 
-/**
- *
- * @author Jon
- */
+
 public class UsuarioBd extends GenericoBd{
     private static String plantilla;
     private static PreparedStatement sentenciaCon;

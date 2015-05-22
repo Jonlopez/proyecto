@@ -1,10 +1,7 @@
 
 package vista;
 
-/**
- *
- * @author javi&Jon
- */
+
 public class Admin extends javax.swing.JDialog {
 
     /**

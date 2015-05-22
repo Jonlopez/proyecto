@@ -8,10 +8,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author javi&Jon
- */
+
 public class GenericoBd {
     private static final String BD       = "orcl";
     //private static final String URL      = "jdbc:oracle:thin:@192.168.56.102:1521:" + BD; //maquina de Javi
