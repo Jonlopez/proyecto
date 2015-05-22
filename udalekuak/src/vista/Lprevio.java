@@ -13,6 +13,8 @@ public class Lprevio extends javax.swing.JDialog {
 
     /**
      * Creates new form Lprevio
+     * @param parent padre
+     * @param modal modal
      */
     public Lprevio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -142,7 +144,7 @@ public class Lprevio extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 /**
  * Cierra el cuadro de dialogo del listado
- * @param evt 
+ * @param evt evento
  */
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         ControlVistas.cerrarDialogo(this);

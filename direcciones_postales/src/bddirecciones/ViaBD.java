@@ -8,13 +8,22 @@ import umldirecciones.Via;
 
 
 public abstract class ViaBD extends GenericoBD{
-    
+    /**
+     * busca las calles en la tabla.
+     * busca si algun nombre de calle contiene los caracteres de busqueda
+     * 
+     * @param via
+     * @param cmun
+     * @param cpro
+     * @return 
+     */
     public static ArrayList<Via> getVias(String via, int cmun, int cpro)
-    {        
+    {     
+        //hace una seleccion de las calles por municipio (cpro y cmun el la pk de ine_vias)
         ArrayList<Via> listado = new ArrayList();
         String query = "SELECT cvia, tvia, pos, nvia "
                      + "FROM ine_vias "
-                     + "WHERE cpro = ? AND cmun = ? AND upper(nvia) LIKE '%"+via.toUpperCase()+"%' "
+                     + "WHERE cpro = ? AND cmun = ? AND upper(nvia) LIKE '%"+via.toUpperCase()+"%' "//en otras esta con el lower de SQL
                      + "ORDER BY nvia";
         try
         {
@@ -22,7 +31,6 @@ public abstract class ViaBD extends GenericoBD{
            pstmt = con.prepareStatement(query);
            pstmt.setInt(1, cpro);
            pstmt.setInt(2, cmun);
-           //pstmt.setString(3, via);
            rs = pstmt.executeQuery();
            if (rs!=null)
            {
@@ -39,13 +47,13 @@ public abstract class ViaBD extends GenericoBD{
                    nvia = rs.getString("nvia").trim();
                    v = new Via(Control.direccion.getMunicipio(), cvia, tvia, pos, nvia);
                    listado.add(v);
-               }//END WHILE
+               }
                
            }else{System.out.println("la tabla provincias esta bacía o no da resultados");}
            
            con.close();
            
-        }//END TRY//END TRY
+        }//end try
         
         catch(Exception e)
         {

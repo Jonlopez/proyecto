@@ -69,7 +69,7 @@ public class PersonaBd extends GenericoBd{
     
     /**
      * busca el ultimo id que existe en la tabla personas de la base de datos
-     * @return 
+     * @return devuelve numerico
      */
     public static int consultaUltimoId()
     {

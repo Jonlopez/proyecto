@@ -14,6 +14,8 @@ public class Dsolicitud extends javax.swing.JDialog {
    
     /**
      * Creates new form Dsolicitud
+     * @param parent padre
+     * @param modal modal
      */
     public Dsolicitud(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -223,7 +225,7 @@ public class Dsolicitud extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 /**
  * Cierra el dialogo
- * @param evt 
+ * @param evt evento
  */
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         ControlVistas.cerrarDialogo(this);

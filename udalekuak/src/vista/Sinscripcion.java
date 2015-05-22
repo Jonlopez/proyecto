@@ -39,6 +39,8 @@ public class Sinscripcion extends javax.swing.JDialog {
      * 
      * crea una nueva solicitud en la variable 
      * pone el contador a 1 
+     * @param parent padre
+     * @param modal modal
      */
     public Sinscripcion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -489,14 +491,14 @@ public class Sinscripcion extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 /**
  * Cierra el dialogo de inscripción
- * @param evt  */
+ * @param evt  evento*/
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         ControlVistas.cerrarDialogo(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
 /**
  * Consulta de dirección en la Base de Datos
- * @param evt 
+ * @param evt evento
  */
     private void bDireccionActionPerformed(java.awt.event.ActionEvent evt)
     {                                           
@@ -511,7 +513,7 @@ public class Sinscripcion extends javax.swing.JDialog {
     
 /**
  * Se añade un nuevo participante a la solictud
- * @param evt 
+ * @param evt evento
  */
     private void bParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bParticipanteActionPerformed
         //guarda la inscripcion
@@ -617,7 +619,7 @@ public class Sinscripcion extends javax.swing.JDialog {
     }  
  /**
  * Finaliza la Solicitud
- * @param evt 
+ * @param evt evento
  */
     private void bFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinalizarActionPerformed
         //guarda la inscripcion
@@ -634,7 +636,7 @@ public class Sinscripcion extends javax.swing.JDialog {
     }//GEN-LAST:event_bFinalizarActionPerformed
 /**
  * limpia todos los campos de la ventana
- * @param evt 
+ * @param evt evento
  */
     private void blimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blimpiarActionPerformed
         limpiarTutor();
@@ -658,7 +660,6 @@ public class Sinscripcion extends javax.swing.JDialog {
 /**
  * Se pide confirmación para conservar los datos del tutor
  * o borrarlos
- * @return 
  */
     private void limpiar(){
        int conf = JOptionPane.showConfirmDialog(null, "Desea conservar los datos de tutor");
@@ -698,16 +699,16 @@ public class Sinscripcion extends javax.swing.JDialog {
     private boolean validaDatos(String dniT, String dniM, String tC, String t2, String t3, String t4){
         try{
             
-            //validarDni(dniT);             
-            //validarDni(dniM);
+            validarDni(dniT);             
+            validarDni(dniM);
             validarString();            
-            //validarTelefono(tC);
-            //if(!t2.equals(""))
-            //validarTelefono(t2);
-            //if(!t3.equals(""))
-            //validarTelefono(t3);
-            //if(!t4.equals(""))
-            //validarTelefono(t4);
+            validarTelefono(tC);
+            if(!t2.equals(""))
+            validarTelefono(t2);
+            if(!t3.equals(""))
+            validarTelefono(t3);
+            if(!t4.equals(""))
+            validarTelefono(t4);
             validarSexo();
             validarFechaN();
             validarDiscapacidad();
@@ -743,7 +744,7 @@ public class Sinscripcion extends javax.swing.JDialog {
     }
 /**
  * Diferentes validaciones
- * @throws Exception 
+ * @throws Exception excepcion
  */    
     private void validarDni(String ftfdni) throws Exception{        
         String juegoCaracteres="TRWAGMYFPDXBNJZSQVHLCKET";

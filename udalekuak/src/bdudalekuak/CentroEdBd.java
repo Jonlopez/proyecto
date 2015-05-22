@@ -1,13 +1,9 @@
 
 package bdudalekuak;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import uml.CentroEd;
-import umldirecciones.Provincia;
 
 /**
  *
@@ -20,6 +16,8 @@ public class CentroEdBd extends GenericoBd{
 /**
  * Devuelve todos los centros de Álava 
  * o de fuera de esta
+ * @param alava centros de alava
+ * @return devuelve los centros
  */    
     public static ArrayList<CentroEd> consultarCentros(boolean alava){
          

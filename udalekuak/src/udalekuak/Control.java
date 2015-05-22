@@ -17,6 +17,7 @@ import uml.Solicitud;
 import uml.Tutor;
 import uml.Usuario;
 import bdudalekuak.CentroEdBd;
+import bdudalekuak.SorteoBd;
 import uml.CentroEd;
 import bdudalekuakPU.SorteoJpaController;
 import javax.persistence.EntityManagerFactory;
@@ -29,6 +30,8 @@ import bdudalekuakPU.Sorteo;
  */
 public class Control {
 
+
+    public static Sorteo sorteo;
     private static ArrayList<Solicitud>solicitudes;
     private static ArrayList<Inscripcion>inscripciones;
     private static Solicitud solicitud;
@@ -43,9 +46,9 @@ public class Control {
     }
 /**
  * Validación del usuario administrador
- * @param user
- * @param pass
- * @param d 
+ * @param user pasa usuario
+ * @param pass pasa contrasenna
+ * @param d pasa jdialogo
  */    
     public static void logIn(String user, String pass, JDialog d){        
         usuario = new Usuario(user, pass);
@@ -56,6 +59,7 @@ public class Control {
     }
 /**
  * Devuelve las fechas de la configuración de la aplicación
+ * @return devuelve sorteo
  */
     public static Sorteo cargarParametros(){      
       
@@ -75,12 +79,12 @@ public class Control {
     }
 /**
  * Modifica las fechas de configuración de la aplicación
- * @param fIni
- * @param fFin
- * @param fsor
- * @param d 
+ * @param fIni fecha
+ * @param fFin fecha
+ * @param fsor fecha
+ * @param d pasa dialogo
  */    
-    public static void modificarParametros(Date fIni, Date fFin, Date fsor,JDialog d){
+    public static void guardarParametros(Date fIni, Date fFin, Date fsor,JDialog d){
         
         ControlVistas.cerrarDialogo(d);
     }
@@ -90,17 +94,21 @@ public class Control {
  */  
     public static void ejecutarSorteo(){
         
+        SorteoBd.ejecutaSorteo();
+        
     }
 /**
  * Borra el resultado del Pl-Sql que realiza el sorteo
  */    
-    public static void borrarSorteo(){
-        
+    public static void borrarSorteo()
+    {
+        SorteoBd.borraSorteo();
     }
 /**
  * Retorna valor true para los centros que se encuentren 
  * en Álava o false para los que esten fuera de esta
- * @return 
+ * @param alava pasa booleano
+ * @return devuelve centros
  */    
     public static ArrayList<CentroEd> buscarCentrosCB(boolean alava)
     {        
@@ -110,6 +118,7 @@ public class Control {
  /**
  * Creamos un objeto solicitud al que le asignamos un nº
  * identificador 
+ * @return devuelve solicitud
  */    
     public static Solicitud creaSolicitud(){ 
       Solicitud sol = new Solicitud();
@@ -133,7 +142,8 @@ public class Control {
  *  esto ya ha sido validado al rellenar la inscripcion.
  * 
  * de información
-     * @param sol
+ * @param sol pasa solicitud
+ * @throws java.lang.Exception excepcion
  *  
  */    
     public static void finalizarSolicitud(Solicitud sol) throws Exception{
@@ -229,8 +239,8 @@ public class Control {
     
     /**
      * comprueba si existe un menor o no, retorna true o fale
-     * @param m
-     * @return 
+     * @param m menor
+     * @return devuelve booleano
      */
     public static boolean existeMenor(Menor m)
     {
@@ -250,9 +260,8 @@ public class Control {
     }
 /**
  * Devuelve los datos de una solicitud
- * @param dni
- * @param fecha
- * @return
+ * @param dni pasa dni
+ * @param fecha pasa fecha
  */    
     public static void obtenerSolicitud(String dni, Date fecha){
         solicitud = new Solicitud();
@@ -261,7 +270,7 @@ public class Control {
     }
 /**
  * Devuelve el listado previo al sorteo
- * @return 
+ * @return devuelve solicitudes
  */    
     public static ArrayList<Solicitud> obtenerListSorteo(){
         solicitudes = new ArrayList();
@@ -271,7 +280,7 @@ public class Control {
 /**
  * Devuelve el listado posterior al sorteo ordenado
  * por el orden que espicifica el sorteo
- * @return 
+ * @return devuelve solicitudes
  */    
     public static ArrayList<Solicitud>obtenerListPosterior(){
         solicitudes = new ArrayList();

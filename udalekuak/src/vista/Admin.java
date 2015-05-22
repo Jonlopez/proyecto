@@ -9,6 +9,8 @@ public class Admin extends javax.swing.JDialog {
 
     /**
      * Creates new form Admin
+     * @param parent padre
+     * @param modal modal
      */
     public Admin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -109,7 +111,7 @@ public class Admin extends javax.swing.JDialog {
 /**
  * Se validan el usuario y contraseña del administrador
  * y se logea el usuario
- * @param evt 
+ * @param evt evento
  */
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
        
@@ -118,7 +120,7 @@ public class Admin extends javax.swing.JDialog {
     }//GEN-LAST:event_bAceptarActionPerformed
 /**
  * Se cancela el LogIn
- * @param evt 
+ * @param evt evento
  */
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         ControlVistas.cerrarDialogo(this);

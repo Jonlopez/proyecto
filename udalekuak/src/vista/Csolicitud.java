@@ -9,6 +9,8 @@ public class Csolicitud extends javax.swing.JDialog {
 
     /**
      * Creates new form Csolicitud
+     * @param parent
+     * @param modal
      */
     public Csolicitud(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

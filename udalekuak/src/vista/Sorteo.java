@@ -9,6 +9,8 @@ public class Sorteo extends javax.swing.JDialog {
 
     /**
      * Creates new form Sorteo
+     * @param parent padre
+     * @param modal modal
      */
     public Sorteo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

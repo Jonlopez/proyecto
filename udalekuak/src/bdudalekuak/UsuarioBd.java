@@ -3,8 +3,6 @@ package bdudalekuak;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import uml.Usuario;
 
@@ -16,14 +14,11 @@ public class UsuarioBd extends GenericoBd{
     private static String plantilla;
     private static PreparedStatement sentenciaCon;
     private static ResultSet resultado;
-    private static Usuario usuario;
 /**
  * Consulta en la base de datos de la tabla usuarios
  * y retorna valor boolenao si existe o no
- * @param user
- * @param pass
- * @return
- * @throws Exception 
+ * @param user pasa usuario
+ * @return devuelve booleano
  */    
     public static boolean consultarUsuario(Usuario user){
         boolean existe = false;

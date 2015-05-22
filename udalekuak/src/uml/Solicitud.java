@@ -72,7 +72,7 @@ public class Solicitud {
     
     /**
      * Anade una inscripcion al arraylist de inscripciones
-     * @param ins 
+     * @param ins incripciones
      */
     public void anadirInscripcion(Inscripcion ins)
     {

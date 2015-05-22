@@ -9,6 +9,7 @@ import controldirecciones.Control;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import umldirecciones.Provincia;
+import umldirecciones.Tramo;
 
 /**
  *
@@ -358,31 +359,46 @@ public class Formulario extends javax.swing.JDialog {
         if(this.tfPortal.getText().isEmpty())
         JOptionPane.showMessageDialog(this, "No has introducido el número de portal");
         else
-        {
-            //busca el portal y el cp en la tabla tramos
-            try{
-                //si lo encuentra devuelve un objeto tramo que se guarda en diraccion
-                Control.direccion.setTramo
-                (
-                    Control.buscaTramo(Integer.parseInt(this.tfPortal.getText()), Integer.parseInt(this.ftfCP.getText()))
-                    //si no lo encuentra no devuelve objeto y saltara la excepcion NullPointerException
-                );
-                //si no salta la excepcion es porque la direccion ha sido verificada y es correcta
-                //procede a guardar los demas datos de direccion
-                Control.direccion.setPortal(Integer.parseInt(this.tfPortal.getText()));
-                Control.direccion.setLetra(this.tfLetra.getText());
-                Control.direccion.setEscalera(this.tfEscalera.getText());
-                Control.direccion.setPiso(Integer.parseInt(this.tfPiso.getText()));
-                Control.direccion.setMano(this.tfMano.getText());
-                Control.direccion.setCp(Integer.parseInt(this.ftfCP.getText()));
-                this.dispose();           
-            }
-            catch (NullPointerException e)
-            {
-                JOptionPane.showMessageDialog(this, "El codigo postal o el número de portal," +
-                                                    "no concuerdan con el resto de datos,\n" +
-                                                    "porfavor, revise los datos.");
-            }
+        {   Tramo t = null;            
+            
+                //busca el portal y el cp en la tabla tramos
+                t = Control.buscaTramo(Integer.parseInt(this.tfPortal.getText()), Integer.parseInt(this.ftfCP.getText()));
+                //si lo encuentra...
+                if(t!=null)
+                {
+                    //si entramos qui es porque la direccion ha sido verificada y es correcta
+                    
+                    //devuelve un objeto tramo que se guarda en direccion               
+                    Control.direccion.setTramo(t);                    
+                     
+                    //procede a guardar los demas datos de direccion
+                    Control.direccion.setPortal(Integer.parseInt(this.tfPortal.getText()));
+                    //Control.direccion.setLetra(this.tfLetra.getText());
+                    //Control.direccion.setEscalera(this.tfEscalera.getText());
+                    Control.direccion.setPiso(Integer.parseInt(this.tfPiso.getText()));
+                    Control.direccion.setMano(this.tfMano.getText());
+                    Control.direccion.setCp(Integer.parseInt(this.ftfCP.getText()));
+                    
+                    //salimos (retoma el control el metodo que nos ha llamado y devolvera direccion)
+                    this.dispose();
+                }
+                else
+                {
+                    //si entramos aqui es porque la direccion no es correcta
+                    //se ha comprobado la combinacion (num. de portal + calle + localidad) y no existe
+                    
+                    //avisamos con mensaje
+                    JOptionPane.showMessageDialog(null, "La combinacion portal, calle, cp, no es correcta\nvuelve a intentarlo.");
+                    //borramos y habilitamos las celdas para que reintroduzca los datos
+                    this.tfCalle.setText("");
+                    this.ftfCP.setEnabled(true);
+                    this.tfCalle.setEnabled(true); 
+                    this.bBuscarCalle.setEnabled(true);
+                    this.bAceptar.setEnabled(false);
+                }
+               
+                           
+            
             
             /* Este cacho de codigo se usa para comprobar que todos los datos que tiene direccion
             JOptionPane.showMessageDialog(this,
@@ -398,6 +414,7 @@ public class Formulario extends javax.swing.JDialog {
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+        Control.direccion = null;
         this.dispose();
     }//GEN-LAST:event_bSalirActionPerformed
 

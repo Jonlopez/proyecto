@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
  */
 public class PanelFondo extends javax.swing.JPanel {
 
-    private Dimension tamanio;
+    private final Dimension tamanio;
     
     public PanelFondo() {
         initComponents();
@@ -29,8 +29,9 @@ public class PanelFondo extends javax.swing.JPanel {
     }
 /**
  * Insertamos la imgen especificando su ruta 
- * @param g 
+ * @param g grafico
  */    
+    @Override
     public void paintComponent(Graphics g){
          Dimension tamanio = getSize();
          ImageIcon imagenFondo = new ImageIcon(getClass().getResource("images/udaleku-15-02.png"));

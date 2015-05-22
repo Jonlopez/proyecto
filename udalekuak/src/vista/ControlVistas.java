@@ -51,8 +51,8 @@ public class ControlVistas {
 /**
  * Si nos logeamos como administrador se
  * habilitan todas sus funciones
- * @param user
- * @param d 
+ * @param user usuario
+ * @param d dialogo
  */    
     public static void habilitarAdmin(Usuario user, JDialog d){     
         vP.habilitarMenus();
@@ -63,7 +63,7 @@ public class ControlVistas {
 /**
  * Este metodo se reutiliza para enviar
  * diferentes mensajes a traves de un parametro
- * @param mensaje 
+ * @param mensaje mensaje
  */    
     public static void enviarMensaje(String mensaje){        
         JOptionPane.showMessageDialog(vP, mensaje);
@@ -71,7 +71,7 @@ public class ControlVistas {
 /**
  * Este metodo se reutiliza para cerrar diferentes
  * JDialog
- * @param dialogo 
+ * @param dialogo dialogo
  */    
     public static void cerrarDialogo(javax.swing.JDialog dialogo){
         dialogo.dispose();
@@ -152,7 +152,7 @@ public class ControlVistas {
  * Llama y llena con datos la venta Detalle de solicitud 
  * (Falta sobrecargar el constructor de Dsolicitud)
  * 
- * @param solicitud 
+ * @param solicitud solicitud
  */    
     public static void muestraDetalleSolicitud(Solicitud solicitud){
         vDc = new Dsolicitud(vP, true);        

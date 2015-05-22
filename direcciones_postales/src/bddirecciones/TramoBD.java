@@ -9,11 +9,27 @@ import umldirecciones.Via;
 
 
 public abstract class TramoBD extends GenericoBD{
-    //private static Object ResultSupport;
-    
+    /**
+     *busca el tramo(intersecciones entre el conjunto localidades y el conjuto vias) que coincida con los datos
+     *  proporcionados en el formulario. para confirmar el portal lo busca entre los campos ein(extremo inferior-
+     *  de numeracón) y el esn(extremo superior de numeracion).
+     *  si devuelve un tramo es que la direccion es valida.
+     * @param cpro
+     * @param cmun
+     * @param cvia
+     * @param cpos
+     * @param tinum
+     * @param portal
+     * @return 
+     */
     public static Tramo getTramos(int cpro, int cmun, int cvia, int cpos ,int tinum, int portal)
     {        
-        Tramo tramo = new Tramo();
+        Tramo tramo = null;
+        
+        //busca el tramo(intersecciones entre el conjunto localidades y el conjuto vias) que coincida con los datos
+        //  proporcionados en el formulario. para confirmar el portal lo busca entre los campos ein(extremo inferior-
+        //  de numeracón) y el esn(extremo superior de numeracion).
+        //  si devuelve un tramo es que la direccion es valida.
         String query = "SELECT * "
                      + "FROM ine_tramos "
                      + "WHERE (cpro = ? AND cmun = ? AND cvia = ? AND cpos = ? AND tinum = ?) AND ( ? BETWEEN ein AND esn) ";
@@ -76,7 +92,8 @@ public abstract class TramoBD extends GenericoBD{
         finally
         {
             desconectarBD();
-        }        
+        }
+        
         //JOptionPane.showMessageDialog(null, tramo.toString());
         return tramo;
         

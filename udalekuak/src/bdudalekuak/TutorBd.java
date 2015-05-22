@@ -13,7 +13,7 @@ public class TutorBd extends GenericoBd{
     
     /**
      * busca tutor por dni y devuelve su id_persona
-     * @param dni
+     * @param dni pasa el dni
      * @return 
      */
     public static Tutor buscaDniTutor(String dni)

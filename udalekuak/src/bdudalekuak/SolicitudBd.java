@@ -26,6 +26,7 @@ public class SolicitudBd extends GenericoBd{
     }
 /**
  * Devuelve el id de la ultima solicitud
+ * @return devuelve numerico
  */     
     public static int consultaUltimoId(){
         int id = 0;
@@ -54,7 +55,7 @@ public class SolicitudBd extends GenericoBd{
     }
 /**
  * Inserta las inscripciones de una solicitud
-     * @param sol
+     * @param sol pasa solicitud
  */    
     public static void insertarSolicitud(Solicitud sol){        
         try

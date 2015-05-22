@@ -5,7 +5,6 @@ import static bdudalekuak.GenericoBd.conectarBD;
 import static bdudalekuak.GenericoBd.pstmt;
 import javax.swing.JOptionPane;
 import uml.Menor;
-import uml.Tutor;
 
 /**
  *
@@ -14,7 +13,7 @@ import uml.Tutor;
 public class MenorBd extends GenericoBd{
 /**
  * Inserta los datos del menor 
-     * @param m
+     * @param m menor
  */    
     public static void insertarMenor(Menor m){
         String queryPersona = "INSERT INTO persona VALUES(?, ?, ?, ?)";

@@ -96,10 +96,10 @@ public class Inscripcion {
  * 
  * esta pensado para pasarle los datos desde la ventan inscripcion en el proceso de alta
  * 
- * @param dni
- * @param nombre
- * @param apel1
- * @param apel2 
+ * @param dni el dni
+ * @param nombre el nombre
+ * @param apel1 el apellido
+ * @param apel2 el apellido
  */
     public void setTutor(String dni, String nombre, String apel1, String apel2) {
         this.tutor = new Tutor();

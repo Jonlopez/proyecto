@@ -9,6 +9,8 @@ public class Parametros extends javax.swing.JDialog {
 
     /**
      * Creates new form Parametros
+     * @param parent padre
+     * @param modal modal
      */
     public Parametros(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -130,7 +132,7 @@ public class Parametros extends javax.swing.JDialog {
     }//GEN-LAST:event_bSalirActionPerformed
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
-        udalekuak.Control.guardarparametros(null, null, null, this);
+        udalekuak.Control.guardarParametros(null, null, null, this);
     }//GEN-LAST:event_bGuardarActionPerformed
 
     /**

@@ -34,7 +34,7 @@ public abstract class GenericoBD {
         }
         catch(Exception e)
         {
-            JOptionPane.showMessageDialog(null,"Error en la conexion: " + e.getMessage());
+            JOptionPane.showMessageDialog(null,"Error en la Conexion: " + e.getMessage());
         }
         
     }
@@ -46,7 +46,7 @@ public abstract class GenericoBD {
         }
         catch (Exception e)
         {
-            JOptionPane.showMessageDialog(null,"Error en la DES-conexion: " + e.getMessage());
+            JOptionPane.showMessageDialog(null,"Error en la Desconexion: " + e.getMessage());
         }
     }   
         
