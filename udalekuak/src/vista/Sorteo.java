@@ -15,6 +15,16 @@ public class Sorteo extends javax.swing.JDialog {
         initComponents();
          setLocationRelativeTo(parent);
         setTitle("Realizar sorteo");
+        llenarFechas();
+    }
+/**
+ * llena las fechas de configuracion del sorteo
+ */    
+    public void llenarFechas(){
+        bdudalekuakPU.Sorteo sorteo = udalekuak.Control.cargarParametros();
+        tfFechaInicio.setText(sorteo.getFIniIns().toString());
+        tfFechaFin.setText(sorteo.getFFinIns().toString());
+        tfFechaSorteo.setText(sorteo.getFSorteo().toString());
     }
 
     /**

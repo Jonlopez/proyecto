@@ -9,7 +9,6 @@ import bdudalekuak.UsuarioBd;
 import java.util.Date;
 import vista.ControlVistas;
 import javax.swing.JDialog;
-import uml.Sorteo;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import uml.Inscripcion;
@@ -17,9 +16,12 @@ import uml.Menor;
 import uml.Solicitud;
 import uml.Tutor;
 import uml.Usuario;
-import bddirecciones.DireccionBD;
 import bdudalekuak.CentroEdBd;
 import uml.CentroEd;
+import bdudalekuakPU.SorteoJpaController;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import bdudalekuakPU.Sorteo;
 
 /**
  *
@@ -27,7 +29,6 @@ import uml.CentroEd;
  */
 public class Control {
 
-    private static Sorteo sorteo;
     private static ArrayList<Solicitud>solicitudes;
     private static ArrayList<Inscripcion>inscripciones;
     private static Solicitud solicitud;
@@ -56,9 +57,21 @@ public class Control {
 /**
  * Devuelve las fechas de la configuración de la aplicación
  */
-    public static Sorteo cargarParametros(){        
-        sorteo = new Sorteo();
-        return sorteo;
+    public static Sorteo cargarParametros(){      
+      
+        Sorteo s = null;
+        try{
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("unidad");
+            SorteoJpaController sbd = new SorteoJpaController(emf);
+            Short i = 2015;
+            
+              s = sbd.findSorteo(i);
+             
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error persistencia" + e.getMessage());
+        }
+        return s;
     }
 /**
  * Modifica las fechas de configuración de la aplicación
@@ -67,7 +80,8 @@ public class Control {
  * @param fsor
  * @param d 
  */    
-    public static void guardarparametros(Date fIni, Date fFin, Date fsor,JDialog d){
+    public static void modificarParametros(Date fIni, Date fFin, Date fsor,JDialog d){
+        
         ControlVistas.cerrarDialogo(d);
     }
 /**

@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 public abstract class GenericoBD {
     
     private static final String BD       = "orcl";
-    private static final String URL      = "jdbc:oracle:thin:@192.168.56.102:1521:" + BD;
-    //private static final String URL      = "jdbc:oracle:thin:@192.168.2.2:1521:" + BD;
+    //private static final String URL      = "jdbc:oracle:thin:@192.168.56.102:1521:" + BD;
+    private static final String URL      = "jdbc:oracle:thin:@192.168.2.2:1521:" + BD;
     private static final String USER     = "JAVI";
     private static final String PASSWORD = "javi";    
     
